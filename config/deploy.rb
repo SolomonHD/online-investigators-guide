@@ -2,10 +2,8 @@
 lock "~> 3.10.0"
 
 set :application, "online_investigators_guide"
-set :repository, "git@github.com:emory-lits-uit/online-investigators-guide.git"
 set :repo_url, "git@github.com:emory-lits-uit/online-investigators-guide.git"
-
-set :normalize_asset_timestamps, %w{public/assets public/images}.join(' ')
+set :branch, 'develop'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
