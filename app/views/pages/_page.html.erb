@@ -1,0 +1,7 @@
+<div><%= page.title %>
+  <%= link_to 'Child Page', new_page_path(:parent_id => page) %>
+ <%= link_to 'Show', page %></td>
+   <%= link_to 'Edit', edit_page_path(page) %>
+   <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+</div>

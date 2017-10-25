@@ -1,0 +1,22 @@
+.nested_pages {
+  margin-left: 2em;
+  padding: 1em;
+  position: relative;
+  :before {
+    position: absolute;
+    left: -15px;
+    top: 0px;
+    content: '';
+    display: block;
+    border-left: 1px solid #333;
+    height: 1.5em;
+    border-bottom: 1px solid #333;
+    width: 21px;
+  }
+  :last-child {
+    :before {
+      border-left: none;
+      border-bottom: none;
+    }
+  }
+}
