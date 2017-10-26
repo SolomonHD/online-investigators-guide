@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :labels
   resources :pages
   resources :users
   get 'dashboard/index'
