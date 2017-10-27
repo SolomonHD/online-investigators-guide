@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @survey_template.name %>
+</p>
+
+<ol class="questions">
+  <% @survey_template.questions.each do |question| %>
+    <li>
+      <%= question.content %>
+      <ol class="answers">
+        <% question.answers.each do |answer| %>
+          <li><%= answer.content %></li>
+          <% end %>
+      </ol>
+    </li>
+  <% end %>
+</ol>
+
+<%= link_to 'Edit', edit_survey_template_path(@survey_template) %> |
+<%= link_to 'Back', survey_templates_path %>
