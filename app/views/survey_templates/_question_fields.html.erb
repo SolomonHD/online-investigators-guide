@@ -1,0 +1,16 @@
+<fieldset>
+  <div>
+    <%= form.label :content, "Question" %>
+    <%= form.text_area :content %>
+    <%= form.hidden_field :_destroy %>
+    <%= link_to "remove", '#', class: "remove_fields" %><br />
+  </div>
+  <div>
+    <%= form.label :question_type_id, "Question Type" %>
+    <%= form.collection_select :question_type_id, QuestionType.all, :id, :name %><br />
+  </div>
+  <%= form.fields_for :answers do |builder| %>
+    <%= render 'answer_fields', form: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add Answer", form, :answers %>
+</fieldset>
