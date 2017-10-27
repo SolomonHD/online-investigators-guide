@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pages</h1>
+<h1 class="title">Pages</h1>
 <%= nested_pages @pages.arrange(:order => :created_at) %>
 
 <%= link_to 'New Page', new_page_path %>

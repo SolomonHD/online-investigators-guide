@@ -46,6 +46,10 @@ gem 'ancestry'
 # https://github.com/rails/jquery-rails
 gem 'jquery-rails'
 
+# Gem to include font-awesome icons
+# http://fontawesome.io/get-started/
+gem 'font-awesome-sass'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

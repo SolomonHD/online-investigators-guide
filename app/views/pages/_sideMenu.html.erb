@@ -1,0 +1,15 @@
+<aside class="menu column is-3 is-narrow-mobile is-fullheight is-hidden-mobile">
+  <% Page.roots.each do |p| %>
+    <ul class="menu-list">
+      <li>
+        <%= link_to h(p.title), p %>
+        <% if p.children.present? %>
+          <%= render 'sideMenuSub', p: p %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+  <!-- <p class="menu-label">
+    General
+  </p> -->
+</aside>

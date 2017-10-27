@@ -1,0 +1,8 @@
+<ul>
+  <% p.children.each do |sub| %>
+    <li>
+      <%= link_to_unless_current sub.title, sub %>
+      <%-# <%= render 'sideMenuSub', p: sub -%>
+    </li>
+  <% end %>
+</ul>
