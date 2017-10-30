@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h1 class="title">
   <strong>Name:</strong>
   <%= @survey_template.name %>
-</p>
+</h1>
 
 <ol class="questions">
   <% @survey_template.questions.each do |question| %>
     <li>
       <%= question.content %>
-      <ol class="answers">
+      <ul class="answers">
         <% question.answers.each do |answer| %>
           <li><%= answer.content %></li>
           <% end %>
-      </ol>
+      </ul>
     </li>
   <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_survey_template_path(@survey_template) %> |
-<%= link_to 'Back', survey_templates_path %>
+<%= link_to 'Edit', edit_survey_template_path(@survey_template), :class => 'button is-gray is-edit' %>
+<%= link_to 'Back to All Surveys', survey_templates_path, :class => 'button is-blue is-back' %>

@@ -1,6 +1,6 @@
-<h1>Editing Survey Template</h1>
+<h1 class="title">Editing Survey Template <%= link_to 'Back to All Surveys', survey_templates_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
 
+<section>
 <%= render 'form', survey_template: @survey_template %>
-
-<%= link_to 'Show', @survey_template %> |
-<%= link_to 'Back', survey_templates_path %>
+</section>
+<!-- <%= link_to 'Show', @survey_template %> | -->

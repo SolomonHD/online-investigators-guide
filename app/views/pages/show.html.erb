@@ -18,7 +18,7 @@
     <!--  IF PAGE IS ROOT, BUILD ONLY DIRECT DESCENDANTS -->
     <% if @page.is_root? %>
       <% @page.descendants(:to_depth => 1).each do |child| %>
-        <%= link_to child.title, child %>
+        <li><%= link_to child.title, child %></li>
       <% end %>
     <!--  ELSE DISPLAY ALL DIRECT DESCENDANTS -->
     <% else %>

@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
-
+<% if notice %>
+<p id="notice" class="notification is-success"><%= notice %></p>
+<% end %>
 <h1 class="title">Pages</h1>
-<%= nested_pages @pages.arrange(:order => :created_at) %>
+<%= nested_pages @pages.arrange(:order => :id) %>
 
-<%= link_to 'New Page', new_page_path %>
+<%= link_to 'New Page', new_page_path, :class => 'button is-add is-warning' %>

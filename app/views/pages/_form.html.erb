@@ -12,28 +12,46 @@
   <% end %>
   <%= form.hidden_field :parent_id %>
 
-  <%= label_tag(:title, "Page Title:") %>
-  <%= form.text_field(:title) %>
-
-  <%= label_tag(:header, "Page Header:") %>
-  <%= form.text_field(:header) %>
-
-  <%= label_tag(:body, "Page Body:") %>
-  <%= form.trix_editor :body %>
-
+  <div class="field">
+    <%= label_tag(:title, "Page Title:", :class => 'label') %>
+    <div class="control">
+      <%= form.text_field :title %>
+    </div>
+  </div>
 
   <div class="field">
-    <%= form.label "Labels" %><br />
+    <%= label_tag(:header, "Page Header:", :class => 'label') %>
+    <div class="control">
+      <%= form.text_field :header %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= label_tag(page[:is_numbered], "Is Numbered?", :class => 'checkbox bold') %>
+    <%= form.check_box :is_numbered %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:body, "Page Body:", :class => 'label') %>
+    <%= form.trix_editor :body %>
+  </div>
+
+  <div class="field">
+    <%= label_tag(:label, "Labels:", :class => 'label') %>
     <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
       <div class="collection-check-box">
-        <%= b.check_box %>
         <%= b.label %>
+        <%= b.check_box %>
       </div>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
+    </div>
   </div>
 
 <% end %>

@@ -1,22 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Survey Templates</h1>
+<h1 class="title">Survey Templates</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
+
     <% @survey_templates.each do |survey_template| %>
       <tr>
         <td><%= survey_template.name %></td>
-        <td><%= link_to 'Show', survey_template %></td>
-        <td><%= link_to 'Edit', edit_survey_template_path(survey_template) %></td>
-        <td><%= link_to 'Destroy', survey_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'View', survey_template, :class => 'button show is-primary is-show' %>
+          <%= link_to 'Edit', edit_survey_template_path(survey_template), :class => 'button edit is-gray is-edit' %>
+          <%= link_to 'Delete', survey_template, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Survey Template', new_survey_template_path %>
+<%= link_to 'New Survey Template', new_survey_template_path, :class => 'button is-warning is-add' %>
