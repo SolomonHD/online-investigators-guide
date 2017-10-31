@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20171031130530) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171031130530) do
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.integer "ancestry_depth", default: 0
+    t.boolean "is_numbered"
     t.index ["ancestry"], name: "index_pages_on_ancestry"
   end
 

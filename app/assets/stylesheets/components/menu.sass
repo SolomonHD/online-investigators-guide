@@ -21,11 +21,12 @@ $menu-label-color: $text-light !default
 
 .menu-list
   line-height: 1.25
+  list-style: none
   a
     border-radius: $menu-item-radius
     color: $menu-item-color
     display: block
-    padding: 0.5em 0.75em
+
     &:hover
       background-color: $menu-item-hover-background-color
       color: $menu-item-hover-color
@@ -34,10 +35,14 @@ $menu-label-color: $text-light !default
       background-color: $menu-item-active-background-color
       color: $menu-item-active-color
   li
+      padding: 0.5em 0.75em
     ul
       border-left: $menu-list-border-left
       margin: 0.75em
       padding-left: 0.75em
+      list-style: none
+      li
+        padding: 0.5em 0.75em
 
 .menu-label
   color: $menu-label-color

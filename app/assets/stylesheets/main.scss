@@ -1,9 +1,14 @@
+// FONT AWESOME
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// BULMA BASIC
 @import 'utilities/_all';
 @import 'base/_all';
 @import 'components/_all';
 @import 'elements/_all';
 @import 'grid/_all';
 @import 'layout/_all';
+
+// SITE SPECIFIC
+@import 'styles/_all';

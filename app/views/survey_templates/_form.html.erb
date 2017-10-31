@@ -12,16 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :survey_template_name %>
+    <%= form.label :name, :class => 'label' %>
+    <div class="control">
+      <%= form.text_field :name, id: :survey_template_name %>
+    </div>
   </div>
 
-  <%= form.fields_for :questions do |builder| %>
-    <%= render 'question_fields', form: builder %>
-  <% end %>
-  <%= link_to_add_fields "Add Question", form, :questions %>
+  <div class="field">
+    <%= form.fields_for :questions do |builder| %>
+      <%= render 'question_fields', form: builder %>
+    <% end %>
+    <%= link_to_add_fields "Add Question", form, :questions %>
+  </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <a class="button is-primary is-save">
+      <%= form.submit 'Save Survey', :class => 'button is-transparent' %>
+    </a>
   </div>
 <% end %>

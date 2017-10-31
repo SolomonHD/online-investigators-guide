@@ -1,6 +1,6 @@
-<h1>Editing Page</h1>
+<h1 class="title">Editing Page <%= link_to 'Back to All Page', pages_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
 
 <%= render 'form', page: @page %>
 
-<%= link_to 'Show', @page %> |
-<%= link_to 'Back', pages_path %>
+<!-- <%= link_to 'Show', @page %> | -->
+<!-- <%= link_to 'Back', pages_path, :class => 'button is-gray is-back' %> -->

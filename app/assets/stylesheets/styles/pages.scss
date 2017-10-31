@@ -1,3 +1,94 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+trix-editor {
+  min-height: 30em;
+  &.trix-content {
+    ul {
+      margin-left: 1.5em;
+    }
+  }
+
+}
+
+.bold {
+  font-weight: bold;
+}
+.parent_page {
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+.nested {
+  padding-left: 1em;
+  padding: .5em 1em;
+  margin-left: 2em;
+   padding: 0 15px;
+   line-height: 2em;
+   position: relative;
+   padding-bottom: 1em;
+  &:before {
+    content:'';
+  position: absolute;
+  top: -25px;
+  left: -1px;
+  bottom: 50%;
+  width: 0.75em;
+  border: 1px solid #000;
+  border-top: 0 none transparent;
+  border-right: 0 none transparent;
+  }
+}
+
+.column ul {
+  margin-left: 1.5em;
+}
+
+.collection-check-box {
+  display: inline-block;
+  label {
+    margin:4px;
+    background-color: #EFEFEF;
+    @include border-radius(3px 0 0 3px);
+    position: relative;
+    padding: 0 .75em 2px .5em;
+    float: left;
+    &:hover {
+        background: $red;
+        &:after {
+          border-left: 10px solid $red;
+        }
+    }
+    &:after {
+      background: #fff;
+      border-bottom: 13px solid transparent;
+      border-left: 10px solid #eee;
+      border-top: 13px solid transparent;
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+  }
+  input {
+      position:absolute;
+      top:-20px;
+      display: none;
+  }
+  &.selected {
+    label {
+      background-color: $green;
+      color: white;
+      &:after {
+        border-left: 10px solid $green;
+      }
+      &:hover {
+          background: $red;
+          &:after {
+            border-left: 10px solid $red;
+          }
+      }
+    }
+
+  }
+}
