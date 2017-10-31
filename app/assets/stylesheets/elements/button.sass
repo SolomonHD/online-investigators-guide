@@ -35,6 +35,11 @@ $button-static-border-color: $grey-lighter !default
 =button-large
   font-size: $size-large
 
+.remove_fields
+  color: $red
+  padding: 0.25em
+  display: block
+
 .button
   +control
   +unselectable
@@ -47,6 +52,49 @@ $button-static-border-color: $grey-lighter !default
   padding-right: 0.75em
   text-align: center
   white-space: nowrap
+  &.is-red
+    background-color: $red
+    color: white
+  &.is-gray
+    background-color: $grey
+    color: white
+  &.is-blue
+    background-color: $blue
+    color: white
+  &.is-transparent
+    background-color: transparent
+    border: 0
+  &.is-edit
+    &::before
+      content: "\f040"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+  &.is-delete
+    &::before
+      content: "\f1f8"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+  &.is-save
+    &::before
+      content: "\f0c7"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+  &.is-back
+    &::before
+      content: "\f190"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+  &.is-show
+    &::before
+      content: "\f002"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+  &.is-add
+    &::before
+      content: "\f067"
+      font: normal normal normal 14px/1 FontAwesome
+      padding-right: 1em
+
   strong
     color: inherit
   .icon

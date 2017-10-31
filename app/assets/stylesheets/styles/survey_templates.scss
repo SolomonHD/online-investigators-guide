@@ -10,9 +10,8 @@
 }
 
 .questions {
-  list-style: none;
   font-weight: bold;
-  margin: 0;
+  margin-left: 1em;
   padding: 0;
   > li {
     margin: 20px 0;
@@ -25,6 +24,7 @@
   font-weight: normal;
   margin: 0;
   padding: 0;
+  margin-left: 1em;
   > li {
     margin: 5px 0;
     margin-left: 25px;
