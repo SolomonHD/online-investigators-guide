@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :survey_templates
   resources :labels
   resources :pages
-  resources :users
+  resources :users do
+    resources :surveys
+  end
   get 'dashboard/index'
 
   root 'dashboard#index'
