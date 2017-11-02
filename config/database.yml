@@ -19,8 +19,10 @@ default: &default
 
 development:
   <<: *default
-  database: online_investigators_guide_development
-  url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+  database: OIG_dev
+  #url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+  username: OIG_dev_user
+  password: DL0D7fjMi3c3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
