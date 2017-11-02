@@ -1,0 +1,65 @@
+<%= form_with(model: [@user, survey], local: true) do |form| %>
+  <% if survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+      <% survey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, value: @user.id %>
+  <%= form.hidden_field :survey_template_id, value: @survey_template.id %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :survey_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :survey_description %>
+  </div>
+
+  <ol class="questions">
+    <% @survey_template.questions.each do |question| %>
+    <li>
+      <%= question.content %>
+      <ol class="answers">
+        <% if QuestionType.find(question.question_type_id).name == 'checkbox' %>
+          <div class="field">
+            <%= form.collection_check_boxes :answer_ids, question.answers, :id, :content do |b| %>
+              <div class="checkbox">
+                <%= b.check_box %>
+                <%= b.label %>
+              </div>
+              <br/>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="field">
+            <div class = "radio" >
+              <%= form.collection_check_boxes :answer_ids, question.answers, :id, :content do |b| %>
+                <div class="checkbox">
+                  <%= b.check_box %>
+                  <%= b.label %>
+                </div>
+                <br/>
+              <% end %>
+            </div>
+            </div>
+        <% end %>
+      </ol>
+    </li>
+    <% end %>
+  </ol>
+
+  <div class="actions">
+    <a class="button is-primary is-save">
+      <%= form.submit 'Save Survey', :class => 'button is-transparent' %>
+    </a>
+  </div>
+<% end %>

@@ -5,12 +5,12 @@
     <%= form.hidden_field :_destroy %>
     <%= link_to "remove", '#', class: "remove_fields" %>
   </div>
-      <%= form.label :question_type_id, "Question Type", :class => 'label' %>
+  <%= form.label :question_type_id, "How many answers can this question have?", :class => 'label' %>
   <div class="select">
-    <%= form.collection_select :question_type_id, QuestionType.all, :id, :name %>
+    <%= form.collection_select :question_type_id, QuestionType.all, :id, :label %>
   </div>
 
-    <%= form.label "Answers", :class => 'label' %>
+  <%= form.label "Answers", :class => 'label' %>
   <%= form.fields_for :answers do |builder| %>
     <%= render 'answer_fields', form: builder %>
   <% end %>

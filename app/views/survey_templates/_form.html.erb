@@ -19,15 +19,26 @@
   </div>
 
   <div class="field">
+    <div class="checkbox">
+      <%= form.label :is_default, "Default Template" %>
+      <%= form.check_box :is_default, id: :survey_template_is_default %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.fields_for :questions do |builder| %>
       <%= render 'question_fields', form: builder %>
     <% end %>
     <%= link_to_add_fields "Add Question", form, :questions %>
   </div>
 
+  <div class="field">
+
+  </div>
+
   <div class="actions">
     <a class="button is-primary is-save">
-      <%= form.submit 'Save Survey', :class => 'button is-transparent' %>
+      <%= form.submit 'Save Survey Template', :class => 'button is-transparent' %>
     </a>
   </div>
 <% end %>

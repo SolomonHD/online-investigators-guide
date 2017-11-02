@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :sessions
   resources :survey_templates
   resources :labels
   resources :pages
-  resources :users
+  resources :users do
+    resources :surveys
+  end
+
   get 'dashboard/index'
 
   root 'dashboard#index'

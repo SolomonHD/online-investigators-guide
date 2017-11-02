@@ -1,0 +1,15 @@
+<h1 class="title">Log In</h1>
+<%= form_tag sessions_path do %>
+  <div class="field">
+    <br/>
+    <%= label_tag :net_id %>
+    <div class="select">
+      <%= collection_select :session, :net_id, User.all, :net_id, :net_id %>
+    </div>
+  </div>
+  <div class="actions">
+    <a class="button is-primary">
+      <%= submit_tag'Log In', :class => 'button is-transparent' %>
+    </a>
+  </div>
+<% end %>

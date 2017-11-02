@@ -1,0 +1,5 @@
+<h1 class="title">New Survey <%= link_to 'Back to All Surveys', user_surveys_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
+
+<section>
+  <%= render 'form', survey: @survey %>
+</section>
