@@ -1,6 +1,7 @@
-<h1>Editing Survey</h1>
+<h1 class="title">Editing Survey<%= link_to 'Back to All Surveys', user_surveys_path(@user), :class => 'button is-blue is-back is-pulled-right' %></h1>
 
-<%= render 'form', survey: @survey %>
+<section>
+  <%= render 'form', survey: @survey %>
+</section>
 
-<%= link_to 'Show', @survey %> |
-<%= link_to 'Back', surveys_path %>
+<!-- <%= link_to 'Show', [@user, @survey] %> | -->

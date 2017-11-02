@@ -1,5 +1,6 @@
 class SurveyTemplatesController < ApplicationController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /survey_templates
   # GET /survey_templates.json
@@ -28,6 +29,12 @@ class SurveyTemplatesController < ApplicationController
 
     respond_to do |format|
       if @survey_template.save
+        # If the Survey Template that we are saving is the defualt,
+        # then we need to change the others Survey Templates not to be the default.
+        if @survey_template.is_default
+          SurveyTemplate.where.not(id: @survey_template.id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to @survey_template, notice: 'Survey template was successfully created.' }
         format.json { render :show, status: :created, location: @survey_template }
       else
@@ -42,6 +49,12 @@ class SurveyTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @survey_template.update(survey_template_params)
+        # If the Survey Template that we are editing is the defualt,
+        # then we need to change the others Survey Templates not to be the default.
+        if @survey_template.is_default
+          SurveyTemplate.where.not(id: @survey_template.id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to @survey_template, notice: 'Survey template was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey_template }
       else
@@ -67,9 +80,14 @@ class SurveyTemplatesController < ApplicationController
       @survey_template = SurveyTemplate.find(params[:id])
     end
 
+    # Use callbacks to share common setup or constraints between actions.
+    def set_survey_template
+      @survey_template = SurveyTemplate.find(params[:id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_template_params
-      params.require(:survey_template).permit(:name,
+      params.require(:survey_template).permit(:name, :is_default,
         questions_attributes: [:id, :survey_template_id, :content, :question_type_id, :_destroy,
           answers_attributes: [:id, :question_id, :content, :_destroy]])
     end

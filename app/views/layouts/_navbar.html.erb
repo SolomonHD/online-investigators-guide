@@ -18,10 +18,11 @@
         <a class="navbar-link is-active" href="/">
           Home
         </a>
-        <%= link_to 'Surveys', survey_templates_path, :class => 'navbar-link' %>
-        <%= link_to 'Labels', labels_path, :class => 'navbar-link' %>
-        <%= link_to 'Pages', pages_path, :class => 'navbar-link' %>
-
+        <% if current_user && current_user.is_admin? %>
+          <%= link_to 'Survey Templates', survey_templates_path, :class => 'navbar-link' %>
+          <%= link_to 'Labels', labels_path, :class => 'navbar-link' %>
+          <%= link_to 'Pages', pages_path, :class => 'navbar-link' %>
+        <% end %>
         <!-- <div class="navbar-dropdown is-boxed">
           <a class="navbar-item " href="/documentation/overview/start/">
             Overview
@@ -33,16 +34,37 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="field is-grouped">
+          <% if current_user %>
           <p class="control">
-            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+            <%= link_to session_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
               <span class="icon">
-                <i class="fa fa-lock"></i>
+                <i class="fa fa-unlock"></i>
               </span>
               <span>
-                Login In
+                Log Out
               </span>
-            </a>
+            <% end %>
           </p>
+          <% else %>
+            <p class="control">
+              <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button' do %>
+                <span class="icon">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <span>
+                  Log In
+                </span>
+              <% end %>
+              <!-- <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                <span class="icon">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <span>
+                  Login In
+                </span>
+              </a> -->
+            </p>
+          <% end %>
         </div>
       </div>
     </div>

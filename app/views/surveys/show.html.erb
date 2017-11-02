@@ -10,15 +10,32 @@
   <%= @survey.description %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @survey.user %>
-</p>
+<ol class="questions">
+  <% @survey_template.questions.each do |question| %>
+  <li>
+    <%= question.content %>
+    <ol class="answers">
+      <% if QuestionType.find(question.question_type_id).name == 'checkbox' %>
+          <%= collection_check_boxes :survey, :answer_ids, question.answers, :id, :content, { disabled: -> (content) {true}} do |b| %>
+            <div class="checkbox">
+              <%= b.check_box %>
+              <%= b.label %>
+            </div>
+            <br/>
+          <% end %>
+      <% else %>
+          <%= collection_check_boxes :survey, :answer_ids, question.answers, :id, :content, { disabled: -> (content) {true}} do |b| %>
+            <div class="checkbox">
+              <%= b.check_box %>
+              <%= b.label %>
+            </div>
+            <br/>
+        <% end %>
+      <% end %>
+    </ol>
+  </li>
+  <% end %>
+</ol>
 
-<p>
-  <strong>Survey template:</strong>
-  <%= @survey.survey_template %>
-</p>
-
-<%= link_to 'Edit', edit_survey_path(@survey) %> |
-<%= link_to 'Back', surveys_path %>
+<%= link_to 'Edit', edit_user_survey_path(@user, @survey), :class => 'button is-gray is-edit' %>
+<%= link_to 'Back to All Surveys', user_surveys_path, :class => 'button is-blue is-back' %>
