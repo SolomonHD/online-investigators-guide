@@ -11,33 +11,38 @@ trix-editor {
 
 }
 
+.pages {
+  width: 100%;
+  .nested1 {
+    padding-left: 2em;
+  }
+  .nested2 {
+    padding-left: 4em;
+  }
+  .nested3 {
+    padding-left: 6em;
+  }
+  .nested4 {
+    padding-left: 8em;
+  }
+  .nested5 {
+    padding-left: 10em;
+  }
+  .position {
+    @include border-radius(5px);
+    display: inline-block;
+    border: solid 1px #CCC;
+    width: 20px;
+    font-size: .75em;
+    text-align: center;
+    height: 20px;
+  }
+}
+
 .bold {
   font-weight: bold;
 }
-.parent_page {
-  margin-bottom: 1em;
-  line-height: 2em;
-}
-.nested {
-  padding-left: 1em;
-  padding: .5em 1em;
-  margin-left: 2em;
-   padding: 0 15px;
-   line-height: 2em;
-   position: relative;
-   padding-bottom: 1em;
-  &:before {
-    content:'';
-  position: absolute;
-  top: -25px;
-  left: -1px;
-  bottom: 50%;
-  width: 0.75em;
-  border: 1px solid #000;
-  border-top: 0 none transparent;
-  border-right: 0 none transparent;
-  }
-}
+
 
 .column ul {
   margin-left: 1.5em;

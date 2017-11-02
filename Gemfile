@@ -42,6 +42,10 @@ gem 'trix'
 # https://github.com/stefankroes/ancestry
 gem 'ancestry'
 
+# Extends capabilities for ordering and sorting
+# https://github.com/swanandp/acts_as_list
+gem 'acts_as_list'
+
 # Gem to automate using jQuery with Rails
 # https://github.com/rails/jquery-rails
 gem 'jquery-rails'
