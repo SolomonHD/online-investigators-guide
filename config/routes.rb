@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   resources :sessions
   resources :survey_templates
   resources :labels
-  resources :pages
   resources :users do
     resources :surveys
+  end
+
+  resources :pages do
+      get :move
   end
 
   get 'dashboard/index'
