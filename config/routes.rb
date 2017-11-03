@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :surveys
   end
 
+  match :admin, :to => 'pages#index'
+
   get 'dashboard/index'
 
   root 'dashboard#index'

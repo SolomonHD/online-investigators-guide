@@ -39,8 +39,10 @@ trix-editor {
   }
 }
 
-.column ul {
-  margin-left: 1.5em;
+.column {
+  ul, ol {
+    margin-left: 1.5em;
+  }
 }
 
 .collection-check-box {
