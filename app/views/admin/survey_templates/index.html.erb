@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="title">Survey Templates</h1>
+
+<% if !@survey_templates.empty? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Default</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @survey_templates.each do |survey_template| %>
+        <tr>
+          <td><%= survey_template.name %></td>
+          <td><% if survey_template.is_default %><span class="fa fa-check"></span><% end %></td>
+          <td><%= link_to '', survey_template, :class => 'button show is-primary is-show' %>
+            <%= link_to '', edit_survey_template_path(survey_template), :class => 'button edit is-gray is-edit' %>
+            <%= link_to '', survey_template, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete' %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan=3>
+          <%= link_to 'New Survey Template', new_survey_template_path, :class => 'button is-warning is-add' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<% else %>
+  <p>
+    No survey templates have been created yet.
+  </p>
+<% end %>
+
+<br>

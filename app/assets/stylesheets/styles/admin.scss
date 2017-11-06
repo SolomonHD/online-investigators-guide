@@ -1,0 +1,151 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin {
+  table {
+    width: 96%;
+    margin: auto;
+  }
+  &.card {
+    margin: 1em;
+    img {
+      height: 30px;
+      padding-right: 1em;
+    }
+  }
+  &.menu {
+    background-color: $grey-darker;
+    .brand {
+      color: white;
+      background-color: $blue;
+      height: 4rem;
+      padding-top: .5rem;
+      text-align: center;
+      font-size: 2em;
+    }
+    .menu-label {
+      padding: 0 1em;
+    }
+    .menu-list {
+      a {
+        padding: 1em;
+        color: $grey-lighter;
+        &:hover {
+          background-color: $lightblue;
+        }
+        &:before {
+          padding-right: 1em;
+        }
+        &.labels {
+          &:before {
+              @include font-awesome('\f02c')
+          }
+        }
+        &.surveys {
+          &:before {
+              @include font-awesome('\f044')
+          }
+        }
+        &.dashboard {
+          &:before {
+              @include font-awesome('\f0e4')
+          }
+        }
+        &.users {
+          &:before {
+              @include font-awesome('\f0c0')
+          }
+        }
+        &.pages {
+          &:before {
+              @include font-awesome('\f0f6')
+          }
+        }
+        &.units {
+          &:before {
+              @include font-awesome('\f1ad')
+          }
+        }
+      }
+    }
+  }
+}
+.pages, form {
+
+  .nested1 {
+    padding-left: 2em;
+  }
+  .nested2 {
+    padding-left: 4em;
+  }
+  .nested3 {
+    padding-left: 6em;
+  }
+  .nested4 {
+    padding-left: 8em;
+  }
+  .nested5 {
+    padding-left: 10em;
+  }
+  .position {
+    @include border-radius(5px);
+    display: inline-block;
+    border: solid 1px #CCC;
+    width: 20px;
+    font-size: .75em;
+    text-align: center;
+    height: 20px;
+  }
+  width: 95%;
+  margin: auto;
+  .collection-check-box {
+    display: inline-block;
+    label {
+      margin:4px;
+      background-color: #EFEFEF;
+      @include border-radius(3px 0 0 3px);
+      position: relative;
+      padding: 0 .75em 2px .5em;
+      float: left;
+      &:hover {
+          background: $red;
+          &:after {
+            border-left: 10px solid $red;
+          }
+      }
+      &:after {
+        background: #fff;
+        border-bottom: 13px solid transparent;
+        border-left: 10px solid #eee;
+        border-top: 13px solid transparent;
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+    }
+    input {
+        position:absolute;
+        top:-20px;
+        display: none;
+    }
+    &.selected {
+      label {
+        background-color: $green;
+        color: white;
+        &:after {
+          border-left: 10px solid $green;
+        }
+        &:hover {
+            background: $red;
+            &:after {
+              border-left: 10px solid $red;
+            }
+        }
+      }
+
+    }
+  }
+}
