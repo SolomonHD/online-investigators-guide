@@ -26,6 +26,10 @@ $button-static-color: $grey !default
 $button-static-background-color: $white-ter !default
 $button-static-border-color: $grey-lighter !default
 
+@mixin font-awesome($content)
+  font: normal normal normal 14px/1 FontAwesome
+  content: $content
+
 // The button sizes use mixins so they can be used at different breakpoints
 =button-small
   border-radius: $radius-small
@@ -39,6 +43,16 @@ $button-static-border-color: $grey-lighter !default
   color: $red
   padding: 0.25em
   display: block
+
+.controls
+  display: inline-block
+  .control
+    &.up
+      &:before
+        @include font-awesome('\f077')
+    &.down
+      &:before
+        @include font-awesome('\f078')
 
 .button
   +control
@@ -66,34 +80,22 @@ $button-static-border-color: $grey-lighter !default
     border: 0
   &.is-edit
     &::before
-      content: "\f040"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome('\f040')
   &.is-delete
     &::before
-      content: "\f1f8"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome("\f1f8")
   &.is-save
     &::before
-      content: "\f0c7"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome("\f0c7")
   &.is-back
     &::before
-      content: "\f190"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome("\f190")
   &.is-show
     &::before
-      content: "\f002"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome("\f002")
   &.is-add
     &::before
-      content: "\f067"
-      font: normal normal normal 14px/1 FontAwesome
-      padding-right: 1em
+      @include font-awesome("\f067")
 
   strong
     color: inherit

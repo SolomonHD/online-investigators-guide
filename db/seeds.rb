@@ -9,5 +9,5 @@ User.create([{ net_id: 'tparri2', first_name: 'Terry', last_name: 'Parrish', is_
              { net_id: 'sbarre5', first_name: 'Saundra', last_name: 'Barrett', is_admin: true},
              { net_id: 'testuser', first_name: 'Terry', last_name: 'Parrish', is_admin: false}])
 
-QuestionType.create([{ name: 'checkbox', label: 'check_box_tag'},
-                     { name: 'radio', label: 'radio_button_tag'}])
+QuestionType.create([{ name: 'checkbox', label: 'multiple'},
+                     { name: 'radio', label: 'one'}])

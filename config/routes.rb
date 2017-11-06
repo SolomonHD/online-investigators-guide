@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
 
   match :admin, :to => 'pages#index'
+  resources :pages do
+      get :move
+  end
 
   get 'dashboard/index'
 

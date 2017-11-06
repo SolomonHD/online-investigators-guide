@@ -63,6 +63,15 @@ class PagesController < ApplicationController
     end
   end
 
+  # MOVE Pages /pages/1/move
+
+  def move
+    if ["move_lower", "move_higher", "move_to_top", "move_to_bottom"].include?(params[:method]) and params[:page_id] =~ /^\d+$/
+      Page.find(params[:page_id]).send(params[:method])
+    end
+    redirect_to :action => :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page

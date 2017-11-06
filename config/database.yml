@@ -15,12 +15,19 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
+  database: OIG_dev
+  #url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+  username: OIG_dev_user
+  password: DL0D7fjMi3c3
+  socket: /var/lib/mysql/mysql.sock
+
+local:
+  <<: *default
   database: online_investigators_guide_development
-  url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
