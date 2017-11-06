@@ -9,17 +9,17 @@
     <div class="position"><%= page.position %></div>
     <div class="controls">
       <% if page.position != 1 %>
-        <%= link_to "", {:controller => "pages", :action => "move", :method => "move_higher", :page_id => page.id }, :class => 'control up'%>
+        <%= link_to "", {:controller => "admin/pages", :action => "move", :method => "move_higher", :page_id => page.id }, :class => 'control up'%>
       <% end %>
       <% if page.position != page.siblings.count %>
-        <%= link_to "", {:controller => "pages", :action => "move", :method => "move_lower", :page_id => page.id }, :class => 'control down'%>
+        <%= link_to "", {:controller => "admin/pages", :action => "move", :method => "move_lower", :page_id => page.id }, :class => 'control down'%>
       <% end %>
     </div>
   </td>
   <td>
-    <%= link_to '', new_page_path(:parent_id => page), :class => 'button is-warning is-add', rel: 'tooltip' %>
+    <%= link_to '', new_admin_page_path(:parent_id => page), :class => 'button is-warning is-add', rel: 'tooltip' %>
     <%= link_to '', page, :class => 'button is-show is-primary' %>
-    <%= link_to '', edit_page_path(page), :class => 'button is-edit is-gray'  %>
+    <%= link_to '', edit_admin_page_path(page), :class => 'button is-edit is-gray'  %>
     <%= link_to '', page, method: :delete, data: { confirm: 'If any children pages exist, they will also be removed. Are you sure you want to delete this page? ' }, :class => 'button is-delete is-red'  %>
   </td>
 

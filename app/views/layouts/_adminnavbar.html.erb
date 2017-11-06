@@ -1,0 +1,19 @@
+<aside class="admin menu is-fullheight">
+  <div class="brand">
+  OIG Admin
+  </div>
+  <p class="menu-label">
+    General
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to 'Dashboard', admin_path, :class => 'dashboard' %></li>
+  </ul>
+  <p class="menu-label">
+    Administration
+  </p>
+  <ul class="menu-list">
+    <li><%= link_to 'Survey Templates', admin_survey_templates_path, :class => 'surveys' %></li>
+    <li><%= link_to 'Labels', admin_labels_path, :class => 'labels' %></li>
+    <li><%= link_to 'Pages', admin_pages_path, :class => 'pages' %></li>
+  </ul>
+</aside>

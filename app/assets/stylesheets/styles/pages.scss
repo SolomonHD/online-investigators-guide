@@ -11,34 +11,6 @@ trix-editor {
 
 }
 
-.pages {
-  width: 100%;
-  .nested1 {
-    padding-left: 2em;
-  }
-  .nested2 {
-    padding-left: 4em;
-  }
-  .nested3 {
-    padding-left: 6em;
-  }
-  .nested4 {
-    padding-left: 8em;
-  }
-  .nested5 {
-    padding-left: 10em;
-  }
-  .position {
-    @include border-radius(5px);
-    display: inline-block;
-    border: solid 1px #CCC;
-    width: 20px;
-    font-size: .75em;
-    text-align: center;
-    height: 20px;
-  }
-}
-
 .bold {
   font-weight: bold;
 }
@@ -47,55 +19,5 @@ trix-editor {
 .column {
   ul, ol {
     margin-left: 1.5em;
-  }
-}
-
-.collection-check-box {
-  display: inline-block;
-  label {
-    margin:4px;
-    background-color: #EFEFEF;
-    @include border-radius(3px 0 0 3px);
-    position: relative;
-    padding: 0 .75em 2px .5em;
-    float: left;
-    &:hover {
-        background: $red;
-        &:after {
-          border-left: 10px solid $red;
-        }
-    }
-    &:after {
-      background: #fff;
-      border-bottom: 13px solid transparent;
-      border-left: 10px solid #eee;
-      border-top: 13px solid transparent;
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-
-  }
-  input {
-      position:absolute;
-      top:-20px;
-      display: none;
-  }
-  &.selected {
-    label {
-      background-color: $green;
-      color: white;
-      &:after {
-        border-left: 10px solid $green;
-      }
-      &:hover {
-          background: $red;
-          &:after {
-            border-left: 10px solid $red;
-          }
-      }
-    }
-
   }
 }

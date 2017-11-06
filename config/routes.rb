@@ -10,14 +10,22 @@ Rails.application.routes.draw do
     resources :surveys
   end
 
-  match :admin, :to => 'pages#index'
   resources :pages do
       get :move
   end
 
-  get 'dashboard/index'
+  namespace :admin do |admin|
+    get '', to: 'dashboard#index', as: '/'
+    resources :pages do
+        get :move
+    end
+    resources :survey_templates
+    resources :labels
+  end
 
-  root 'dashboard#index'
+
+
+  root 'pages#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
