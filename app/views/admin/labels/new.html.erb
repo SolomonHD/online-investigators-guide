@@ -1,5 +1,5 @@
-<h1 class="title">New Label <%= link_to 'Back to All Labels', labels_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
+<h1 class="title">New Label <%= link_to 'Back to All Labels', admin_labels_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
 
-<%= render 'form', label: @label %>
-
-<!-- <%= link_to 'Back', labels_path %> -->
+<%= form_for [:admin, @label] do |form| %>
+  <%= render "form", :form => form %>
+<% end %>

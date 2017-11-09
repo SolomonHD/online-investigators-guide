@@ -12,8 +12,11 @@ $menu-label-color: $text-light !default
 .menu
   background-color: $lightblue
   font-size: $size-normal
-  border: solid 1px $darkBlue
-  border-top: solid 4px $darkBlue
+  &.sub-menu
+    border: solid 1px $darkBlue
+    border-top: solid 4px $darkBlue
+  &.admin
+    height: 100vh  
   // Sizes
   &.is-small
     font-size: $size-small

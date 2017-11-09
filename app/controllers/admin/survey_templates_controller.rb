@@ -35,7 +35,7 @@ class Admin::SurveyTemplatesController < Admin::BaseController
           SurveyTemplate.where.not(id: @survey_template.id).update_all(:is_default => false)
         end
 
-        format.html { redirect_to @survey_template, notice: 'Survey template was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Survey template was successfully created.' }
         format.json { render :show, status: :created, location: @survey_template }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class Admin::SurveyTemplatesController < Admin::BaseController
           SurveyTemplate.where.not(id: @survey_template.id).update_all(:is_default => false)
         end
 
-        format.html { redirect_to @survey_template, notice: 'Survey template was successfully updated.' }
+        format.html { redirect_to action: "update", notice: 'Survey template was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey_template }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class Admin::SurveyTemplatesController < Admin::BaseController
   def destroy
     @survey_template.destroy
     respond_to do |format|
-      format.html { redirect_to survey_templates_url, notice: 'Survey template was successfully destroyed.' }
+      format.html { redirect_to action: "index", notice: 'Survey template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
