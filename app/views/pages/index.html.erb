@@ -1,5 +1,5 @@
 <%= render partial: "sideMenu" %>
-<div class="column">
+<div class="column table-of-contents">
   <h1 class="title">Investigator Handbook - Table of Contents</h1>
   <ol class="parent">
   <% Page.where("ancestry_depth < 1").find_each do |page, index| %>

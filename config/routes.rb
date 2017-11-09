@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
-  # resources :survey_templates
-  # resources :labels
   resources :pages, :except => ['edit', 'new', 'update', 'destroy']
-  # resources :pages
   resources :users do
     resources :surveys
   end
