@@ -31,11 +31,16 @@
       a {
         padding: 1em;
         color: $grey-lighter;
+        &.current {
+          background-color: $blue;
+          color: white;
+        }
         &.pages {
           width: 100%;
         }
         &:hover {
-          background-color: $lightblue;
+          background-color: $blue;
+          color: white;
         }
         &:before {
           padding-right: 1em;

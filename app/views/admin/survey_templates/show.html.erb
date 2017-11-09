@@ -1,22 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class="title">
-  <strong>Name:</strong>
+  Name:
   <%= @survey_template.name %>
+  <%= link_to 'Back to All Survey Templates', admin_survey_templates_path, :class => 'button is-blue is-back is-pulled-right' %>
 </h1>
-
-<ol class="questions">
-  <% @survey_template.questions.each do |question| %>
-    <li>
-      <%= question.content %>
-      <ul class="answers">
-        <% question.answers.each do |answer| %>
-          <li><%= answer.content %></li>
-          <% end %>
-      </ul>
-    </li>
-  <% end %>
-</ol>
-
-<%= link_to 'Edit', edit_survey_template_path(@survey_template), :class => 'button is-gray is-edit' %>
-<%= link_to 'Back to All Survey Templates', survey_templates_path, :class => 'button is-blue is-back' %>
+<section class="question-list">
+  <ol class="questions">
+    <% @survey_template.questions.each do |question| %>
+      <li>
+        <%= question.content %>
+        <ul class="answers">
+          <% question.answers.each do |answer| %>
+            <li><%= answer.content %></li>
+            <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ol>
+  <%= link_to 'Edit', edit_admin_survey_template_path(@survey_template), :class => 'button is-gray is-edit' %>
+</section>

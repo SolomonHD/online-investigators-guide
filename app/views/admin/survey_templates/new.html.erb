@@ -1,5 +1,7 @@
-<h1 class="title">New Survey Template<%= link_to 'Back to All Survey Templates', survey_templates_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
+<h1 class="title">New Survey Template<%= link_to 'Back to All Survey Templates', admin_survey_templates_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
 
 <section>
-  <%= render 'form', survey_template: @survey_template %>
+  <%= form_for [:admin, @survey_template] do |form| %>
+    <%= render "form", :form => form %>
+  <% end %>
 </section>

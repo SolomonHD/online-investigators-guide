@@ -5,15 +5,16 @@
   <p class="menu-label">
     General
   </p>
+
   <ul class="menu-list">
-    <li><%= link_to 'Dashboard', admin_path, :class => 'dashboard' %></li>
+    <li><%= link_to 'Dashboard', admin_path, class: "#{cp(admin_path)} dashboard" %></li>
   </ul>
   <p class="menu-label">
     Administration
   </p>
   <ul class="menu-list">
-    <li><%= link_to 'Survey Templates', admin_survey_templates_path, :class => 'surveys' %></li>
-    <li><%= link_to 'Labels', admin_labels_path, :class => 'labels' %></li>
-    <li><%= link_to 'Pages', admin_pages_path, :class => 'pages' %></li>
+    <li><%= link_to 'Survey Templates', admin_survey_templates_path, class: "#{cp(admin_survey_templates_path)} surveys"  %></li>
+    <li><%= link_to 'Labels', admin_labels_path, class: "#{cp(admin_labels_path)} labels" %></li>
+    <li><%= link_to 'Pages', admin_pages_path, class: "#{cp(admin_pages_path)} pages" %></li>
   </ul>
 </aside>
