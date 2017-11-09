@@ -1,10 +1,9 @@
-<%= form_with(model: page, local: true) do |form| %>
-  <% if page.errors.any? %>
+  <% if @page.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+      <h2><%= pluralize(@@page.errors.count, "error") %> prohibited this @page from being saved:</h2>
 
       <ul>
-      <% page.errors.full_messages.each do |message| %>
+      <% @@page.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -26,27 +25,29 @@
     </div>
   </div>
 
-  <!-- <div class="field">
-    <%= label_tag(page[:is_numbered], "Is Numbered?", :class => 'checkbox bold') %>
-    <%= form.check_box :is_numbered %>
-  </div> -->
+
 
   <div class="field">
     <%= label_tag(:parent_id, "Parent Page:", :class => 'label') %>
     <div class="select">
       <%= form.select :parent_id,
-      options_from_collection_for_select(Page.all, :id, :title, page.parent_id),
+      options_from_collection_for_select(Page.all, :id, :title, @page.parent_id),
         { include_blank: 'No Parent' },
         { class: 'select' }
         %>
     </div>
   </div>
 
+
+  <div class="field">
+    <%= label_tag(:is_numbered, "Numbered Section?", :class => 'label') %>
+    <%= form.check_box :is_numbered %> <br />
+  </div>
+
   <div class="field">
     <%= label_tag(:body, "Page Body:", :class => 'label') %>
     <%= form.trix_editor :body %>
   </div>
-
 
 
 
@@ -67,5 +68,3 @@
       <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
     </div>
   </div>
-
-<% end %>

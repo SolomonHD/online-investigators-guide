@@ -1,1 +1,20 @@
-THIS IS THE TABLE OF CONTENTS
+<%= render partial: "sideMenu" %>
+<div class="column">
+  <h1 class="title">Investigator Handbook - Table of Contents</h1>
+  <ol class="parent">
+  <% Page.where("ancestry_depth < 1").find_each do |page, index| %>
+    <li>
+      <%= link_to page.title, page %>
+      <% if page.has_children? %>
+         <ol class="child">
+          <% page.children.each do |child, index| %>
+            <li>
+              <%= link_to child.title, child %>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </li>
+  <% end %>
+  </ol>
+</div>

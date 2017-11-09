@@ -1,6 +1,5 @@
 <h1 class="title">Editing Page <%= link_to 'Back to All Page', admin_pages_path, :class => 'button is-blue is-back is-pulled-right' %></h1>
 
-<%= render 'form', page: @page %>
-
-<!-- <%= link_to 'Show', @page %> | -->
-<!-- <%= link_to 'Back', pages_path, :class => 'button is-gray is-back' %> -->
+<%= form_for @page, url: admin_page_path(@page) do |form| %>
+  <%= render 'form', form: form %>
+<% end %>

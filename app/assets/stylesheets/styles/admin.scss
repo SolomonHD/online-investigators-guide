@@ -31,6 +31,9 @@
       a {
         padding: 1em;
         color: $grey-lighter;
+        &.pages {
+          width: 100%;
+        }
         &:hover {
           background-color: $lightblue;
         }

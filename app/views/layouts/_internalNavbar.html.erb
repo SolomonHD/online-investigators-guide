@@ -1,0 +1,54 @@
+<nav class="navbar internal">
+  <div class="navbar-brand">
+    <!-- <a class="navbar-item" >
+      Online Investigators Guides Administration
+    </a> -->
+    Researcher Handbook
+
+    <div class="navbar-burger burger" data-target="navMenuTransparent">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navMenuTransparent" class="navbar-menu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <% if current_user %>
+          <p class="control">
+            <%= link_to session_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
+              <span class="icon">
+                <i class="fa fa-unlock"></i>
+              </span>
+              <span>
+                Log Out
+              </span>
+            <% end %>
+          </p>
+          <% else %>
+            <p class="control">
+              <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button' do %>
+                <span class="icon">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <span>
+                  Log In
+                </span>
+              <% end %>
+              <!-- <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                <span class="icon">
+                  <i class="fa fa-lock"></i>
+                </span>
+                <span>
+                  Login In
+                </span>
+              </a> -->
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

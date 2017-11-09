@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="columns">
-  <%= render 'sideMenu' %>
+<%= render partial: "sideMenu" %>
   <section class="column">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
@@ -40,6 +39,3 @@
       <% end %>
     <% end %>
   </section>
-</div>
-<!-- <%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %> -->

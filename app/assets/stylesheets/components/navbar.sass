@@ -1,4 +1,4 @@
-$navbar-background-color: $lightblue !default
+$navbar-background-color: $darkBlue !default
 $navbar-height: 4em !default
 
 $navbar-item-color: $grey-dark !default
@@ -38,6 +38,10 @@ $navbar-divider-background-color: $border !default
   min-height: $navbar-height
   position: relative
   margin-bottom: 1em
+  &.internal
+    background-color: $grey-lighter
+    margin: 2em 0
+    width: 100%
   @each $name, $pair in $colors
     $color: nth($pair, 1)
     $color-invert: nth($pair, 2)
