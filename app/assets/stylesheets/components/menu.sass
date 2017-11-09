@@ -2,7 +2,7 @@ $menu-item-color: $text !default
 $menu-item-radius: $radius-small !default
 $menu-item-hover-color: $text-strong !default
 $menu-item-hover-background-color: $background !default
-$menu-item-active-color: $link-invert !default
+$menu-item-active-color: $darkBlue !default
 $menu-item-active-background-color: $link !default
 
 $menu-list-border-left: 1px solid $border !default
@@ -15,8 +15,25 @@ $menu-label-color: $text-light !default
   &.sub-menu
     border: solid 1px $darkBlue
     border-top: solid 4px $darkBlue
+    padding: 0
+    .table-of-contents
+      padding: 1rem
+      color: $menu-item-color
+      &.current
+        border-left: solid 4px $darkBlue
+        color: $menu-item-active-color
+      display: block
+      &::after
+        content: ""
+        border-bottom: solid 1px $blue
+        width: 80%
+    .menu-list
+      margin-left: 0
+      a
+      .parent
+        font-size: 1em
   &.admin
-    height: 100vh  
+    height: 100vh
   // Sizes
   &.is-small
     font-size: $size-small
@@ -36,22 +53,30 @@ $menu-label-color: $text-light !default
       background-color: $menu-item-hover-background-color
       color: $menu-item-hover-color
     // Modifiers
-    &.is-active
-      background-color: $menu-item-active-background-color
+    &.is-active-parent
+      border-left: solid 4px $menu-item-active-background-color
       color: $menu-item-active-color
       ul
         display: block
   li
-    &.is-active
-      background-color: $menu-item-active-background-color
-      color: $menu-item-active-color
+    &.parent
+      > a
+        padding: .5em
+      &.is-active-parent
+        border-left: solid 4px $darkBlue
+        color: $menu-item-active-color
+
+        .is-active
+          border-left: solid 4px $yellow
+    &.is-active-parent
+      color: $darkBlue
       ul
         display: block
-      padding: 0.5em 0.75em
+        a
+          padding-left: .5em
+
     ul
-      border-left: $menu-list-border-left
-      margin: 0.75em
-      padding-left: 0.75em
+      margin-left: 0
       list-style: none
       display: none
       li

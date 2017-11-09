@@ -11,17 +11,46 @@ trix-editor {
 
 }
 
-.parent {
-  font-size: 1.5rem;
-  a {
-    text-decoration: underline;
+.page-body {
+  padding: 0 1em;
+  .title {
+    padding-left: 0.5em;
   }
-  .child {
-    a {
-      text-decoration: none !important;
+  ol {
+    line-height: 2em;
+  }
+  article {
+    margin-top: 2em;
+    .subtitle {
+      padding-bottom: .5em;
     }
-    font-size: 1rem;
-    list-style: lower-alpha;
+    ul {
+      margin-left: 2.5em;
+    }
+    div {
+      padding-left: 1em;
+    }
+  }
+}
+
+.table-of-contents {
+  .title {
+      padding-left: 0.5em;
+  }
+  .parent {
+    font-size: 1.5rem;
+    margin-left: 1.75em;
+    a {
+      text-decoration: underline;
+      color: $grey-darker;
+    }
+    .child {
+      a {
+        text-decoration: none !important;
+      }
+      font-size: 1rem;
+      list-style: lower-alpha;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <%= render partial: "sideMenu" %>
-  <section class="column">
+  <section class="column page-body">
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <% @page.ancestors.each do |page| %>
@@ -13,7 +13,9 @@
     <h1 class="title">
       <%= @page.header %>
     </h1>
-    <%= raw @page.body %>
+    <div class="page-body">
+      <%= raw @page.body %>
+
     <!--  IF PAGE IS ROOT, BUILD ONLY DIRECT DESCENDANTS -->
     <% if @page.is_root? %>
       <ol type="a">
@@ -24,18 +26,22 @@
     <!--  ELSE DISPLAY ALL DIRECT DESCENDANTS -->
     <% else %>
       <!-- BUILD ANCHOR MENU -->
-      <% @page.descendants.each do |child| %>
-        <%= link_to child.title, "#contact" %>
-      <% end %>
-
+      <ol>
+        <% @page.descendants.each do |child| %>
+          <li>
+            <%= link_to child.title, "#"+child.title.parameterize %>
+          </li>
+        <% end %>
+      </ol>
       <!-- TRAVERSE DESCENDANTS AND CREATE PAGE -->
-      <% @page.descendants.each do |child| %>
-        <div>
-          <a id="contact">
-            <h2 class="subtitle"><%= child.header %></h2>
+      <% @page.descendants.each_with_index do |child, index| %>
+        <article>
+          <a id="<%= child.title.parameterize %>">
+            <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
           </a>
           <%= raw child.body %>
-        </div>
+        </article>
       <% end %>
     <% end %>
+    </div>
   </section>

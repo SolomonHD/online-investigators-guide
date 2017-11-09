@@ -10,5 +10,5 @@ $(document).on 'turbolinks:load', ->
       $(this).closest('.collection-check-box').toggleClass 'selected'
     return
   $('li.parent ul li.is-active').each ->
-    $(this).closest('li.parent').addClass 'is-active'
+    $(this).closest('li.parent').addClass 'is-active-parent'
   return
