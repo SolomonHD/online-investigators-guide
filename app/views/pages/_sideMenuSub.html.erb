@@ -1,6 +1,6 @@
 <ul>
   <% p.children.each do |sub| %>
-    <li>
+    <li <% if current_page?(sub) %> class="is-active" <% end %>>
       <%= link_to_unless_current sub.title, sub %>
       <%-# <%= render 'sideMenuSub', p: sub -%>
     </li>

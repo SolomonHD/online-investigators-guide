@@ -10,8 +10,10 @@ $menu-list-border-left: 1px solid $border !default
 $menu-label-color: $text-light !default
 
 .menu
-
+  background-color: $lightblue
   font-size: $size-normal
+  border: solid 1px $darkBlue
+  border-top: solid 4px $darkBlue
   // Sizes
   &.is-small
     font-size: $size-small
@@ -19,8 +21,6 @@ $menu-label-color: $text-light !default
     font-size: $size-medium
   &.is-large
     font-size: $size-large
-  &.is-fullheight
-    height: 100vh
 .menu-list
   line-height: 1.25
   list-style: none
@@ -36,13 +36,21 @@ $menu-label-color: $text-light !default
     &.is-active
       background-color: $menu-item-active-background-color
       color: $menu-item-active-color
+      ul
+        display: block
   li
+    &.is-active
+      background-color: $menu-item-active-background-color
+      color: $menu-item-active-color
+      ul
+        display: block
       padding: 0.5em 0.75em
     ul
       border-left: $menu-list-border-left
       margin: 0.75em
       padding-left: 0.75em
       list-style: none
+      display: none
       li
         padding: 0.5em 0.75em
 
