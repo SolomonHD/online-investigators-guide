@@ -48,9 +48,16 @@ class Admin::SurveyTemplatesController < Admin::BaseController
   # PATCH/PUT /survey_templates/1.json
   def update
     respond_to do |format|
+      # If THIS template is the default and the user is trying to change it,
+      # we can not allow this operation.
+      if @survey_template.is_default && survey_template_params[:is_default] == "0"
+        redirect_to edit_admin_survey_template_path(@survey_template),
+          :notice=> 'There must be one default template at all times.' and return
+      end
+
       if @survey_template.update(survey_template_params)
-        # If the Survey Template that we are editing is the defualt,
-        # then we need to change the others Survey Templates not to be the default.
+        # If we are going to update THIS template as the default,
+        # then we need to set the others Survey Templates is_default column to false.
         if @survey_template.is_default
           SurveyTemplate.where.not(id: @survey_template.id).update_all(:is_default => false)
         end
