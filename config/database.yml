@@ -19,7 +19,7 @@ default: &default
 development:
   <<: *default
   database: online_investigators_guide
-  url: <%= ENV['OIG_DEV_DATABASE_URL'] %>
+  #url: <%= ENV['OIG_DEV_DATABASE_URL'] %>
   username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %> 
   password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
   #socket: /var/lib/mysql/mysql.sock
