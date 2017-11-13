@@ -11,3 +11,5 @@ User.create([{ net_id: 'tparri2', first_name: 'Terry', last_name: 'Parrish', is_
 
 QuestionType.create([{ name: 'checkbox', label: 'multiple'},
                      { name: 'radio', label: 'one'}])
+
+SurveyTemplate.create({name: "Default Survey Template", is_default: true})
