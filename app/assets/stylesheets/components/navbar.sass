@@ -39,27 +39,46 @@ $navbar-divider-background-color: $border !default
       display: none
       &.logo
         img
-          height: 4em
+          height: 6rem
           margin-bottom: 0
 .navbar
   background-color: $navbar-background-color
   min-height: $navbar-height
   position: relative
-  margin-bottom: 1em
-  .eu-brand
-    font-family: $family-serif
-    padding: 0.5rem 1rem 0 1rem
-    font-size: 1.25em
-    text-transform: uppercase
-  .site-information
+  margin-bottom: 2rem
+  .navbars
     display: flex
-    font-family: $family-sans-serif
-    font-weight: bold
-    padding: 0rem 1rem
-    .site-name
-      border-right: solid 1px #CCC
-      padding-right: .5rem
-      margin-right: .5rem
+    flex-direction: column
+    width: 100%
+    .primary-navbar
+      height: 4.5rem
+      .navbar-menu
+        height: 100%
+    .secondary-navbar
+      background-color: $grey-lighter
+      height: 3.5rem
+      .navbar-item
+        padding: 0 1rem
+        height: 3.5rem
+      .supporting-units
+        background: white
+        border: solid 1px #CCC
+        margin: .5rem
+        height: 2.5rem
+    .eu-brand
+      font-family: $family-serif
+      padding: 0.5rem 1rem 0 1rem
+      font-size: 1.25em
+      text-transform: uppercase
+    .site-information
+      display: flex
+      font-family: $family-sans-serif
+      font-weight: bold
+      padding: 0rem 1rem
+      .site-name
+        border-right: solid 1px #CCC
+        padding-right: .5rem
+        margin-right: .5rem
   &.internal
     background-color: $grey-lighter
     margin: 2em 0
@@ -125,10 +144,9 @@ $navbar-divider-background-color: $border !default
 .navbar-brand
   &.logo
     background-color: $darkBlue
-    margin-bottom: -50px
     padding: 1em
     img
-      height: 100px
+      height: 6rem
 .navbar-tabs
   +overflow-touch
   max-width: 100vw
