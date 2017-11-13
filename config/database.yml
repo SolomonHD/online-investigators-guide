@@ -23,6 +23,7 @@ development:
   username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %> 
   password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
   #socket: /var/lib/mysql/mysql.sock
+  port: 3306
 
 local:
   <<: *default
