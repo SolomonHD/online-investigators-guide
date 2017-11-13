@@ -18,11 +18,13 @@ default: &default
 
 development:
   <<: *default
-  database: OIG_dev
-  #url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
-  username: OIG_dev_user
-  password: DL0D7fjMi3c3
-  socket: /var/lib/mysql/mysql.sock
+  database: online_investigators_guide
+  url: <%= ENV['OIG_DEV_DATABASE_URL'] %>
+  username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %> 
+  password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
+  #socket: /var/lib/mysql/mysql.sock
+  #port: 3306
+  host: <%= ENV['OIG_DEV_DATABASE_URL'] %>
 
 local:
   <<: *default

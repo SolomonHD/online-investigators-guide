@@ -3,7 +3,7 @@ lock "~> 3.10.0"
 
 set :application, "online_investigators_guide"
 set :repo_url, "git@github.com:emory-lits-uit/online-investigators-guide.git"
-set :branch, 'develop'
+set :branch, 'mysql-change'
 set :user, "deploy"
 set :stages, %w(development)
 set :passenger_restart_with_touch, true
