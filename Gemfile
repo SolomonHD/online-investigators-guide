@@ -56,7 +56,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 
 # Shibboleth Gem
-gem 'omniauth-shibboleth'
+#gem 'omniauth-shibboleth'
+gem 'omniauth-saml'
 
 group :development, :local, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
