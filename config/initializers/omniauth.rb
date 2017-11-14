@@ -12,7 +12,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
    # :assertion_consumer_service_url     => "consumer_service_url",
-    :issuer                             => "oig-dev",
+    :issuer                             => "http://oig-dev.emory.edu",
     :idp_sso_target_url                 => "https://login.emory.edu/idp/profile/SAML2/Redirect/SSO",
    # :idp_sso_target_url_runtime_params  => {:original_request_param => :mapped_idp_param},
     :idp_cert                           => ENV['SHIBB_IDP_CERT']
