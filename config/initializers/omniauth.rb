@@ -11,7 +11,7 @@
 #end
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
-   # :assertion_consumer_service_url     => "consumer_service_url",
+    :assertion_consumer_service_url     => "https://oig-dev.emory.edu/auth/saml/callback",
     :issuer                             => "https://oig-dev.emory.edu",
     :idp_sso_target_url                 => "https://login.emory.edu/idp/profile/SAML2/Redirect/SSO",
    # :idp_sso_target_url_runtime_params  => {:original_request_param => :mapped_idp_param},
