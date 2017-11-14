@@ -29,6 +29,7 @@ class Admin::LabelsController < Admin::BaseController
     respond_to do |format|
       if @label.save
         format.html { redirect_to action: "index", notice: 'Label was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @label }
       else
         format.html { render :new }
