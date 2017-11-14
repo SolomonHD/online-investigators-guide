@@ -21,3 +21,4 @@ Rails.application.config.middleware.use OmniAuth::Builder do
    # :name_identifier_format             => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                      => ENV['OIG_DEV_SP_CERT'],
      :private_key                      => ENV['OIG_DEV_SP_KEY']
+end
