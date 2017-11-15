@@ -58,6 +58,9 @@ gem 'font-awesome-sass'
 # Shibboleth Gem
 gem 'omniauth-shibboleth'
 
+# Install brew install graphviz on local environment
+# bundle exec erd
+# https://github.com/voormedia/rails-erd
 gem 'rails-erd', require: false, group: :local
 
 group :development, :local, :test do
