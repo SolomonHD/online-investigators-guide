@@ -15,6 +15,7 @@ class Admin::LabelsController < Admin::BaseController
   # GET /labels/new
   def new
     @label = Label.new
+
   end
 
   # GET /labels/1/edit
@@ -29,9 +30,11 @@ class Admin::LabelsController < Admin::BaseController
     respond_to do |format|
       if @label.save
         format.html { redirect_to action: "index", notice: 'Label was successfully created.' }
+        format.js
         format.json { render :show, status: :created, location: @label }
       else
         format.html { render :new }
+        format.js
         format.json { render json: @label.errors, status: :unprocessable_entity }
       end
     end

@@ -17,6 +17,7 @@ class Admin::PagesController < Admin::BaseController
   def new
     @page = Page.new
     @page.parent_id= params[:parent_id]
+    @label = Label.new
   end
 
   # GET /pages/1/edit

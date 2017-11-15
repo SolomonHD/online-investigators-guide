@@ -12,3 +12,12 @@ $(document).on 'turbolinks:load', ->
   $('li.parent ul li.is-active').each ->
     $(this).closest('li.parent').addClass 'is-active-parent'
   return
+
+$(document).on 'click', '.add-label-modal', ->
+  $("#label_name").val ''
+  $("#add-label").addClass 'is-active'
+  return
+  
+$(document).on 'click', '.delete', ->
+  $("#add-label").removeClass 'is-active'
+  return
