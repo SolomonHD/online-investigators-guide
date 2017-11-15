@@ -1,4 +1,7 @@
-$(document).ready(function() {
+<% if @label.errors.any? %>
+  $('#error_explanation').attr('style', 'display');
+  $('#error_explanation ul li').html("<%= j @label.errors.full_messages.join('; ') %>");
+<% else %>
   var $label = $("<label>").attr("for", "page_label_ids_"+<%= @label.id.to_s %>).text("<%= @label.name.to_s %>");
   var $input = $('<input type="checkbox">').attr({value: <%= @label.id.to_s %>, name: "page[label_ids][]", id: "page_label_ids_"+<%= @label.id.to_s %>});
   var $div = $('<div/>').addClass("collection-check-box").append($label).append($input);
@@ -16,4 +19,6 @@ $(document).ready(function() {
       $(this).closest('.collection-check-box').toggleClass('selected');
     }
   });
-});
+
+  $("#add-label").removeClass('is-active');
+<% end %>

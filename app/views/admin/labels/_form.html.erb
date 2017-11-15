@@ -1,7 +1,5 @@
   <% if @label.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(label.errors.count, "error") %> prohibited this label from being saved:</h2>
-
       <ul>
       <% @label.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -9,6 +7,12 @@
       </ul>
     </div>
   <% end %>
+
+  <div id="error_explanation" style="display: none;">
+    <ul>
+      <li></li>
+    </ul>
+  </div>
 
   <div class="field">
     <%= form.label :name %>

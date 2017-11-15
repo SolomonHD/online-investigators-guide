@@ -17,11 +17,7 @@ $(document).on 'click', '.add-label-modal', ->
   $("#label_name").val ''
   $("#add-label").addClass 'is-active'
   return
-
-$(document).on 'click', '.remove-label-modal', ->
-  $("#add-label").removeClass 'is-active'
-  return
-
+  
 $(document).on 'click', '.delete', ->
   $("#add-label").removeClass 'is-active'
   return
