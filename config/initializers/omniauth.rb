@@ -9,6 +9,7 @@
 #    ]
 #  }
 #end
+#Add for testing new deploy
 if Rails.env.development?
  Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
