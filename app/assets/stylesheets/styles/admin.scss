@@ -25,9 +25,7 @@
       color: white;
       background-color: $blue;
       height: 4rem;
-      padding-top: .5rem;
-      text-align: center;
-      font-size: 2em;
+      padding: 1.25rem;
     }
     .menu-label {
       padding: 0 1em;
@@ -68,6 +66,11 @@
         &.users {
           &:before {
               @include font-awesome('\f0c0')
+          }
+        }
+        &.supporting-units {
+          &:before {
+              @include font-awesome('\f1ad')
           }
         }
         &.pages {

@@ -61,19 +61,17 @@
             Table of Contents
           </a>
         </div>
-
         <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable supporting-units">
             <a class="navbar-link" href="/documentation/overview/start/">
               Supporting Units
             </a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="/documentation/overview/start/">
-                  Office of Clinical Research
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                  Conflict of Interest
-                </a>
+                <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
+                    <a class="navbar-item" href="<%= unit.url %>" target="_blank">
+                      <%= unit.title %>
+                    </a>
+                <% end %>
               </div>
           </div>
         </div>
