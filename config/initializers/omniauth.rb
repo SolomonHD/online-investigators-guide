@@ -30,6 +30,7 @@ if Rails.env.development?
    # :idp_cert_fingerprint_validator    => lambda { |fingerprint| fingerprint },
    # :name_identifier_format            => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
-     :private_key                       => ENV['OIG_DEV_SP_KEY']
+     :private_key                       => ENV['OIG_DEV_SP_KEY'],
+     :embed_sign                        => false
  end
 end
