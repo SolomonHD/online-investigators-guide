@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .admin {
+  .column {
+    .title {
+      margin-top: .5em;
+    }
+  }
   table {
     width: 96%;
     margin: auto;
@@ -116,6 +121,7 @@
       position: relative;
       padding: 0 .75em 2px .5em;
       float: left;
+      text-transform: lowercase;
       &:hover {
           background: $red;
           &:after {
