@@ -22,13 +22,13 @@ class Admin::PagesController < Admin::BaseController
 
   # GET /pages/1/edit
   def edit
+    @label = Label.new
   end
 
   # POST /pages
   # POST /pages.json
   def create
     @page = Page.new(page_params)
-
 
     respond_to do |format|
       if @page.save

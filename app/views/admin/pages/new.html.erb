@@ -1,19 +1,6 @@
 <h1 class="title">New Page <%= link_to 'Back to All Page', admin_pages_path, :class => 'button is-blue is-back is-pulled-right large-button' %></h1>
 
-<div id="add-label" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">New Label</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        <%= form_for [:admin, @label], remote: true do |builder| %>
-          <%= render '/admin/labels/form', form: builder %>
-        <% end %>
-      </section>
-    </div>
-</div>
+<%= render 'label_modal' %>
 
 <%= form_for [:admin, @page] do |form| %>
   <%= render "form", form: form %>
