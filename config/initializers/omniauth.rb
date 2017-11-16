@@ -32,7 +32,8 @@ if Rails.env.development?
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
      :fake_setting1 => true,
-     :security.authn_requests_signed    =>  true,
+     #security[:authn_requests_signed]   => true,  
+     #:security[authn_requests_signed]    =>  true,
      #:embed_sign                       => false
      :security => {
        
@@ -43,5 +44,6 @@ if Rails.env.development?
        :signature_method                  => XMLSecurity::Document::SHA1,
        :embed_sign                        => true                # Embeded signature or HTTP GET parameter Signature
    }
+ byebug
  end
 end
