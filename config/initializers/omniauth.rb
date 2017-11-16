@@ -32,7 +32,7 @@ if Rails.env.development?
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
      :fake_setting1 => true,
-     :security => fake_setting2:  true,
+     :security.fake_setting2 =>  true,
      #:embed_sign                       => false
      :security => {
        
