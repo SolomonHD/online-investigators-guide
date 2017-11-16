@@ -42,6 +42,7 @@ if Rails.env.development?
        :digest_method                     => XMLSecurity::Document::SHA1,
        :signature_method                  => XMLSecurity::Document::RSA_SHA1,
        :embed_sign                        => true                # Embeded signature or HTTP GET parameter Signature
+       :metadata_signed  => true
    }
  end
 end
