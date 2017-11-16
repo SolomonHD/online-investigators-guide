@@ -31,15 +31,15 @@ if Rails.env.development?
    # :name_identifier_format            => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
-     #:embed_sign                        => false
- # settings.security[:authn_requests_signed]  = true     # Enable or not signature on AuthNRequest
- # settings.security[:logout_requests_signed] = true     # Enable or not signature on Logout Request
- # settings.security[:logout_responses_signed] = true     # Enable or not signature on Logout Response
+     #:embed_sign                       => false
+     :authn_requests_signed             => true,     # Enable or not signature on AuthNRequest
+     :logout_requests_signed            => true,     # Enable or not signature on Logout Request
+     :logout_responses_signed           => true,     # Enable or not signature on Logout Response
+  
+     :digest_method                     => XMLSecurity::Document::SHA1,
+     :signature_method                  => XMLSecurity::Document::SHA1,
 
-  :digest_method    => XMLSecurity::Document::SHA1,
- :signature_method  => XMLSecurity::Document::SHA1
-
-#:embed_sign        = false                # Embeded signature or HTTP GET parameter Signature
+     :embed_sign                        => true                # Embeded signature or HTTP GET parameter Signature
 
  end
 end
