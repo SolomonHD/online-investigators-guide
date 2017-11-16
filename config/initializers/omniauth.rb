@@ -31,18 +31,17 @@ if Rails.env.development?
    # :name_identifier_format            => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
-     #security[:authn_requests_signed]   => true,  
-     #:security[authn_requests_signed]    =>  true,
-     #:embed_sign                       => false
      :security => {
-       
-       :authn_requests_signed             => true,     # Enable or not signature on AuthNRequest
-       :logout_requests_signed            => true,     # Enable or not signature on Logout Request
-       :logout_responses_signed           => true,     # Enable or not signature on Logout Response
-       :digest_method                     => XMLSecurity::Document::SHA1,
-       :signature_method                  => XMLSecurity::Document::RSA_SHA1,
-       :embed_sign                        => true,                # Embeded signature or HTTP GET parameter Signature
-       :metadata_signed  => true
-   }
- end
+       #:authn_requests_signed             => true, # goes on md SPSSODescriptor tag
+       #:logout_requests_signed            => true, # Enable or not signature on Logout Request
+       #:logout_responses_signed           => true, # Enable or not signature on Logout Response
+       #:digest_method                     => XMLSecurity::Document::SHA1,
+       #:signature_method                  => XMLSecurity::Document::RSA_SHA1,
+       #:embed_sign                        => true, # Embeded signature or HTTP GET parameter Signature
+       #:metadata_signed                   => true, #Adds  Signature/SignedInfo/CanonicaliationMethod/SignatureMethod/ReferenceURI/Transforms/DigestMethod/DigestValue/SignedInfo/SignatureValue
+       #:want_assertions_encrypted  => true, # goes on md SPSSODescriptor tag
+       :want_assertions_signed  => true, #makes a 2nd KeyDescriptor, this one says use="encryption"
+       #:want_name_id               => true,
+      }
+  end
 end
