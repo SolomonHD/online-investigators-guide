@@ -44,6 +44,5 @@ if Rails.env.development?
        :signature_method                  => XMLSecurity::Document::SHA1,
        :embed_sign                        => true                # Embeded signature or HTTP GET parameter Signature
    }
- byebug
  end
 end
