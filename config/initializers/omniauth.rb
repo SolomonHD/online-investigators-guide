@@ -30,7 +30,16 @@ if Rails.env.development?
    # :idp_cert_fingerprint_validator    => lambda { |fingerprint| fingerprint },
    # :name_identifier_format            => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
-     :private_key                       => ENV['OIG_DEV_SP_KEY']
+     :private_key                       => ENV['OIG_DEV_SP_KEY'],
      #:embed_sign                        => false
+ # settings.security[:authn_requests_signed]  = true     # Enable or not signature on AuthNRequest
+ # settings.security[:logout_requests_signed] = true     # Enable or not signature on Logout Request
+ # settings.security[:logout_responses_signed] = true     # Enable or not signature on Logout Response
+
+  :digest_method    => XMLSecurity::Document::SHA1,
+ :signature_method  => XMLSecurity::Document::SHA1
+
+#:embed_sign        = false                # Embeded signature or HTTP GET parameter Signature
+
  end
 end
