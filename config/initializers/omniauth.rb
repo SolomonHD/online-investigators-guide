@@ -32,8 +32,8 @@ if Rails.env.development?
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
      #:embed_sign                       => false
-     :authn_requests_signed             => true,     # Enable or not signature on AuthNRequest
-     :logout_requests_signed            => true,     # Enable or not signature on Logout Request
+     :security[:authn_requests_signed]  => true,     # Enable or not signature on AuthNRequest
+     :security[logout_requests_signed]  => true,     # Enable or not signature on Logout Request
      :logout_responses_signed           => true,     # Enable or not signature on Logout Response
   
      :digest_method                     => XMLSecurity::Document::SHA1,
