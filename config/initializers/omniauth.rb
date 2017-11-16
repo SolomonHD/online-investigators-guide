@@ -41,7 +41,7 @@ if Rails.env.development?
        :logout_responses_signed           => true,     # Enable or not signature on Logout Response
        :digest_method                     => XMLSecurity::Document::SHA1,
        :signature_method                  => XMLSecurity::Document::RSA_SHA1,
-       :embed_sign                        => true                # Embeded signature or HTTP GET parameter Signature
+       :embed_sign                        => true,                # Embeded signature or HTTP GET parameter Signature
        :metadata_signed  => true
    }
  end
