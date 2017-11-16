@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     post 'sign_in', to: 'omniauth_callbacks#saml', as: :new_session
     #get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
-  match '/auth/:provider/callback', :to => 'sessions#create'
+  match via: [:get, :post] '/auth/:provider/callback', :to => 'sessions#create'
+
   root 'pages#index'
   
   #get '/auth/:provider/callback', to: 'sessions#create'
