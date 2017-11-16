@@ -1,5 +1,5 @@
 #class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-class OmniauthCallbacksController < ActionController::Base  
+class OmniauthCallbacksController < ApplicationController
     def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
     # had to create the `from_omniauth(auth_hash)` class method on our User model
