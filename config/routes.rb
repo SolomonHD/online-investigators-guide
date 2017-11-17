@@ -20,10 +20,10 @@ Rails.application.routes.draw do
    # post 'sign_in', to: 'omniauth_callbacks#saml', as: :new_session
     #get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
-  match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
+  match  '/auth/:provider/callback', :to => 'omniauth_callback#saml', via: [:get, :post]
 
   root 'pages#index'
-  
+
   #get '/auth/:provider/callback', to: 'sessions#create'
   #post '/auth/:provider/callback', to: 'sessions#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
