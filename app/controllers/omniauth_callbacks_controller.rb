@@ -5,6 +5,7 @@ class OmniauthCallbacksController < ApplicationController
       # had to create the `from_omniauth(auth_hash)` class method on our User model
       @user = User.from_omniauth(request.env["omniauth.auth"])
       # set_flash_message :notice, :success, kind: "Emory NetID"
-      sign_in_and_redirect @user
+      # sign_in_and_redirect @user
+      redirect_to user_surveys_url(@user)
    end
   end
