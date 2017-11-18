@@ -6,7 +6,6 @@ class OmniauthCallbacksController < ApplicationController
       @user = User.from_omniauth(request.env["omniauth.auth"])
       # set_flash_message :notice, :success, kind: "Emory NetID"
       # sign_in_and_redirect @user
-     byebug 
      redirect_to user_surveys_url(@user)
    end
   end
