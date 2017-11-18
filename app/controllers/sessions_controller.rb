@@ -22,11 +22,9 @@ class SessionsController < ApplicationController
 =end
 
   def create
-   #@user = User.from_omniauth(auth_hash) 
-   @user = User.find_or_create_from_auth_hash(auth_hash)
+    @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
-     redirect_to user_surveys_path(@user), notice: "Logged in!"
-   # redirect_to '/'
+    redirect_to '/'
   end
 
   protected
