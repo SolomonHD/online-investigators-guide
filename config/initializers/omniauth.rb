@@ -31,6 +31,7 @@ if Rails.env.development?
    # :name_identifier_format            => "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
+     :info_fields => { :uid => 'uid'},
      :security => {
        #:authn_requests_signed             => true, # goes on md SPSSODescriptor tag
        #:logout_requests_signed            => true, # Enable or not signature on Logout Request
