@@ -10,4 +10,11 @@ $(document).on 'click', '.add_fields', (event) ->
   time = new Date().getTime()
   regexp = new RegExp($(this).data('id'), 'g')
   $(this).before($(this).data('fields').replace(regexp, time))
+
+  $('.collection-check-box input[type=checkbox]').change ->
+    if $(this).prop('checked')
+      $(this).closest('.collection-check-box').toggleClass 'selected'
+    else
+      $(this).closest('.collection-check-box').toggleClass 'selected'
+
   event.preventDefault()
