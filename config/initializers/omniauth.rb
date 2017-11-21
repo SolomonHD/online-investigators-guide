@@ -32,8 +32,8 @@ if Rails.env.development?
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
     # :info_fields => { :uid => 'uid'},
-     :attribute_statements => {:last_name => ['sn'], :first_name => ['givenName'] },
-     :uid_attribute => 'uid',
+     :attribute_statements => {:last_name => ['sn'], :first_name => ['givenName'], :uid => ['uid'] },
+#     :uid_attribute => 'uid',
      :security => {
        #:authn_requests_signed             => true, # goes on md SPSSODescriptor tag
        #:logout_requests_signed            => true, # Enable or not signature on Logout Request
