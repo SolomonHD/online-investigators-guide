@@ -1,7 +1,7 @@
 class Admin::BaseController < ActionController::Base
+  include RelativeAuth
   layout 'admin'
   before_action :is_admin?
-  include RelativeAuth
 
   def index
 
