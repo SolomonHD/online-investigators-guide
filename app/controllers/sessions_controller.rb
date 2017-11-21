@@ -24,7 +24,8 @@ class SessionsController < ApplicationController
   def create
    #@user = User.from_omniauth(auth_hash) 
    @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
+   @provider = @user.provider
+     self.current_user = @user
      redirect_to user_surveys_path(@user), notice: "Logged in!"
    # redirect_to '/'
   end

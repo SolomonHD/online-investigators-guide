@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102153151) do
+ActiveRecord::Schema.define(version: 20171117171511) do
+
+  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "unit"
+    t.string "title"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "question_id"
@@ -28,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171102153151) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_labels_on_name", unique: true
   end
 
   create_table "labels_pages", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -88,6 +97,7 @@ ActiveRecord::Schema.define(version: 20171102153151) do
     t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
     t.index ["net_id"], name: "index_users_on_net_id", unique: true
   end
 

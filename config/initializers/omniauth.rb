@@ -13,8 +13,8 @@
 if Rails.env.local?
  Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer,
-   :fields => [:first_name, :last_name],
-   :uid_field => :last_name
+   :fields => [:first_name, :last_name, :uid],
+   :uid_field => :uid
  end
 end
 
