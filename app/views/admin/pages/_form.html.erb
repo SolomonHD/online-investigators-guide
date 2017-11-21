@@ -1,58 +1,56 @@
-  <% if @page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@@page.errors.count, "error") %> prohibited this @page from being saved:</h2>
+<% if @page.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@@page.errors.count, "error") %> prohibited this @page from being saved:</h2>
 
-      <ul>
-      <% @@page.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form.hidden_field :parent_id %>
-
-  <div class="field">
-    <%= label_tag(:title, "Page Title:", :class => 'label') %>
-    <div class="control">
-      <%= form.text_field :title %>
-    </div>
+    <ul>
+    <% @@page.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
+<% end %>
+<%= form.hidden_field :parent_id %>
 
-  <div class="field">
-    <%= label_tag(:header, "Page Header:", :class => 'label') %>
-    <div class="control">
-      <%= form.text_field :header %>
-    </div>
+<div class="field">
+  <%= label_tag(:title, "Page Title:", :class => 'label') %>
+  <div class="control">
+    <%= form.text_field :title %>
   </div>
+</div>
 
-
-
-  <div class="field">
-    <%= label_tag(:parent_id, "Parent Page:", :class => 'label') %>
-    <div class="select">
-      <%= form.select :parent_id,
-      options_from_collection_for_select(Page.all, :id, :title, @page.parent_id),
-        { include_blank: 'No Parent' },
-        { class: 'select' }
-        %>
-    </div>
+<div class="field">
+  <%= label_tag(:header, "Page Header:", :class => 'label') %>
+  <div class="control">
+    <%= form.text_field :header %>
   </div>
+</div>
 
-
-  <div class="field">
-    <%= label_tag(:is_numbered, "Numbered Section?", :class => 'label') %>
-    <%= form.check_box :is_numbered %> <br />
+<div class="field">
+  <%= label_tag(:parent_id, "Parent Page:", :class => 'label') %>
+  <div class="select">
+    <%= form.select :parent_id,
+    options_from_collection_for_select(Page.all, :id, :title, @page.parent_id),
+      { include_blank: 'No Parent' },
+      { class: 'select' }
+      %>
   </div>
+</div>
 
-  <div class="field">
-    <%= label_tag(:body, "Page Body:", :class => 'label') %>
-    <%= form.trix_editor :body %>
-  </div>
+<div class="field">
+  <%= label_tag(:is_numbered, "Numbered Section?", :class => 'label') %>
+  <%= form.check_box :is_numbered %> <br />
+</div>
 
+<div class="field">
+  <%= label_tag(:body, "Page Body:", :class => 'label') %>
+  <%= form.trix_editor :body %>
+</div>
 
+<%= button_tag("New Label", :type=> 'button', :class => 'add-label-modal button is-warning is-add') %>
 
-  <div class="field">
-    <%= label_tag(:label, "Labels:", :class => 'label') %>
+<div class="field">
+  <%= label_tag(:label, "Labels:", :class => 'label') %>
+  <div id="label-list">
     <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
       <div class="collection-check-box">
         <%= b.label %>
@@ -60,11 +58,10 @@
       </div>
     <% end %>
   </div>
+</div>
 
-
-
-  <div class="field">
-    <div class="control">
-      <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
-    </div>
+<div class="field">
+  <div class="control">
+    <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
   </div>
+</div>

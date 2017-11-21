@@ -1,0 +1,19 @@
+<p id="notice" class="notification is-warning"><%= notice %></p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @admin_supporting_unit.unit %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_supporting_unit.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @admin_supporting_unit.url %>
+</p>
+
+<%= link_to 'Edit', edit_admin_supporting_unit_path(@admin_supporting_unit) %> |
+<%= link_to 'Back', admin_supporting_units_path %>

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102153151) do
+ActiveRecord::Schema.define(version: 20171120220710) do
+
+  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "unit"
+    t.string "title"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "question_id"
@@ -19,7 +27,12 @@ ActiveRecord::Schema.define(version: 20171102153151) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "answers_labels", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "label_id", null: false
+    t.bigint "answer_id", null: false
+  end
+
+  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "answer_id", null: false
     t.bigint "survey_id", null: false
   end
@@ -28,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171102153151) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_labels_on_name", unique: true
   end
 
   create_table "labels_pages", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

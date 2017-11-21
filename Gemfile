@@ -59,13 +59,17 @@ gem 'font-awesome-sass'
 #gem 'omniauth-shibboleth'
 gem 'omniauth-saml'
 
+# Install brew install graphviz on local environment
+# bundle exec erd
+# https://github.com/voormedia/rails-erd
+gem 'rails-erd', require: false, group: :local
+
 group :development, :local, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-
 end
 
 group :development, :local do
@@ -78,7 +82,6 @@ group :development, :local do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
-
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

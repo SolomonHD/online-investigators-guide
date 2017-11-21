@@ -29,11 +29,11 @@ $menu-label-color: $text-light !default
         width: 80%
     .menu-list
       margin-left: 0
-      a
       .parent
         font-size: 1em
   &.admin
-    height: 100vh
+    min-height: 100vh
+    height: 100%
   // Sizes
   &.is-small
     font-size: $size-small
@@ -50,7 +50,7 @@ $menu-label-color: $text-light !default
     display: block
 
     &:hover
-      background-color: $menu-item-hover-background-color
+      // background-color: $menu-item-hover-background-color
       color: $menu-item-hover-color
     // Modifiers
     &.is-active-parent
@@ -62,6 +62,9 @@ $menu-label-color: $text-light !default
     &.parent
       > a
         padding: .5em
+      &.is-active
+        > a
+          border-left: solid 4px $yellow
       &.is-active-parent
         border-left: solid 4px $darkBlue
         color: $menu-item-active-color
