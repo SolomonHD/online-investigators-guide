@@ -55,8 +55,7 @@ gem 'jquery-rails'
 # http://fontawesome.io/get-started/
 gem 'font-awesome-sass'
 
-# Shibboleth Gem
-#gem 'omniauth-shibboleth'
+# SAML Gem
 gem 'omniauth-saml'
 
 # Install brew install graphviz on local environment
