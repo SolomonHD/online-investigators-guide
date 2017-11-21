@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem 'listen', '>= 3.0.5', '< 3.2'
-
+gem 'byebug'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -55,8 +55,8 @@ gem 'jquery-rails'
 # http://fontawesome.io/get-started/
 gem 'font-awesome-sass'
 
-# Shibboleth Gem
-gem 'omniauth-shibboleth'
+# SAML Gem
+gem 'omniauth-saml'
 
 gem 'mechanize'
 

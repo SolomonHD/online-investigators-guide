@@ -1,5 +1,5 @@
 Rails.application.configure do
-
+  config.log_level =:debug
   config.web_console.development_only = false
   # Settings specified here will take precedence over those in config/application.rb.
 

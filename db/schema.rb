@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171120220710) do
     t.boolean "is_admin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
     t.index ["net_id"], name: "index_users_on_net_id", unique: true
   end
 
