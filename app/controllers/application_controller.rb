@@ -1,15 +1,6 @@
 class ApplicationController < ActionController::Base
 #  protect_from_forgery with: :exception
-helper_method  :auth_scheme
-
-  def auth_scheme
-    if Rails.env.local?
-     return "auth/developer"
-    else 
-     return "auth/saml"
-    end 
-  end 
-
+ include RelativeAuth
 
   private
 
