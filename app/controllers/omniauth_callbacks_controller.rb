@@ -15,6 +15,3 @@ class OmniauthCallbacksController < ApplicationController
       end
    end
   end
-
-  session[:user_id] = user.id
-  redirect_to user_surveys_path(@user), notice: "Logged in!"
