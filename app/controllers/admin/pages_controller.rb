@@ -17,17 +17,18 @@ class Admin::PagesController < Admin::BaseController
   def new
     @page = Page.new
     @page.parent_id= params[:parent_id]
+    @label = Label.new
   end
 
   # GET /pages/1/edit
   def edit
+    @label = Label.new
   end
 
   # POST /pages
   # POST /pages.json
   def create
     @page = Page.new(page_params)
-
 
     respond_to do |format|
       if @page.save

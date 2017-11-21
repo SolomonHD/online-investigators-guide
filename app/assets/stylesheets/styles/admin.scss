@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .admin {
+  .column {
+    .title {
+      margin-top: .5em;
+    }
+  }
   table {
     width: 96%;
     margin: auto;
@@ -20,9 +25,7 @@
       color: white;
       background-color: $blue;
       height: 4rem;
-      padding-top: .5rem;
-      text-align: center;
-      font-size: 2em;
+      padding: 1.25rem;
     }
     .menu-label {
       padding: 0 1em;
@@ -63,6 +66,11 @@
         &.users {
           &:before {
               @include font-awesome('\f0c0')
+          }
+        }
+        &.supporting-units {
+          &:before {
+              @include font-awesome('\f1ad')
           }
         }
         &.pages {
@@ -116,6 +124,7 @@
       position: relative;
       padding: 0 .75em 2px .5em;
       float: left;
+      text-transform: lowercase;
       &:hover {
           background: $red;
           &:after {

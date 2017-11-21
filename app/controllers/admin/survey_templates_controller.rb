@@ -95,7 +95,7 @@ class Admin::SurveyTemplatesController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_template_params
       params.require(:survey_template).permit(:name, :is_default,
-        questions_attributes: [:id, :survey_template_id, :content, :question_type_id, :_destroy,
-          answers_attributes: [:id, :question_id, :content, :_destroy]])
+        questions_attributes: [:_destroy, :id, :survey_template_id, :content, :question_type_id,
+          answers_attributes: [:_destroy, :id, :question_id, :content, label_ids: []]])
     end
 end
