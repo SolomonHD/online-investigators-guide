@@ -1,6 +1,6 @@
 class Admin::SurveyTemplatesController < Admin::BaseController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
-  before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  # before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   # GET /survey_templates
   # GET /survey_templates.json
