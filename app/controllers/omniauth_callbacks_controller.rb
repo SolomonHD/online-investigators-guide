@@ -7,6 +7,6 @@ class OmniauthCallbacksController < ApplicationController
       # set_flash_message :notice, :success, kind: "Emory NetID"
       # sign_in_and_redirect @user
       logger.info '===============> ' + @user.name + " " + @user.id.to_s + " " + @user.is_admin.to_s
-      redirect_to '/'
+      redirect_to '/admin'
    end
   end
