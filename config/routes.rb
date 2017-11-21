@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :admin do
     resources :supporting_units
   end
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :surveys
   end
+  get 'sitemap', to:'pages#sitemap', as: 'sitemap'
 
   root 'pages#index'
 

@@ -1,0 +1,12 @@
+<div>
+  <% @pages.each do |page| %>
+    <article>
+      <%= request.protocol + request.host %><%= page_path(page.id) %>
+      <a href='<%= request.protocol + request.host %><%= page_path(page.id) %>'><%= page.title %></a>
+      <%= page.title %>
+      <%= page.id %>
+
+      <%= page_path(page.id) %>
+    </article>
+  <% end %>
+</div>
