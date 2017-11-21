@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171120220710) do
 
-  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "unit"
     t.string "title"
     t.string "url"
@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20171120220710) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers_labels", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers_labels", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "label_id", null: false
     t.bigint "answer_id", null: false
   end
 
-  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "answer_id", null: false
     t.bigint "survey_id", null: false
   end
