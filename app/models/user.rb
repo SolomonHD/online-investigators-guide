@@ -4,7 +4,7 @@ class User < ApplicationRecord
 def self.from_omniauth(auth)
     Rails.logger.debug "auth = #{auth.inspect}"
     # Uncomment the debugger above to capture what a shib auth object looks like for testing
-    user = where(provider: auth.provider, net_id: auth.uid, first_name: auth.info.first_name, last_name:auth.info.last_name).first_or_create
+    user = where(provider: auth.provider, net_id: auth.uid, first_name: auth.info.first_name, last_name:auth.info.last_name).first
 
     if user.nil?
       user = User.new
