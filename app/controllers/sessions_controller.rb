@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
   end
-=begin 
+=begin
   def create
     user = User.find_by(net_id: params[:session][:net_id])
     if user
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       flash.now.notice = "Net ID is invalid"
       render "new"
     end
-  end 
+  end
 
 
   def destroy
@@ -22,10 +22,11 @@ class SessionsController < ApplicationController
 =end
 
   def create
-   #@user = User.from_omniauth(auth_hash) 
+   #@user = User.from_omniauth(auth_hash)
    @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
-     redirect_to user_surveys_path(@user), notice: "Logged in!"
+    session[:user_id] = user.id
+    redirect_to user_surveys_path(@user), notice: "Logged in!"
    # redirect_to '/'
   end
 
