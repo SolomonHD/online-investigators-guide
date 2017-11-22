@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     resources :survey_templates
     resources :labels
     get '', to: 'dashboard#index', as: '/'
+    resource :broken_link do
+      get :runReport
+    end
   end
 
   resources :sessions
