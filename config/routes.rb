@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :admin do
     resources :supporting_units
   end
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
    # post 'sign_in', to: 'omniauth_callbacks#saml', as: :new_session
     #get 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
+  get 'sitemap', to:'pages#sitemap', as: 'sitemap'
   match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
 
   root 'pages#index'
