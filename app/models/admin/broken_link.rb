@@ -10,20 +10,24 @@ class Admin::BrokenLink < ApplicationRecord
     page = agent.get('https://oig-dev.emory.edu/sitemap')
 
     page.links.each do |link|
-      puts link.uri
-      puts link.response_code
-      if link.response_code != '200'
         begin
-          puts link.response_code
-          puts link.text
+          puts link.uri.match(/\pages/)
+          if link.uri =~ '\pages'
+            puts link.text
+            # puts link.uri.include?('pages')
+          end
+          # puts link.text
+          #
+          # newPage = agent.get(link.uri)
+          # puts newPage.links
+          if link.click.code != '200'
+            # Create Broken Link in Database
+          end
         rescue Mechanize::ResponseCodeError => e
           puts e.response_code # the status code as a string, e.g. "404"
-          page = e.page
         end
 
-        puts page.title
       end
-    end
 
   end
 end
