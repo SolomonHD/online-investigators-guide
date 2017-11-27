@@ -4,7 +4,7 @@
       Broken Links
     </p>
     <p class="helper">
-      <%= Admin::BrokenLink.last.updated_at.strftime("Updated on %m/%d/%Y at %I:%M%p") %>
+      <%= Admin::BrokenLink.last.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime("Updated on %m/%d/%Y at %I:%M%p") %>
     </p>
 
   </header>
@@ -42,6 +42,5 @@
   </div>
   <footer class="card-footer">
     <%= link_to 'Rerun Report', runReport_admin_broken_link_path, :id => 'runBrokenLinkReport', :class => "card-footer-item" %>
-    <!-- <a href="https://analytics.google.com" class="card-footer-item" target="_new">View More Details</a> -->
   </footer>
 </div>
