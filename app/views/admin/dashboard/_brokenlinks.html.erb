@@ -3,21 +3,42 @@
     <p class="card-header-title">
       Broken Links
     </p>
-    <a href="#" class="card-header-icon" aria-label="more options">
-      <span class="icon">
-        <i class="fa fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </a>
+    <p class="helper">
+      <%= Admin::BrokenLink.last.updated_at.strftime("Updated on %m/%d/%Y at %I:%M%p") %>
+    </p>
+
   </header>
   <div class="card-content">
     <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-      <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+
+      <table class="table striping">
+        <thead>
+          <tr>
+            <th>Page Title</th>
+            <th>Link Text</th>
+            <th>Bad URL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Admin::BrokenLink.all.each do |link| %>
+            <tr>
+              <td>
+                <%= link_to '', edit_admin_page_path(link.page_id), :class => 'button is-edit is-gray' %> <%= link.page_title %>
+              </td>
+              <td>
+                <%= link.link_text %>
+              </td>
+              <td>
+                <%= link.broken_url %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
   <footer class="card-footer">
-    <a href="https://analytics.google.com" class="card-footer-item" target="_new">View More Details</a>
+    <%= link_to 'Rerun Report', runReport_admin_broken_link_path, :id => 'runBrokenLinkReport' %>
+    <!-- <a href="https://analytics.google.com" class="card-footer-item" target="_new">View More Details</a> -->
   </footer>
 </div>
