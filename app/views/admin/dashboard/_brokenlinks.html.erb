@@ -10,8 +10,11 @@
   </header>
   <div class="card-content">
     <div class="content">
-
-      <table class="table striping">
+      <div id="loading">
+        <span class="fa fa-spinner fa-pulse fa-5x fa-fw"></span>
+        <span class="sr-only">Loading...</span>
+      </div>
+      <table class="table striping" id="linkReport">
         <thead>
           <tr>
             <th>Page Title</th>
@@ -38,7 +41,7 @@
     </div>
   </div>
   <footer class="card-footer">
-    <%= link_to 'Rerun Report', runReport_admin_broken_link_path, :id => 'runBrokenLinkReport' %>
+    <%= link_to 'Rerun Report', runReport_admin_broken_link_path, :id => 'runBrokenLinkReport', :class => "card-footer-item" %>
     <!-- <a href="https://analytics.google.com" class="card-footer-item" target="_new">View More Details</a> -->
   </footer>
 </div>
