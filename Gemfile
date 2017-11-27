@@ -58,6 +58,7 @@ gem 'font-awesome-sass'
 # SAML Gem
 gem 'omniauth-saml'
 
+gem 'metainspector'
 gem 'mechanize'
 
 # Install brew install graphviz on local environment
