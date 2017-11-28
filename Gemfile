@@ -81,7 +81,6 @@ group :development, :local do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capistrano', '~> 3.6'
-  gem 'capistrano-passenger'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
