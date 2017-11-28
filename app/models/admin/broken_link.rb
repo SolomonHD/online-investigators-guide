@@ -26,7 +26,8 @@ class Admin::BrokenLink < ApplicationRecord
               when "404"
                 puts "caught Net :: HTTPNotFound!"
                 # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
-                if !l.href.include?("auth/")
+                puts l.text
+                if !l.href.include?("auth/") and !l.text.include?("Log In")
                  Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code)
                 end
                 next # If the page can not be found next
