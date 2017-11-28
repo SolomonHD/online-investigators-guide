@@ -50,6 +50,12 @@ $navbar-divider-background-color: $border !default
   position: relative
   margin-bottom: 2rem
   .navbars
+    .supporting-units
+      font-size: .75em
+      margin-right: 1em
+      align-items: self-start
+      .navbar-item
+        padding: .5em
     display: flex
     flex-direction: column
     width: 100%
@@ -68,20 +74,6 @@ $navbar-divider-background-color: $border !default
         border: solid 1px #CCC
         margin: .5rem
         height: 2.5rem
-    .eu-brand
-      font-family: $family-serif
-      padding: 0.5rem 1rem 0 1rem
-      font-size: 1.25em
-      text-transform: uppercase
-    .site-information
-      display: flex
-      font-family: $family-sans-serif
-      font-weight: bold
-      padding: 0rem 1rem
-      .site-name
-        border-right: solid 1px #CCC
-        padding-right: .5rem
-        margin-right: .5rem
   &.internal
     background-color: $grey-lighter
     margin: 2em 0
@@ -144,12 +136,29 @@ $navbar-divider-background-color: $border !default
   flex-shrink: 0
   min-height: $navbar-height
 
+.eu-brand
+  font-family: $family-serif
+  padding: 0.5rem 1rem 0 1rem
+  font-size: 1.25em
+  text-transform: uppercase
+.site-information
+  display: flex
+  font-family: $family-sans-serif
+  font-weight: bold
+  padding: 0rem 1rem
+  .site-name
+    border-right: solid 1px #CCC
+    padding-right: .5rem
+    margin-right: .5rem
+.site-branding
+  flex-direction: column
 .navbar-brand
   &.logo
     background-color: $darkBlue
     padding: 1em
     img
       height: 6rem
+
 .navbar-tabs
   +overflow-touch
   max-width: 100vw
@@ -294,7 +303,7 @@ a.navbar-item,
   .navbar-start
     justify-content: flex-start
     margin-right: auto
-    flex-direction: column
+    // flex-direction: column
   .navbar-end
     justify-content: flex-end
     margin-left: auto
