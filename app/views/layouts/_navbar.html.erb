@@ -1,20 +1,16 @@
-<nav class="navbar {{additionalClass}}">
+<nav class="navbar">
   <div class="navbar-brand logo">
-    <!-- <a class="navbar-item" >
-      Online Investigators Guides Administration
-    </a> -->
     <%= image_tag("emory-shield-white.png") %>
-
-    <div class="navbar-burger burger" data-target="navMenuTransparent">
+    <div class="navbar-burger burger" data-target="navMenu">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
-  <div class="navbars">
+  <div class="navbars" id="navMenu">
     <div class="primary-navbar">
       <div class="navbar-menu">
-        <div class="navbar-start">
+        <div class="navbar-start site-branding is-hidden-mobile">
           <div class="eu-brand">Emory University</div>
           <div class="site-information">
             <div class="site-name">Online Investigator's Guide</div>
@@ -22,6 +18,37 @@
           </div>
         </div>
 
+        <div class="navbar-end">
+          <div class="navbar-item supporting-units is-hidden-mobile">
+            <a class="navbar-item disabled">Supporting Units</a>
+          <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
+              <a class="navbar-item" href="<%= unit.url %>" target="_blank">
+                <%= unit.unit %>
+              </a>
+          <% end %>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable supporting-units is-hidden-tablet">
+            <a class="navbar-link">
+              Supporting Units
+            </a>
+              <div class="navbar-dropdown is-boxed">
+                <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
+                    <a class="navbar-item" href="<%= unit.url %>" target="_blank">
+                      <%= unit.title %>
+                    </a>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="secondary-navbar">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Table of Contents
+          </a>
+        </div>
         <div class="navbar-end">
           <div class="navbar-item">
            <%= link_to "Shibb_Relative", auth_scheme %>
@@ -51,29 +78,7 @@
               </p>
             <% end %>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="secondary-navbar">
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="/">
-            Table of Contents
-          </a>
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable supporting-units">
-            <a class="navbar-link">
-              Supporting Units
-            </a>
-              <div class="navbar-dropdown is-boxed">
-                <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
-                    <a class="navbar-item" href="<%= unit.url %>" target="_blank">
-                      <%= unit.title %>
-                    </a>
-                <% end %>
-              </div>
-          </div>
+
         </div>
       </div>
     </div>

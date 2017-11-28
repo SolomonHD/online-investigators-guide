@@ -10,12 +10,14 @@ trix-editor {
   }
 
 }
-
+.title {
+  padding-left: 0.5em;
+  font-weight: 400;
+  font-size: 1.75em;
+}
 .page-body {
   padding: 0 1em;
-  .title {
-    padding-left: 0.5em;
-  }
+
   ol {
     line-height: 2em;
   }
@@ -34,12 +36,13 @@ trix-editor {
 }
 
 .table-of-contents {
-  .title {
-      padding-left: 0.5em;
-  }
   .parent {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-left: 1.75em;
+    line-height: 1.5em;
+    > li {
+      padding-top: .5em;
+    }
     a {
       text-decoration: underline;
       color: $grey-darker;
