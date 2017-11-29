@@ -67,3 +67,23 @@ trix-editor {
     margin-left: 1.5em;
   }
 }
+.search-results {
+  .highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+  > ul {
+    list-style: none;
+    margin-left: 0;
+    > li {
+      padding: 1em .5em;
+      > a {
+        font-size: 1.25em;
+        text-decoration: underline;
+      }
+      .page_path {
+        color: $green;
+      }
+    }
+  }
+}

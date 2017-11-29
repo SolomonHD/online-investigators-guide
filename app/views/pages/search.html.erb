@@ -1,0 +1,29 @@
+
+
+<div class="column search-results">
+  <h1 class="title">Search Results</h1>
+  <% if @pages.present? %>
+    <div class="notification is-success">
+      <p>The following pages / sections contain the term(s) <%= params[:search] %>.</p>
+    </div>  
+      <ul>
+        <% @pages.each_with_index do |page, index| %>
+          <li>
+            <% if page.depth > 1 %>
+              <%= link_to page.header, page_path(page.parent_id, :anchor => page.title.parameterize) %>
+              <p class="page_path"><%= page_path(page.parent_id) %></p>
+            <% else %>
+              <%= link_to page.header, page_path(page.id) %>
+            <% end %>
+            <div class="page_body" >
+              <%= HTML_Truncator.truncate(page.body, 200, :length_in_chars => true).html_safe %>
+          </div>
+          </li>
+        <% end %>
+      </ul>
+  <% else %>
+    <div class="notification is-danger">
+      <p>There are no pages containing the term(s) <%= params[:search] %>.</p>
+    </div>
+  <% end %>
+</div>
