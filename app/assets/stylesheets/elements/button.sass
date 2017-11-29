@@ -76,6 +76,9 @@ $button-static-border-color: $grey-lighter !default
   &.is-transparent
     background-color: transparent
     border: 0
+  &.is-search
+    &::before
+      @include font-awesome("\f002")
   &.is-edit
     &::before
       @include font-awesome('\f040')

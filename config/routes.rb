@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
   match  'pages/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
   root 'pages#index'
+  get '/search' => 'pages#search'
 
   #get '/auth/:provider/callback', to: 'sessions#create'
   #post '/auth/:provider/callback', to: 'sessions#create'

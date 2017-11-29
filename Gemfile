@@ -60,6 +60,8 @@ gem 'omniauth-saml'
 
 gem 'mechanize'
 
+gem "html_truncator", "~>0.2"
+
 # Install brew install graphviz on local environment
 # bundle exec erd
 # https://github.com/voormedia/rails-erd
