@@ -15,16 +15,9 @@ class OmniauthCallbacksController < ApplicationController
   def single_logout
     # We've been given a response back from the IdP
     if params[:SAMLResponse]
-      logger.info "********************************"
-      logger.info "params[:SAMLResponse] => " + params[:SAMLResponse]
-      logger.info "********************************"
       return process_logout_response
     elsif params[:slo]
       reset_session
-
-      logger.info "********************************"
-      logger.info "params[:slo] => " + params[:slo]
-      logger.info "********************************"
       return sp_logout_request
     else
       reset_session
@@ -33,20 +26,8 @@ class OmniauthCallbacksController < ApplicationController
 
   # Create an SP initiated SLO
   def sp_logout_request
-    logger.info "********************************"
-    logger.info "INSIDE sp_logout_request"
-    logger.info "********************************"
-
     # LogoutRequest accepts plain browser requests w/o paramters
-    settings = OneLogin::RubySaml::Settings.new
-    settings.assertion_consumer_service_url         = Rails.application.config.assertion_consumer_service_url
-    settings.assertion_consumer_logout_service_url  = Rails.application.config.assertion_consumer_logout_service_url
-    settings.issuer                                 = Rails.application.config.issuer
-    settings.idp_sso_target_url                     = Rails.application.config.idp_sso_target_url
-    settings.idp_slo_target_url                     = Rails.application.config.idp_slo_target_url
-    settings.idp_cert                               = Rails.application.config.idp_cert
-    settings.certificate                            = Rails.application.config.certificate
-    settings.private_key                            = Rails.application.config.private_key
+    settings = get_omniauth_settings
 
     if settings.idp_slo_target_url.nil?
       logger.info "SLO IdP Endpoint not found in settings, executing then a normal logout'"
@@ -71,14 +52,7 @@ class OmniauthCallbacksController < ApplicationController
   # After sending an SP initiated LogoutRequest to the IdP, we need to accept
   # the LogoutResponse, verify it, then actually delete our session.
   def process_logout_response
-
-    logger.info "********************************"
-    logger.info "Handling process_logout_response"
-    logger.info "********************************"
-
-
-    settings = OneLogin::RubySaml::Settings.new
-    settings.idp_slo_target_url = Rails.application.config.idp_slo_target_url
+    settings = get_omniauth_settings
 
     request_id = session[:transaction_id]
     logout_response = OneLogin::RubySaml::Logoutresponse.new(params[:SAMLResponse], settings, :matches_request_id => request_id, :get_params => params)
@@ -105,5 +79,18 @@ class OmniauthCallbacksController < ApplicationController
      user = User.where(provider: auth.provider, net_id: auth.uid, first_name: auth.info.first_name, last_name: auth.info.last_name).first_or_create
      user.save
      user
+  end
+
+  def get_omniauth_settings
+    settings = OneLogin::RubySaml::Settings.new
+    settings.assertion_consumer_service_url         = Rails.application.config.assertion_consumer_service_url
+    settings.assertion_consumer_logout_service_url  = Rails.application.config.assertion_consumer_logout_service_url
+    settings.issuer                                 = Rails.application.config.issuer
+    settings.idp_sso_target_url                     = Rails.application.config.idp_sso_target_url
+    settings.idp_slo_target_url                     = Rails.application.config.idp_slo_target_url
+    settings.idp_cert                               = Rails.application.config.idp_cert
+    settings.certificate                            = Rails.application.config.certificate
+    settings.private_key                            = Rails.application.config.private_key
+    return settings
   end
 end
