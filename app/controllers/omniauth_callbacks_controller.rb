@@ -13,7 +13,11 @@ class OmniauthCallbacksController < ApplicationController
   def logout
     logger.info "********************************"
     logger.info "I am in the logout method"
+    logger.info "params[:user_id]"
+
     logger.info "********************************"
+
+
 
     if params[:SAMLResponse]
       return process_logout_response
