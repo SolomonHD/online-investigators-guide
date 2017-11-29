@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:single_logout]
 
   def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
@@ -35,7 +34,7 @@ class OmniauthCallbacksController < ApplicationController
     logger.info "********************************"
     logger.info "INSIDE sp_logout_request"
     logger.info "********************************"
-    
+
     # LogoutRequest accepts plain browser requests w/o paramters
     settings = OneLogin::RubySaml::Settings.new
     settings.assertion_consumer_service_url         = Rails.application.config.assertion_consumer_service_url
