@@ -20,10 +20,8 @@ class OmniauthCallbacksController < ApplicationController
       logger.info "********************************"
       return process_logout_response
     elsif params[:slo]
-      session[3] = nil
       reset_session
-      session.clear
-    
+
       logger.info "********************************"
       logger.info "params[:slo] => " + params[:slo]
       logger.info "********************************"
