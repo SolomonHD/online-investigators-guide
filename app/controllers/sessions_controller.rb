@@ -52,4 +52,35 @@ class SessionsController < ApplicationController
       redirect_to(logout_request.create(settings, :RelayState => relayState))
     end
   end
+
+  # After sending an SP initiated LogoutRequest to the IdP, we need to accept
+  # the LogoutResponse, verify it, then actually delete our session.
+  def process_logout_response
+
+    logger.info "********************************"
+    logger.info "Handling process_logout_response"
+    logger.info "********************************"
+
+
+    settings = OneLogin::RubySaml::Settings.new
+    settings.idp_slo_target_url = Rails.application.config.idp_slo_target_url
+
+    request_id = session[:transaction_id]
+    logout_response = OneLogin::RubySaml::Logoutresponse.new(params[:SAMLResponse], settings, :matches_request_id => request_id, :get_params => params)
+    logger.info "LogoutResponse is: #{logout_response.response.to_s}"
+
+    # Validate the SAML Logout Response
+    if not logout_response.validate
+      error_msg = "The SAML Logout Response is invalid.  Errors: #{logout_response.errors}"
+      logger.error error_msg
+      render :inline => error_msg
+    else
+      # Actually log out this session
+      if logout_response.success?
+        logger.info "Delete session for '#{session[:nameid]}'"
+        reset_session
+      end
+    end
+  end
+
 end
