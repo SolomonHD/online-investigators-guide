@@ -50,35 +50,59 @@
           </a>
         </div>
         <div class="navbar-end">
-          <div class="navbar-item">
-           <%= link_to "Shibb_Relative", auth_scheme %>
-          </div>
-          <div class="navbar-item">
-            <% if current_user %>
-            <p class="control">
-              <%= link_to session_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
-                <span class="icon">
-                  <i class="fa fa-unlock"></i>
-                </span>
-                <span>
-                  Log Out
-                </span>
+          <% if Rails.env.local? %>
+            <div class="navbar-item">
+              <% if current_user %>
+                <p class="control">
+                  <%= link_to session_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
+                    <span class="icon">
+                      <i class="fa fa-unlock"></i>
+                    </span>
+                    <span>
+                      Log Out
+                    </span>
+                  <% end %>
+                </p>
+              <% else %>
+                <p class="control">
+                  <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button' do %>
+                    <span class="icon">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                    <span>
+                      Log In
+                    </span>
+                  <% end %>
+                </p>
               <% end %>
-            </p>
-            <% else %>
-              <p class="control">
-                <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button' do %>
-                  <span class="icon">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                  <span>
-                    Log In
-                  </span>
-                <% end %>
-              </p>
-            <% end %>
-          </div>
-
+            </div>
+          <% else %>
+            <div class="navbar-item">
+              <% if current_user %>
+                <p class="control">
+                  <%= link_to session_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
+                    <span class="icon">
+                      <i class="fa fa-unlock"></i>
+                    </span>
+                    <span>
+                      Log Out
+                    </span>
+                  <% end %>
+                </p>
+              <% else %>
+                <p class="control">
+                  <%= link_to auth_scheme, :class => 'bd-tw-button button' do %>
+                    <span class="icon">
+                      <i class="fa fa-lock"></i>
+                    </span>
+                    <span>
+                      Log In
+                    </span>
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

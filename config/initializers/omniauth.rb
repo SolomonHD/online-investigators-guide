@@ -12,6 +12,7 @@ if Rails.env.development?
     :assertion_consumer_service_url     => "https://oig-dev.emory.edu/auth/saml/callback",
     :issuer                             => "https://oig-dev.emory.edu",
     :idp_sso_target_url                 => "https://login.emory.edu:4443/idp/profile/SAML2/Redirect/SSO",
+    :idp_slo_target_url                =>  Rails.application.config.idp_slo_target_url,
     :idp_cert                           => ENV['SHIBB_4443_IDP_CERT'],
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
      :private_key                       => ENV['OIG_DEV_SP_KEY'],
@@ -26,7 +27,7 @@ if Rails.env.development?
        #:embed_sign                        => true, # Embeded signature or HTTP GET parameter Signature
        #:metadata_signed                   => true, #Adds  Signature/SignedInfo/CanonicaliationMethod/SignatureMethod/ReferenceURI/Transforms/DigestMethod/DigestValue/SignedInfo/SignatureValue
        :want_assertions_encrypted  => true, #makes a 2nd KeyDescriptor, this one says use="encryption"
-       #:want_assertions_signed  => true, # goes on md SPSSODescriptor tag 
+       #:want_assertions_signed  => true, # goes on md SPSSODescriptor tag
        #:want_name_id               => true,
       }
   end

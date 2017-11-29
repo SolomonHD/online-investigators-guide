@@ -1,38 +1,55 @@
 class SessionsController < ApplicationController
   def new
   end
-=begin
+
   def create
-    user = User.find_by(net_id: params[:session][:net_id])
-    if user
-      session[:user_id] = user.id
-      redirect_to user_surveys_path(user), notice: "Logged in!"
-    else
-      # TODO : Add user to table, since they have already been authenticated via Shibboleth
-      flash.now.notice = "Net ID is invalid"
-      render "new"
+    @user = User.find_by(net_id: params[:session][:net_id])
+    if @user
+      session[:user_id] = @user.id
+      if @user.is_admin
+        redirect_to '/admin', notice: "Logged in!"
+      else
+        redirect_to user_surveys_path(user), notice: "Logged in!"
+      end
     end
   end
 
-
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
-  end
-=end
-
-  def create
-   #@user = User.from_omniauth(auth_hash)
-   @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
-    session[:user_id] = user.id
-    redirect_to user_surveys_path(@user), notice: "Logged in!"
-   # redirect_to '/'
+    if Rails.env.local?
+      redirect_to root_url, notice: "Logged out!"
+    else
+      sp_logout_request
+    end
   end
 
-  protected
+  private
 
-  def auth_hash
-    request.env['omniauth.auth']
+  # Create an SP initiated SLO
+  def sp_logout_request
+    # LogoutRequest accepts plain browser requests w/o paramters
+    logger.info "idp_slo_target_url " + Rails.application.config.idp_slo_target_url
+
+    settings = OneLogin::RubySaml::Settings.new
+    settings.idp_slo_target_url = Rails.application.config.idp_slo_target_url
+
+    if settings.idp_slo_target_url.nil?
+      logger.info "SLO IdP Endpoint not found in settings, executing then a normal logout'"
+      reset_session
+    else
+      # Since we created a new SAML request, save the transaction_id
+      # to compare it with the response we get back
+      logout_request = OneLogin::RubySaml::Logoutrequest.new()
+      session[:transaction_id] = logout_request.uuid
+      logger.info "New SP SLO for User ID: '#{session[:nameid]}', Transaction ID: '#{session[:transaction_id]}'"
+
+      if settings.name_identifier_value.nil?
+        settings.name_identifier_value = session[:nameid]
+        settings.sessionindex = session[:session_index]
+      end
+
+      relayState = url_for controller: 'pages', action: 'index'
+      redirect_to(logout_request.create(settings, :RelayState => relayState))
+    end
   end
 end

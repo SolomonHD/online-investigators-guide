@@ -53,4 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.log_level = :debug
+
+  config.idp_slo_target_url = "https://login.emory.edu:4443/idp/profile/Logout"
 end
