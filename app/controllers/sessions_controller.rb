@@ -18,6 +18,9 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     if Rails.env.local?
       redirect_to root_url, notice: "Logged out!"
+    # We've been given a response back from the IdP
+    elsif params[:SAMLResponse]
+      return process_logout_response
     else
       sp_logout_request
     end
