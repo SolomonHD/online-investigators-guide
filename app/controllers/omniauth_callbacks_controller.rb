@@ -1,9 +1,5 @@
 class OmniauthCallbacksController < ApplicationController
-  def new
-  end
-
-  def create
-  end
+  skip_before_action :verify_authenticity_token, :only => [:single_logout]
 
   def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
@@ -16,32 +12,30 @@ class OmniauthCallbacksController < ApplicationController
     end
   end
 
-  def destroy
-    logger.info "********************************LLLLL"
-    logger.info params[:id]
-    logger.info "********************************LLLLL"
-    session[:user_id] = nil
-    sp_logout_request
-  end
-
-  def logout
-    logger.info "********************************"
-    logger.info "I am in the logout method"
-    logger.info params[:SAMLResponse].to_s
-
-    logger.info "********************************"
-
-
-
+  # Trigger SP and IdP initiated Logout requests
+  def single_logout
+    # We've been given a response back from the IdP
     if params[:SAMLResponse]
+      logger.info "********************************"
+      logger.info "params[:SAMLResponse] => " + params[:SAMLResponse]
+      logger.info "********************************"
       return process_logout_response
+    elsif params[:slo]
+      logger.info "********************************"
+      logger.info "params[:slo] => " + params[:slo]
+      logger.info "********************************"
+      return sp_logout_request
     else
-      sp_logout_request
+      reset_session
     end
   end
 
   # Create an SP initiated SLO
   def sp_logout_request
+    logger.info "********************************"
+    logger.info "INSIDE sp_logout_request"
+    logger.info "********************************"
+    
     # LogoutRequest accepts plain browser requests w/o paramters
     settings = OneLogin::RubySaml::Settings.new
     settings.assertion_consumer_service_url         = Rails.application.config.assertion_consumer_service_url
@@ -68,7 +62,7 @@ class OmniauthCallbacksController < ApplicationController
         settings.sessionindex = session[:session_index]
       end
 
-      relayState = url_for controller: 'pages', action: 'index'
+      relayState = url_for controller: 'omniauth_callbacks', action: 'index'
       redirect_to(logout_request.create(settings, :RelayState => relayState))
     end
   end

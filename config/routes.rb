@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'slogout', to: 'omniauth_callbacks#destroy', as: 'shibb_logout'
-
   namespace :admin do
     resources :pages do
         get :move
@@ -22,7 +20,12 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
-  resources :omniauth_callbacks
+  resources :omniauth_callbacks, only: :index do
+    collection do
+      get :single_logout
+    end
+  end
+
   resources :pages, :except => ['edit', 'new', 'update', 'destroy']
   resources :users do
     resources :surveys
@@ -32,7 +35,6 @@ Rails.application.routes.draw do
   end
   get 'sitemap', to:'pages#sitemap', as: 'sitemap'
   match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
-  match  '/auth/:provider/callback_logout', :to => 'omniauth_callbacks#logout', via: [:post]
   match  'pages/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
   root 'pages#index'
 
