@@ -62,7 +62,7 @@ Rails.application.configure do
   config.idp_cert = ENV['SHIBB_4443_IDP_CERT']
   config.certificate = ENV['OIG_DEV_SP_CERT']
   config.private_key = ENV['OIG_DEV_SP_KEY']
-  config.attribute_statements = {:last_name => ['urn:oid:2.5.4.4'], :first_name => ['urn:oid:2.5.4.42']},
+  config.attribute_statements = {:last_name => ['urn:oid:2.5.4.4'], :first_name => ['urn:oid:2.5.4.42']}
   config.uid_attribute = "urn:oid:0.9.2342.19200300.100.1.1"
-  
+
 end
