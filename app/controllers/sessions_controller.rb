@@ -31,10 +31,9 @@ class SessionsController < ApplicationController
   # Create an SP initiated SLO
   def sp_logout_request
     # LogoutRequest accepts plain browser requests w/o paramters
-    logger.info "idp_slo_target_url " + Rails.application.config.idp_slo_target_url
-
     settings = OneLogin::RubySaml::Settings.new
     settings.idp_slo_target_url = Rails.application.config.idp_slo_target_url
+
 
     if settings.idp_slo_target_url.nil?
       logger.info "SLO IdP Endpoint not found in settings, executing then a normal logout'"
