@@ -13,7 +13,7 @@ class OmniauthCallbacksController < ApplicationController
   def logout
     if params[:SAMLResponse]
       return process_logout_response
-    else
+    end
   end
 
   # After sending an SP initiated LogoutRequest to the IdP, we need to accept
