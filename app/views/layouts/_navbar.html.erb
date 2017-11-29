@@ -80,7 +80,7 @@
             <div class="navbar-item">
               <% if current_user %>
                 <p class="control">
-                  <%= link_to shibb_logout_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
+                  <%= link_to omniauth_callback_path(current_user), method: "delete", :class => 'bd-tw-button button' do %>
                     <span class="icon">
                       <i class="fa fa-unlock"></i>
                     </span>

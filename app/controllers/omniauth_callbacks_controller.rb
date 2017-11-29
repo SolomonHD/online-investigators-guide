@@ -1,4 +1,10 @@
 class OmniauthCallbacksController < ApplicationController
+  def new
+  end
+
+  def create
+  end
+
   def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
     @user = get_user(request.env["omniauth.auth"])
@@ -11,6 +17,7 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def destroy
+
     session[:user_id] = nil
     sp_logout_request
   end
