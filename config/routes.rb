@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  get 'slogout', to: 'omniauth_callbacks#logout', as: 'shibb_logout'
-
+  get 'slogout', to: 'omniauth_callbacks#destroy', as: 'shibb_logout'
 
   namespace :admin do
     resources :pages do

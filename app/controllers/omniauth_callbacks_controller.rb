@@ -10,10 +10,15 @@ class OmniauthCallbacksController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+    sp_logout_request
+  end
+
   def logout
     logger.info "********************************"
     logger.info "I am in the logout method"
-    logger.info params[:user_id].to_s
+    logger.info params[:SAMLResponse].to_s
 
     logger.info "********************************"
 
