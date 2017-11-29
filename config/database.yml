@@ -19,7 +19,7 @@ default: &default
 development:
   <<: *default
   database: online_investigators_guide
-  username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %> 
+  username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %>
   password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
   host: <%= ENV['OIG_DEV_DATABASE_URL'] %>
 

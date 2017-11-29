@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   end
 
   resources :sessions
+  resources :omniauth_callbacks, only: :index do
+    collection do
+      get :single_logout
+    end
+  end
+
   resources :pages, :except => ['edit', 'new', 'update', 'destroy']
   resources :users do
     resources :surveys
