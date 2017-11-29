@@ -1,17 +1,18 @@
 class OmniauthCallbacksController < ApplicationController
   def saml
-    # We've been given a response back from the IdP
+    Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
+    @user = get_user(request.env["omniauth.auth"])
+    session[:user_id] = @user.id
+    if @user.is_admin
+      redirect_to '/admin', notice: "Logged in!"
+    else
+      redirect_to user_surveys_path(@user), notice: "Logged in!"
+    end
+  end
+
+  def logout
     if params[:SAMLResponse]
       return process_logout_response
-    else
-      Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
-      @user = get_user(request.env["omniauth.auth"])
-      session[:user_id] = @user.id
-      if @user.is_admin
-        redirect_to '/admin', notice: "Logged in!"
-      else
-        redirect_to user_surveys_path(@user), notice: "Logged in!"
-      end
     end
   end
 

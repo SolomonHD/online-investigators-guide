@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
   get 'sitemap', to:'pages#sitemap', as: 'sitemap'
   match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
+  match  '/auth/:provider/callback_logout', :to => 'omniauth_callbacks#logout', via: [:post]
   match  'pages/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]
   root 'pages#index'
 
