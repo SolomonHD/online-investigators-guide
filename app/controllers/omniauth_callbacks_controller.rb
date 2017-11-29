@@ -17,7 +17,9 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def destroy
-
+    logger.info "********************************LLLLL"
+    logger.info params[:id]
+    logger.info "********************************LLLLL"
     session[:user_id] = nil
     sp_logout_request
   end
