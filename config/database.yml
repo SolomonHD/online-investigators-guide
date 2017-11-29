@@ -19,13 +19,13 @@ default: &default
 development:
   <<: *default
   database: online_investigators_guide
-  username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %> 
+  username: <%= ENV['OIG_DEV_DATABASE_USERNAME'] %>
   password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
   host: <%= ENV['OIG_DEV_DATABASE_URL'] %>
 
 local:
   <<: *default
-  database: online_investigators_guide_development
+  url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
