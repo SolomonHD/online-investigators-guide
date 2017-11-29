@@ -37,9 +37,6 @@ class SessionsController < ApplicationController
     settings.idp_cert                               = Rails.application.config.idp_cert
     settings.certificate                            = Rails.application.config.certificate
     settings.private_key                            = Rails.application.config.private_key
-    settings.attribute_statements                   = Rails.application.config.attribute_statements
-    settings.uid_attribute                          = Rails.application.config.uid_attribute
-    settings.security                               = Rails.application.config.security
 
     if settings.idp_slo_target_url.nil?
       logger.info "SLO IdP Endpoint not found in settings, executing then a normal logout'"
