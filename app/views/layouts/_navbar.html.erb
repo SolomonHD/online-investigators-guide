@@ -51,6 +51,20 @@
         </div>
         <div class="navbar-end">
           <div class="navbar-item">
+            <%= form_tag(search_path, :method => "get", :target => "_self") do %>
+              <div class="field has-addons">
+                <div class="control">
+                  <%= text_field_tag :search, params[:search], placeholder: "Search Pages" %>
+                </div>
+                <div class="control">
+                  <%= button_tag(type: "submit", class: "button is-info") do %>
+                    <span class="fa fa-search"></span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="navbar-item">
            <%= link_to "Shibb_Relative", auth_scheme %>
           </div>
           <div class="navbar-item">
@@ -78,7 +92,23 @@
               </p>
             <% end %>
           </div>
-
+          <% if current_user %>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link  is-active" href="">
+              Welcome, Saundra
+            </a>
+            <div class="navbar-dropdown ">
+              <a class="navbar-item " href="/documentation/overview/start/">
+                View Number 1
+              </a>
+              <%= link_to 'Manage my Views', user_surveys_path(1), :class => 'navbar-item' %>
+              <hr class="navbar-divider">
+              <a class="navbar-item is-active" href="">
+                Log Out
+              </a>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>

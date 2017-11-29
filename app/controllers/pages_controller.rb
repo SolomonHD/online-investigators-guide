@@ -8,6 +8,16 @@ class PagesController < ApplicationController
     @pages = Page.all
   end
 
+  def search
+    require "html_truncator"
+    if params[:search]
+      @pages = Page.search(params[:search])
+    else
+      @pages = Page.all
+    end
+    #code
+  end
+
   def sitemap
     puts 'Run Process'
     @pages = Page.where("body != ''").all
