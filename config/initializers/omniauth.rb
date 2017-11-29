@@ -9,9 +9,9 @@ end
 if Rails.env.development?
  Rails.application.config.middleware.use OmniAuth::Builder do
   provider :saml,
-    :assertion_consumer_service_url     => "https://oig-dev.emory.edu/auth/saml/callback",
-    :issuer                             => "https://oig-dev.emory.edu",
-    :idp_sso_target_url                 => "https://login.emory.edu:4443/idp/profile/SAML2/Redirect/SSO",
+    :assertion_consumer_service_url     => Rails.application.config.assertion_consumer_service_url,
+    :issuer                             => Rails.application.config.issuer,
+    :idp_sso_target_url                 => Rails.application.config.idp_sso_target_url,
     :idp_slo_target_url                =>  Rails.application.config.idp_slo_target_url,
     :idp_cert                           => ENV['SHIBB_4443_IDP_CERT'],
      :certificate                       => ENV['OIG_DEV_SP_CERT'],
