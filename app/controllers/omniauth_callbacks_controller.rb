@@ -1,4 +1,9 @@
 class OmniauthCallbacksController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:single_logout]
+
+  def index
+    @attrs = {}
+  end
 
   def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
