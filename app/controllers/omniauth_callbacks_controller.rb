@@ -1,5 +1,5 @@
 class OmniauthCallbacksController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:single_logout]
+  skip_before_action :verify_authenticity_token, :only => [:saml, :single_logout]
 
   def index
     @attrs = {}
