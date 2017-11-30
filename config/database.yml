@@ -23,6 +23,13 @@ development:
   password: <%= ENV['OIG_DEV_DATABASE_PASSWORD'] %>
   host: <%= ENV['OIG_DEV_DATABASE_URL'] %>
 
+qa:
+  <<: *default
+  database: online_investigators_guide_QA
+  username: <%= ENV['OIG_QA_DATABASE_USERNAME'] %>
+  password: <%= ENV['OIG_QA_DATABASE_PASSWORD'] %>
+  host: <%= ENV['OIG_QA_DATABASE_URL'] %>
+
 local:
   <<: *default
   database: online_investigators_guide_development
