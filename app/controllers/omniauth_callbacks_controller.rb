@@ -73,7 +73,7 @@ class OmniauthCallbacksController < ApplicationController
         settings.sessionindex = session[:session_index]
       end
 
-      relayState = url_for single_logout_omniauth_callbacks_path
+      relayState = settings.assertion_consumer_logout_service_url 
       redirect_to(logout_request.create(settings, :RelayState => relayState))
     end
   end
