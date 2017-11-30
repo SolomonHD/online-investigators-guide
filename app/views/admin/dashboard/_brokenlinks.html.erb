@@ -4,7 +4,9 @@
       Broken Links
     </p>
     <p class="helper">
-      <%= Admin::BrokenLink.last.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime("Updated on %m/%d/%Y at %I:%M%p") %>
+      <% if Admin::BrokenLink.count > 0 %>
+        <%= Admin::BrokenLink.last.updated_at.in_time_zone('Eastern Time (US & Canada)').strftime("Updated on %m/%d/%Y at %I:%M%p") %>
+      <% end %>
     </p>
 
   </header>
