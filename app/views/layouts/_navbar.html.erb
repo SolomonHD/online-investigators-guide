@@ -126,7 +126,7 @@
               <a class="navbar-item " href="/documentation/overview/start/">
                 View Number 1
               </a>
-              <%= link_to 'Manage my Views', user_surveys_path(1), :class => 'navbar-item' %>
+              <%= link_to 'Manage my Views', user_surveys_path(current_user), :class => 'navbar-item' %>
               <hr class="navbar-divider">
               <a class="navbar-item is-active" href="">
                 Log Out
