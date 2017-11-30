@@ -34,10 +34,10 @@
         <% end %>
       <% end %>
       <% AnswersSurvey.where("survey_id = ?", @survey.id).each do |answer| %>
-        <%= answer %>
         <% AnswersLabel.where(:answer_id => answer.answer_id).each do |label| %>
-        <%= label.label_id %>
           <% LabelsPage.where(:label_id => label.label_id).each do |page| %>
+          <%= link_to 'Page', page_path(page.page_id, :user => @user, :view => @survey.id) %>
+            <%= Page.where(:id => page.page_id) %>
             <%= page.page_id %>
           <% end %>
         <% end %>

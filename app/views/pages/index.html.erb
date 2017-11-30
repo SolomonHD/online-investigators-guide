@@ -1,7 +1,15 @@
 <%= render partial: "sideMenu" %>
 
 <div class="column table-of-contents">
-  <h1 class="title">Investigator Handbook - Table of Contents</h1>
+  <% if params[:user] and params[:view] and current_user %>
+    <h1 class="title">
+      <% Survey.where(:id => params[:view]).each do |survey| %>
+        <%= survey.name %> - Table of Contents
+      <% end %>
+    </h1>
+  <% else %>
+    <h1 class="title">Investigator Handbook - Table of Contents</h1>
+  <% end %>
   <ol class="parent">
   <% Page.where("ancestry_depth < 1").find_each do |page, index| %>
     <li>
