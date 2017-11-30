@@ -74,7 +74,7 @@ Rails.application.configure do
      #:embed_sign                        => true, # Embeded signature or HTTP GET parameter Signature
      #:metadata_signed                   => true, #Adds  Signature/SignedInfo/CanonicaliationMethod/SignatureMethod/ReferenceURI/Transforms/DigestMethod/DigestValue/SignedInfo/SignatureValue
      :want_assertions_encrypted  => true, #makes a 2nd KeyDescriptor, this one says use="encryption"
-     #:want_assertions_signed  => true, # goes on md SPSSODescriptor tag
+     :want_assertions_signed  => true, # goes on md SPSSODescriptor tag
      #:want_name_id               => true,
   }
 
