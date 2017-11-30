@@ -58,14 +58,14 @@ class OmniauthCallbacksController < ApplicationController
     # LogoutRequest accepts plain browser requests w/o paramters
     settings = get_omniauth_settings
 
-    logger "settings.assertion_consumer_service_url
-    logger "settings.assertion_consumer_logout_service_url => "  + settings.assertion_consumer_logout_service_url
-    logger "settings.issuer => "  + settings.issuer
-    logger "settings.idp_sso_target_url => "  + settings.idp_sso_target_url
-    logger "settings.idp_slo_target_url => "  + settings.idp_slo_target_url
-    logger "settings.idp_cert => "  + settings.idp_cert
-    logger "settings.certificate => "  + settings.certificate
-    logger "settings.private_key => "  + settings.private_key
+    logger.info "settings.assertion_consumer_service_url => " + settings.assertion_consumer_service_url
+    logger.info "settings.assertion_consumer_logout_service_url => "  + settings.assertion_consumer_logout_service_url
+    logger.info "settings.issuer => "  + settings.issuer
+    logger.info "settings.idp_sso_target_url => "  + settings.idp_sso_target_url
+    logger.info "settings.idp_slo_target_url => "  + settings.idp_slo_target_url
+    logger.info "settings.idp_cert => "  + settings.idp_cert
+    logger.info "settings.certificate => "  + settings.certificate
+    logger.info "settings.private_key => "  + settings.private_key
 
 
     if settings.idp_slo_target_url.nil?
