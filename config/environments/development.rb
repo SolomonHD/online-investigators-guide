@@ -55,7 +55,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # OmniAuth configuration settings
-  config.idp_slo_target_url = "https://login.emory.edu:4443/idp/profile/Logout"
+  config.idp_slo_target_url = "https://login.emory.edu:4443/idp/profile/Logout?return=https://oig-dev.emory.edu"
   config.assertion_consumer_service_url = "https://oig-dev.emory.edu/auth/saml/callback"
   config.assertion_consumer_logout_service_url = "https://oig-dev.emory.edu/omniauth_callbacks/single_logout"
   config.issuer = "https://oig-dev.emory.edu"
