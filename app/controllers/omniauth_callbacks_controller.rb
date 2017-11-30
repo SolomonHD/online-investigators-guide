@@ -58,6 +58,16 @@ class OmniauthCallbacksController < ApplicationController
     # LogoutRequest accepts plain browser requests w/o paramters
     settings = get_omniauth_settings
 
+    logger "settings.assertion_consumer_service_url
+    logger "settings.assertion_consumer_logout_service_url => "  + settings.assertion_consumer_logout_service_url
+    logger "settings.issuer => "  + settings.issuer
+    logger "settings.idp_sso_target_url => "  + settings.idp_sso_target_url
+    logger "settings.idp_slo_target_url => "  + settings.idp_slo_target_url
+    logger "settings.idp_cert => "  + settings.idp_cert
+    logger "settings.certificate => "  + settings.certificate
+    logger "settings.private_key => "  + settings.private_key
+
+
     if settings.idp_slo_target_url.nil?
       logger.info "SLO IdP Endpoint not found in settings, executing then a normal logout'"
       reset_session
@@ -73,7 +83,7 @@ class OmniauthCallbacksController < ApplicationController
         settings.sessionindex = session[:session_index]
       end
 
-      relayState = settings.assertion_consumer_logout_service_url 
+      relayState = url_for omniauth_callbacks_path
       redirect_to(logout_request.create(settings, :RelayState => relayState))
     end
   end
