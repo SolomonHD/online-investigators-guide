@@ -1,36 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="title">Surveys for <%= @user.name %></h1>
 
-<% if !@surveys.empty? %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @surveys.each do |survey| %>
+<div class="column">
+  <h1 class="title">Views for <%= @user.name %></h1>
+  <% if !@surveys.empty? %>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= survey.name %></td>
-          <td><%= survey.description %></td>
-
-          <td><%= link_to 'View', [ @user, survey ], :class => 'button show is-primary is-show' %>
-            <%= link_to 'Edit', edit_user_survey_path( @user, survey ) , :class => 'button edit is-gray is-edit' %>
-            <%= link_to 'Delete', [ @user, survey], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete' %></td>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>
-    No surveys have been created yet.
-  </p>
-<% end %>
+      </thead>
 
-<br>
+      <tbody>
+        <% @surveys.each do |survey| %>
+          <tr>
+            <td><%= survey.name %></td>
+            <td><%= survey.description %></td>
 
-<%= link_to 'New Survey', new_user_survey_path(@user), :class => 'button is-warning is-add'  %>
+            <td><%= link_to 'View', [ @user, survey ], :class => 'button show is-primary is-show large-button', target: '_self' %>
+              <%= link_to 'Edit', edit_user_survey_path( @user, survey ) , :class => 'button edit is-gray is-edit large-button', target: '_self' %>
+              <%= link_to 'Delete', [ @user, survey], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete large-button', target: '_self' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>
+      No surveys have been created yet.
+    </p>
+  <% end %>
+
+  <br>
+
+  <%= link_to 'Create New View', new_user_survey_path(@user), :class => 'button is-warning is-add large-button'  %>
+</div>

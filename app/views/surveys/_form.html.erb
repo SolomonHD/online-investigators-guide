@@ -15,13 +15,13 @@
   <%= form.hidden_field :survey_template_id, value: @survey_template.id %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label 'Name of View' %>
     <%= form.text_field :name, id: :survey_name %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :survey_description %>
+    <%= form.label 'Description of View' %>
+    <%= form.text_area :description, id: :survey_description, :class => 'textarea' %>
   </div>
 
   <ol class="questions">
@@ -59,7 +59,7 @@
 
   <div class="actions">
     <a class="button is-primary is-save">
-      <%= form.submit 'Save Survey', :class => 'button is-transparent' %>
+      <%= form.submit 'Save View', :class => 'button is-primary large-button' %>
     </a>
   </div>
 <% end %>

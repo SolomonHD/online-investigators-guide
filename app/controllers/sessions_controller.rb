@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if @user.is_admin
         redirect_to '/admin', notice: "Logged in!"
       else
-        redirect_to user_surveys_path(user), notice: "Logged in!"
+        redirect_to user_surveys_path(@user), notice: "Logged in!"
       end
     end
   end
