@@ -91,7 +91,7 @@ Rails.application.configure do
  # OmniAuth configuration settings
   config.idp_slo_target_url = "https://login.emory.edu:443/idp/profile/Logout"
   config.assertion_consumer_service_url = "https://oig-qa.emory.edu/auth/saml/callback"
-  config.assertion_consumer_logout_service_url = "https://oig-qa.emory.edu/auth/saml/callback"
+  config.assertion_consumer_logout_service_url = "https://oig-dev.emory.edu/omniauth_callbacks/single_logout"
   config.issuer = "https://oig-qa.emory.edu"
   config.idp_sso_target_url = "https://login.emory.edu:443/idp/profile/SAML2/Redirect/SSO"
   config.idp_cert = ENV['SHIBB_443_IDP_CERT']
