@@ -13,15 +13,39 @@ class OmniauthCallbacksController < ApplicationController
 
   # Trigger SP and IdP initiated Logout requests
   def single_logout
+    if params[:SAMLRequest]
+      logger.info "Inside of => if params[:SAMLRequest]"
+      return idp_logout_request
+
     # We've been given a response back from the IdP
-    if params[:SAMLResponse]
+    elsif params[:SAMLResponse]
+      logger.info "Inside of => elsif params[:SAMLResponse]"
       return process_logout_response
     elsif params[:slo]
-      reset_session
+      logger.info "Inside of => elsif params[:slo]"
+      # reset_session
       return sp_logout_request
     else
       reset_session
     end
+  end
+
+  # Method to handle IdP initiated logouts
+  def idp_logout_request
+    settings = get_omniauth_settings
+    logout_request = OneLogin::RubySaml::SloLogoutrequest.new(params[:SAMLRequest], :settings => settings)
+    if not logout_request.is_valid?
+      error_msg = "IdP initiated LogoutRequest was not valid!. Errors: #{logout_request.errors}"
+      logger.error error_msg
+      render :inline => error_msg
+    end
+    logger.info "IdP initiated Logout for #{logout_request.nameid}"
+
+    # Actually log out this session
+    reset_session
+
+    logout_response = OneLogin::RubySaml::SloLogoutresponse.new.create(settings, logout_request.id, nil, :RelayState => params[:RelayState])
+    redirect_to logout_response
   end
 
   # Create an SP initiated SLO
