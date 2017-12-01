@@ -89,12 +89,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
  # OmniAuth configuration settings
-  config.idp_slo_target_url = "https://login.emory.edu:443/idp/profile/Logout"
+  config.idp_slo_target_url = "https://login.emory.edu/idp/profile/Logout"
   config.assertion_consumer_service_url = "https://oig-qa.emory.edu/auth/saml/callback"
   config.assertion_consumer_logout_service_url = "https://oig-qa.emory.edu/omniauth_callbacks/single_logout"
   config.issuer = "https://oig-qa.emory.edu"
-  config.idp_sso_target_url = "https://login.emory.edu:443/idp/profile/SAML2/Redirect/SSO"
-  config.idp_cert = ENV['SHIBB_443_IDP_CERT']
+  config.idp_sso_target_url = "https://login.emory.edu/idp/profile/SAML2/Redirect/SSO"
+  config.idp_cert = File.read('/etc/pki/tls/certs/shibb_443_cert.cer')
   config.certificate = File.read('/etc/pki/tls/certs/oig-qa-SP.cer')
   config.private_key = File.read('/etc/pki/tls/private/oig-qa-SP.key')
   config.attribute_statements = {:last_name => ['urn:oid:2.5.4.4'], :first_name => ['urn:oid:2.5.4.42']}
