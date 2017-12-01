@@ -95,8 +95,8 @@ Rails.application.configure do
   config.issuer = "https://oig-qa.emory.edu"
   config.idp_sso_target_url = "https://login.emory.edu:443/idp/profile/SAML2/Redirect/SSO"
   config.idp_cert = ENV['SHIBB_443_IDP_CERT']
-  config.certificate = ENV['OIG_QA_SP_CERT']
-  config.private_key = ENV['OIG_QA_SP_KEY']
+  config.certificate = File.read('/etc/pki/tls/certs/oig-qa-SP.cer')
+  config.private_key = File.read('/etc/pki/tls/private/oig-qa-SP.key')
   config.attribute_statements = {:last_name => ['urn:oid:2.5.4.4'], :first_name => ['urn:oid:2.5.4.42']}
   config.uid_attribute = "urn:oid:0.9.2342.19200300.100.1.1"
   config.security = {
