@@ -91,7 +91,7 @@ Rails.application.configure do
  # OmniAuth configuration settings
   config.idp_slo_target_url = "https://login.emory.edu:443/idp/profile/Logout"
   config.assertion_consumer_service_url = "https://oig-qa.emory.edu/auth/saml/callback"
-  config.assertion_consumer_logout_service_url = "https://oig-dev.emory.edu/omniauth_callbacks/single_logout"
+  config.assertion_consumer_logout_service_url = "https://oig-qa.emory.edu/omniauth_callbacks/single_logout"
   config.issuer = "https://oig-qa.emory.edu"
   config.idp_sso_target_url = "https://login.emory.edu:443/idp/profile/SAML2/Redirect/SSO"
   config.idp_cert = ENV['SHIBB_443_IDP_CERT']
@@ -100,15 +100,7 @@ Rails.application.configure do
   config.attribute_statements = {:last_name => ['urn:oid:2.5.4.4'], :first_name => ['urn:oid:2.5.4.42']}
   config.uid_attribute = "urn:oid:0.9.2342.19200300.100.1.1"
   config.security = {
-     #:authn_requests_signed             => true, # goes on md SPSSODescriptor tag
-     #:logout_requests_signed            => true, # Enable or not signature on Logout Request
-     #:logout_responses_signed           => true, # Enable or not signature on Logout Response
-     #:digest_method                     => XMLSecurity::Document::SHA1,
-     #:signature_method                  => XMLSecurity::Document::RSA_SHA1,
-     #:embed_sign                        => true, # Embeded signature or HTTP GET parameter Signature
-     #:metadata_signed                   => true, #Adds  Signature/SignedInfo/CanonicaliationMethod/SignatureMethod/ReferenceURI/Transforms/DigestMethod/DigestValue/SignedInfo/SignatureValue
      :want_assertions_encrypted  => true, #makes a 2nd KeyDescriptor, this one says use="encryption"
-     #:want_assertions_signed  => true, # goes on md SPSSODescriptor tag
-     #:want_name_id               => true,
+     :want_assertions_signed  => true, # goes on md SPSSODescriptor tag
   }
 end
