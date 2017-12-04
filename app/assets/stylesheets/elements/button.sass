@@ -70,12 +70,23 @@ $button-static-border-color: $grey-lighter !default
   &.is-gray
     background-color: $grey
     color: white
+  &.is-green
+    background-color: $green
+    color: white
   &.is-blue
     background-color: $blue
     color: white
   &.is-transparent
     background-color: transparent
     border: 0
+  &.is-stretch
+    width: 100%
+  &.is-revoke
+    &::before
+      @include font-awesome("\f00d")
+  &.is-grant
+    &::before
+      @include font-awesome("\f00c")
   &.is-search
     &::before
       @include font-awesome("\f002")

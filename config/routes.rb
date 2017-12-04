@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :pages
     resources :survey_templates
     resources :labels
+    resources :users do
+      get :toggle_admin
+    end
     get '', to: 'dashboard#index', as: '/'
     resource :broken_link do
       get :runReport
