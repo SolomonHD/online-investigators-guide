@@ -28,7 +28,7 @@ qa:
   database: online_investigators_guide_QA
   username: <%= ENV['OIG_QA_DATABASE_USERNAME'] %>
   password: <%= ENV['OIG_QA_DATABASE_PASSWORD'] %>
-  host: <%= ENV['OIG_QA_DATABASE_URL'] %>  
+  host: <%= ENV['OIG_QA_DATABASE_URL'] %>
 
 local:
   <<: *default
