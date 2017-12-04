@@ -68,7 +68,7 @@
             <div class="navbar-item">
               <% if not current_user %>
                 <p class="control">
-                  <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button' do %>
+                  <%= link_to 'login', controller: 'sessions', action: 'new', :class => 'bd-tw-button button', :target => '_self' do %>
                     <span class="icon">
                       <i class="fa fa-lock"></i>
                     </span>
@@ -83,7 +83,7 @@
             <div class="navbar-item">
               <% if not current_user %>
                 <p class="control">
-                  <%= link_to auth_scheme, :class => 'bd-tw-button button' do %>
+                  <%= link_to auth_scheme, :class => 'bd-tw-button button', :target => '_self' do %>
                     <span class="icon">
                       <i class="fa fa-lock"></i>
                     </span>
@@ -101,19 +101,24 @@
               Welcome, <%= current_user.first_name %>
             </a>
             <div class="navbar-dropdown ">
-              <a class="navbar-item " href="/documentation/overview/start/">
-                View Number 1
-              </a>
+              <% current_user.surveys.each do |view| %>
+                <%= link_to view.name, root_path(:user => current_user.id, :view => view.id), :class => 'navbar-item' %>
+              <% end %>
               <%= link_to 'Manage my Views', user_surveys_path(current_user), :class => 'navbar-item' %>
+
+              <% if current_user.is_admin? %>
+                <hr class="navbar-divider">
+                <%= link_to 'Admin Portal', admin_path, :class => 'navbar-item' %>
+              <% end %>
               <hr class="navbar-divider">
               <% if Rails.env.local? %>
-                <%= link_to session_path(current_user), method: "delete", :class => 'navbar-item is-active' do %>
+                <%= link_to session_path(current_user), method: "delete", :class => 'navbar-item is-active', :target => '_self' do %>
                   <span>
                     Log Out
                   </span>
                 <% end %>
               <% else %>
-                <%= link_to single_logout_omniauth_callbacks_path(:slo => '1'), :class => 'navbar-item is-active' do %>
+                <%= link_to single_logout_omniauth_callbacks_path(:slo => '1'), :class => 'navbar-item is-active', :target => '_self' do %>
                   <span>
                     Log Out
                   </span>

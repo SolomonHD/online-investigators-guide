@@ -1,7 +1,8 @@
+<div class="column">
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Current View:</strong>
   <%= @survey.name %>
 </p>
 
@@ -32,10 +33,27 @@
             <br/>
         <% end %>
       <% end %>
+      <% AnswersSurvey.where("survey_id = ?", @survey.id).each do |answer| %>
+        <% AnswersLabel.where(:answer_id => answer.answer_id).each do |label| %>
+          <% LabelsPage.where(:label_id => label.label_id).each do |page| %>
+          <%= link_to 'Page', page_path(page.page_id, :user => @user, :view => @survey.id) %>
+            <%= Page.where(:id => page.page_id) %>
+            <%= page.page_id %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <!-- <% Answer.where("question_id = ?", question.id).each do |answer| %>
+       <%= answer.id %>
+       <% AnswersLabel.where(:answer_id => answer.id).each do |label| %>
+         <% Label.where(:id => label.label_id).each do |l| %>
+           <%= l.name %>
+         <% end %>
+          <%= label.label_id %>
+       <% end %>
+      <% end %> -->
     </ol>
   </li>
   <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_user_survey_path(@user, @survey), :class => 'button is-gray is-edit' %>
-<%= link_to 'Back to All Surveys', user_surveys_path, :class => 'button is-blue is-back' %>
+</div>

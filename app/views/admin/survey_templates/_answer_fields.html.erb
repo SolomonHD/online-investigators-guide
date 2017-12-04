@@ -5,6 +5,8 @@
   <%= link_to "remove", '#', class: "remove_fields" %>
 
   <%= form.label "Labels:", :class => 'label' %>
+
+
   <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
     <div class="collection-check-box">
       <%= b.label %>

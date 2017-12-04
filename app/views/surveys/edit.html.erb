@@ -1,7 +1,10 @@
-<h1 class="title">Editing Survey<%= link_to 'Back to All Surveys', user_surveys_path(@user), :class => 'button is-blue is-back is-pulled-right' %></h1>
+<div class="column">
+  <h1 class="title">Editing View<%= link_to 'Back to My Views', user_surveys_path(@user), :class => 'button is-blue is-back is-pulled-right large-button' %></h1>
 
-<section>
-  <%= render 'form', survey: @survey %>
-</section>
+  <section>
+    <%= render 'form', survey: @survey %>
+  </section>
+
+</div>
 
 <!-- <%= link_to 'Show', [@user, @survey] %> | -->

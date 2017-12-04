@@ -19,8 +19,18 @@
     <!--  IF PAGE IS ROOT, BUILD ONLY DIRECT DESCENDANTS -->
     <% if @page.is_root? %>
       <ol type="a">
-        <% @page.descendants(:to_depth => 1).each do |child| %>
-          <li><%= link_to child.title, child %></li>
+        <% if params[:user] and params[:view] and current_user %>
+          <% @page.descendants(:to_depth => 1).each do |child| %>
+            <% if ! LabelsPage.where(:page_id => child.id).empty? %>
+              <li>
+                <%= link_to child.title, page_path(child, :user => params[:user], :view => params[:view]) %>
+              </li>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% @page.descendants(:to_depth => 1).each do |child| %>
+            <li><%= link_to child.title, child %></li>
+          <% end %>
         <% end %>
       </ol>
     <!--  ELSE DISPLAY ALL DIRECT DESCENDANTS -->

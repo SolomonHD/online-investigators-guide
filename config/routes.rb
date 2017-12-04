@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :pages, :except => ['edit', 'new', 'update', 'destroy']
   resources :users do
-    resources :surveys
+    resources :surveys, :path => 'views'
   end
   get 'sitemap', to:'pages#sitemap', as: 'sitemap'
   match  '/auth/:provider/callback', :to => 'omniauth_callbacks#saml', via: [:get, :post]

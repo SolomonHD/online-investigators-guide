@@ -1,8 +1,15 @@
 <ul>
   <% p.children.each do |sub| %>
-    <li <% if current_page?(sub) %> class="is-active" <% end %>>
-      <%= link_to_unless_current sub.title, sub %>
-      <%-# <%= render 'sideMenuSub', p: sub -%>
-    </li>
+    <% if params[:user] and params[:view] and current_user %>
+      <% if ! LabelsPage.where(:page_id => sub.id).empty? %>
+        <li <% if current_page?(sub) %> class="is-active" <% end %>>
+          <%= link_to_unless_current sub.title, page_path(sub, :user => params[:user], :view => params[:view]) %>
+        </li>
+      <% end %>
+    <% else %>
+      <li <% if current_page?(sub) %> class="is-active" <% end %>>
+        <%= link_to_unless_current sub.title, page_path(sub) %>
+      </li>
+    <% end %>
   <% end %>
 </ul>

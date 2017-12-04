@@ -1,5 +1,5 @@
 <h1 class="title">Log In</h1>
-<%= form_tag sessions_path do %>
+<%= form_tag(sessions_path, {:target => '_self'})  do %>
   <div class="field">
     <br/>
     <%= label_tag :net_id %>
