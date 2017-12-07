@@ -13,7 +13,7 @@ class Admin::BrokenLink < ApplicationRecord
 
     if Rails.env.local?
       page = agent.get('https://oig-dev.emory.edu/sitemap')
-    elsif Rails.env.qa?
+    elsif Rails.env.dev?
       page = agent.get('https://oig-qa.emory.edu/sitemap')
     elsif Rails.env.qa?
       page = agent.get('https://oig-qa.emory.edu/sitemap')
