@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+
+  require 'set'
 #  protect_from_forgery with: :exception
  include RelativeAuth
 
