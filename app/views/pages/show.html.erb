@@ -9,7 +9,7 @@
               <%= link_to page.title, page_path(page, :user => params[:user], :view => params[:view]) %>
             <% else %>
               <%= link_to page.title, page_path(page) %>
-            <% end %>  
+            <% end %>
           </li>
         <% end %>
         <li class="is-active"><%= link_to @page.title, @page, 'aria-current'=>'page' %></li>
@@ -26,12 +26,16 @@
     <% if @page.is_root? %>
       <ol type="a">
         <% if params[:user] and params[:view] and current_user %>
+
           <% @page.descendants(:to_depth => 1).each do |child| %>
-            <% if ! LabelsPage.where(:page_id => child.id).empty? %>
-              <li>
-                <%= link_to child.title, page_path(child, :user => params[:user], :view => params[:view]) %>
-              </li>
-            <% end %>
+
+          <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
+            <li>
+              <%= link_to child.title, page_path(child, :user => params[:user], :view => params[:view]) %>
+            </li>
+          <% end %>
+
+
           <% end %>
         <% else %>
           <% @page.descendants(:to_depth => 1).each do |child| %>
@@ -42,21 +46,47 @@
     <!--  ELSE DISPLAY ALL DIRECT DESCENDANTS -->
     <% else %>
       <!-- BUILD ANCHOR MENU -->
-      <ol>
-        <% @page.descendants.each do |child| %>
-          <li>
-            <%= link_to child.title, "#"+child.title.parameterize %>
-          </li>
-        <% end %>
-      </ol>
+      <% if params[:user] and params[:view] and current_user and @page.has_children? %>
+        <ol>
+          <% @page.descendants.each do |child| %>
+            <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
+              <li>
+                <%= link_to child.title, "#"+child.title.parameterize %>
+              </li>
+            <% end %>
+          <% end %>
+        </ol>
+      <% elsif @page.has_children? %>
+        <ol>
+          <% @page.descendants.each do |child| %>
+            <li>
+              <%= link_to child.title, "#"+child.title.parameterize %>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+
       <!-- TRAVERSE DESCENDANTS AND CREATE PAGE -->
-      <% @page.descendants.each_with_index do |child, index| %>
-        <article>
-          <a id="<%= child.title.parameterize %>">
-            <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
-          </a>
-          <%= raw child.body %>
-        </article>
+      <% if params[:user] and params[:view] and current_user and @page.has_children? %>
+          <% @page.descendants.each_with_index do |child, index| %>
+            <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
+              <article>
+                <a id="<%= child.title.parameterize %>">
+                  <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
+                </a>
+                <%= raw child.body %>
+              </article>
+            <% end %>
+          <% end %>
+      <% elsif @page.has_children? %>
+        <% @page.descendants.each_with_index do |child, index| %>
+          <article>
+            <a id="<%= child.title.parameterize %>">
+              <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
+            </a>
+            <%= raw child.body %>
+          </article>
+        <% end %>
       <% end %>
     <% end %>
     </div>

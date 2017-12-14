@@ -1,5 +1,6 @@
 <aside class="menu sub-menu column is-3 is-narrow-mobile is-hidden-mobile">
     <% if params[:user] and params[:view] and current_user %>
+      <%= link_to Survey.find(params[:view]).name , root_path(:user => params[:user], :view => params[:view]), class: "#{cp(root_path)} table-of-contents" %>
       <ul class="menu-list">
         <% allContentPages = Set.new [] %>
         <% allAncestors = [] %>
