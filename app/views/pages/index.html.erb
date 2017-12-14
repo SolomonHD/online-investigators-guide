@@ -4,26 +4,42 @@
   <% if params[:user] and params[:view] and current_user %>
     <h1 class="title">
       <% Survey.where(:id => params[:view]).each do |survey| %>
-        <%= survey.name %> - Table of Contents
+        <%= survey.name %>
       <% end %>
     </h1>
+
+    <ol class="parent">
+    <!-- Get all Pages -->
+    <% Page.roots.each do |p| %>
+      <!-- Check if page id is included in all ancestors or all content pages array -->
+      <% if @allContentPages.include? p.id or @allAncestors.include? p.id %>
+        <li>
+          <%= link_to p.title, page_path(p, :user => params[:user], :view => params[:view]) %>
+          <%= render :partial => 'sideMenuViewSpecific', locals: {p: p, allContentPages: @allContentPages, allAncestors: @allAncestors, listType: "ol", thisClass: "child"}  %>
+        </li>
+      <% end %>
+    <% end %>
+    </ol>
   <% else %>
     <h1 class="title">Investigator Handbook - Table of Contents</h1>
+    <ol class="parent">
+    <% Page.where("ancestry_depth < 1").find_each do |page, index| %>
+      <li>
+        <%= link_to page.title, page %>
+        <% if page.has_children? %>
+           <ol class="child">
+            <% page.children.each do |child, index| %>
+              <li>
+                <%= link_to child.title, child %>
+              </li>
+            <% end %>
+          </ol>
+        <% end %>
+      </li>
+    <% end %>
+    </ol>
   <% end %>
-  <ol class="parent">
-  <% Page.where("ancestry_depth < 1").find_each do |page, index| %>
-    <li>
-      <%= link_to page.title, page %>
-      <% if page.has_children? %>
-         <ol class="child">
-          <% page.children.each do |child, index| %>
-            <li>
-              <%= link_to child.title, child %>
-            </li>
-          <% end %>
-        </ol>
-      <% end %>
-    </li>
-  <% end %>
-  </ol>
+
+
+
 </div>

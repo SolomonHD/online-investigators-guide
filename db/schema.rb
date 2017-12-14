@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127153424) do
+ActiveRecord::Schema.define(version: 20171214160639) do
 
   create_table "admin_broken_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "link_text"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20171127153424) do
     t.bigint "survey_template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_default"
     t.index ["survey_template_id"], name: "index_surveys_on_survey_template_id"
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end

@@ -1,4 +1,9 @@
+require 'active_support/callbacks'
+
 class PagesController < ApplicationController
+
+  include ActiveSupport::Callbacks
+
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:new, :edit, :update, :destroy]
 
@@ -6,6 +11,7 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     @pages = Page.all
+    customView
   end
 
   def search
@@ -45,12 +51,37 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    customView
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.find(params[:id])
+    end
+
+    def customView
+      @allContentPages = Set.new []
+      @allAncestors = []
+      AnswersSurvey.where(:survey_id => params[:view]).each do |answer|
+        AnswersLabel.where(:answer_id => answer.answer_id).each do |label|
+          @thisLabel = Label.find(label.label_id)
+          LabelsPage.where(:label_id => label.label_id).each do |page|
+            @allContentPages.add(page.page_id)
+            thisPage = Page.find(page.page_id)
+            thisPage.ancestor_ids.each do |ancestor|
+              @allAncestors.push(ancestor)
+            end
+          end
+        end
+      end
+
+      puts @allAncestors
+      puts @allContentPages
+
+      return @allAncestors
+      return @allContentPages
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
