@@ -20,7 +20,7 @@
 
         <div class="navbar-end">
           <div class="navbar-item supporting-units is-hidden-mobile">
-            <a class="navbar-item disabled">Supporting Units</a>
+            <span class="unit-label">Supporting Units</span>
           <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
               <a class="navbar-item" href="<%= unit.url %>" target="_blank">
                 <%= unit.unit %>

@@ -76,9 +76,6 @@ class PagesController < ApplicationController
         end
       end
 
-      puts @allAncestors
-      puts @allContentPages
-
       return @allAncestors
       return @allContentPages
 
