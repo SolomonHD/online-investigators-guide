@@ -4,8 +4,7 @@ class Page < ApplicationRecord
   has_and_belongs_to_many :labels
 
   def self.search(search)
-    where("title LIKE ?", "%#{search}%")
-    where("body LIKE ?", "%#{search}%")
+    where("header LIKE '%#{search}%' OR title LIKE '%#{search}%' OR body LIKE '%#{search}%'")
   end
 
 end
