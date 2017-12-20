@@ -1,54 +1,14 @@
 <aside class="column is-3 is-narrow-mobile is-hidden-mobile">
-<div class="menu sub-menu ">
-    <% if params[:user] and params[:view] and current_user %>
-      <%= link_to Survey.find(params[:view]).name , root_path(:user => params[:user], :view => params[:view]), class: "#{cp(root_path)} table-of-contents" %>
-      <ul class="menu-list">
-        <% allContentPages = Set.new [] %>
-        <% allAncestors = [] %>
-        <!-- All Answers for this Survey based on view in query string -->
-        <% AnswersSurvey.where(:survey_id => params[:view]).each do |answer| %>
-          <% AnswersLabel.where(:answer_id => answer.answer_id).each do |label| %>
-            <% @thisLabel = Label.find(label.label_id) %>
-            <% LabelsPage.where(:label_id => label.label_id).each do |page| %>
-              <% allContentPages.add(page.page_id) %>
-              <% thisPage = Page.find(page.page_id) %>
-              <% thisPage.ancestor_ids.each do |ancestor| %>
-                <% allAncestors.push(ancestor) %>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-        <!-- Get all Pages -->
-        <% Page.roots.each do |p| %>
-          <!-- Check if page id is included in all ancestors or all content pages array -->
-          <% if allContentPages.include? p.id or allAncestors.include? p.id %>
-            <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
-              <%= link_to p.title, page_path(p, :user => params[:user], :view => params[:view]) %>
-              <%= render :partial => 'sideMenuViewSpecific', locals: {p: p, allContentPages: allContentPages, allAncestors: allAncestors, listType: "ul"}  %>
-            </li>
-          <% end %>
-        <% end %>
-
-    </ul>
+  <div class="menu sub-menu ">
+    <% if params[:user] and params[:view] %>
+      <% if not current_user.id.to_s == params[:user] %>
+        <%= render :partial => 'unfilteredSideMenu' %>
+      <% else %>
+        <%= render :partial => 'filteredSideMenu' %>
+      <% end %>
     <% else %>
-        <%= link_to 'Table of Contents', root_path, class: "#{cp(root_path)} table-of-contents" %>
-        <ul class="menu-list">
-          <% Page.roots.each do |p| %>
-              <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
-                <%= link_to h(p.title), p %>
-                <% if p.children.present? %>
-                  <%= render 'sideMenuSub', p: p %>
-                <% end %>
-              </li>
-          <% end %>
-
-          </ul>
-        <!-- <p class="menu-label">
-          General
-        </p> -->
-
+      <%= render :partial => 'unfilteredSideMenu' %>
     <% end %>
-
-          </div>
-          <%= render :partial => 'feedbackSurvey' %>
-  </aside>
+  </div>
+  <%= render :partial => 'feedbackSurvey' %>
+</aside>

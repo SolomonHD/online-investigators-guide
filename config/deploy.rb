@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.0"
-
+#set :pty, true
 set :application, "online_investigators_guide"
 set :repo_url, "git@github.com:emory-lits-uit/online-investigators-guide.git"
 set :user, "deploy"
@@ -9,7 +9,6 @@ set :passenger_restart_with_touch, true
 set :default_env, {
         'PATH' => "/paths/git-current:/paths/ruby-current:/paths/nodejs-current:$PATH"
 }
-
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
