@@ -1,4 +1,5 @@
-<aside class="menu sub-menu column is-3 is-narrow-mobile is-hidden-mobile">
+<aside class="column is-3 is-narrow-mobile is-hidden-mobile">
+<div class="menu sub-menu ">
     <% if params[:user] and params[:view] and current_user %>
       <%= link_to Survey.find(params[:view]).name , root_path(:user => params[:user], :view => params[:view]), class: "#{cp(root_path)} table-of-contents" %>
       <ul class="menu-list">
@@ -27,22 +28,27 @@
             </li>
           <% end %>
         <% end %>
+
     </ul>
     <% else %>
         <%= link_to 'Table of Contents', root_path, class: "#{cp(root_path)} table-of-contents" %>
-        <% Page.roots.each do |p| %>
-          <ul class="menu-list">
-            <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
-              <%= link_to h(p.title), p %>
-              <% if p.children.present? %>
-                <%= render 'sideMenuSub', p: p %>
-              <% end %>
-            </li>
+        <ul class="menu-list">
+          <% Page.roots.each do |p| %>
+              <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
+                <%= link_to h(p.title), p %>
+                <% if p.children.present? %>
+                  <%= render 'sideMenuSub', p: p %>
+                <% end %>
+              </li>
+          <% end %>
+
           </ul>
-        <% end %>
         <!-- <p class="menu-label">
           General
         </p> -->
 
     <% end %>
+
+          </div>
+          <%= render :partial => 'feedbackSurvey' %>
   </aside>
