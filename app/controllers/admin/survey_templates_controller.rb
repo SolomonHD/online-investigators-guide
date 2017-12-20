@@ -6,19 +6,6 @@ class Admin::SurveyTemplatesController < Admin::BaseController
     SurveyTemplate.where(id: params[:survey_template_id]).update(:is_default => true)
     SurveyTemplate.where.not(id: params[:survey_template_id]).update_all(:is_default => false)
     redirect_to admin_survey_templates_path
-    # @adminCount = User.where(is_admin: true).count
-    # @user = User.find(params[:user_id])
-    # if @adminCount == 1 && @user.is_admin
-    #   flash[:notice] = "Site must have at least one admin."
-    # elsif @user.is_admin
-    #   flash[:notice] = @user.first_name + " " + @user.last_name + " is no longer an admin."
-    #   @user.is_admin = 0
-    # else
-    #   flash[:notice] = @user.first_name + " " + @user.last_name + " now has administrative priveleges."
-    #   @user.is_admin = 1
-    # end
-    #   @user.save
-    # redirect_to admin_users_path
   end
 
   # GET /survey_templates
