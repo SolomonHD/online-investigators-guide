@@ -58,8 +58,6 @@ gem 'omniauth-saml'
 
 gem 'mechanize'
 
-gem 'ckeditor'
-
 gem "html_truncator", "~>0.2"
 
 # Install brew install graphviz on local environment
