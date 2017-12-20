@@ -2,6 +2,22 @@ class Admin::SurveyTemplatesController < Admin::BaseController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
   # before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
+  def toggle_default_template
+    # @adminCount = User.where(is_admin: true).count
+    # @user = User.find(params[:user_id])
+    # if @adminCount == 1 && @user.is_admin
+    #   flash[:notice] = "Site must have at least one admin."
+    # elsif @user.is_admin
+    #   flash[:notice] = @user.first_name + " " + @user.last_name + " is no longer an admin."
+    #   @user.is_admin = 0
+    # else
+    #   flash[:notice] = @user.first_name + " " + @user.last_name + " now has administrative priveleges."
+    #   @user.is_admin = 1
+    # end
+    #   @user.save
+    # redirect_to admin_users_path
+  end
+
   # GET /survey_templates
   # GET /survey_templates.json
   def index
