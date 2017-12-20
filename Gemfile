@@ -85,6 +85,7 @@ group :development, :local do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
+  gem 'capistrano-apache-systemd', github:"NorseGaud/capistrano-apache-systemd", branch: "master", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

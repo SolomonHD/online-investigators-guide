@@ -1,11 +1,18 @@
 <p id="notice"><%= notice %></p>
 <%= render partial: "sideMenu" %>
   <section class="column page-body">
+
+    <% if params[:user] and params[:view] %>
+      <% if not current_user.id.to_s == params[:user] %>
+        <div class="notification is-danger">You do not have authorization for this customized view. To create your own customized view, <%= link_to 'click here', user_surveys_path(current_user.id) %></div>
+      <% end %>
+    <% end %>
+
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <% @page.ancestors.each do |page| %>
           <li>
-            <% if params[:user] and params[:view] and current_user %>
+            <% if params[:user] and params[:view] and not current_user.id.to_s == params[:user] %>
               <%= link_to page.title, page_path(page, :user => params[:user], :view => params[:view]) %>
             <% else %>
               <%= link_to page.title, page_path(page) %>
@@ -14,6 +21,7 @@
         <% end %>
         <li class="is-active"><%= link_to @page.title, @page, 'aria-current'=>'page' %></li>
       </ul>
+      <a class="button print" onclick="window.print();return false;" ><span class="fa fa-print"></span>Print Page</a>
     </nav>
 
     <h1 class="title">
@@ -26,20 +34,18 @@
     <% if @page.is_root? %>
       <ol type="a">
         <% if params[:user] and params[:view] and current_user %>
-
-          <% @page.descendants(:to_depth => 1).each do |child| %>
-
-          <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
-            <li>
-              <%= link_to child.title, page_path(child, :user => params[:user], :view => params[:view]) %>
-            </li>
-          <% end %>
-
-
-          <% end %>
-        <% else %>
-          <% @page.descendants(:to_depth => 1).each do |child| %>
-            <li><%= link_to child.title, child %></li>
+          <% if current_user.id.to_s == params[:user] %>
+            <% @page.descendants(:to_depth => 1).each do |child| %>
+              <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
+                <li>
+                  <%= link_to child.title, page_path(child, :user => params[:user], :view => params[:view]) %>
+                </li>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% @page.descendants(:to_depth => 1).each do |child| %>
+              <li><%= link_to child.title, child %></li>
+            <% end %>
           <% end %>
         <% end %>
       </ol>

@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/NorseGaud/capistrano-apache-systemd.git
+  revision: 529900fac21e79a1feee0e03fbedcfb098fca730
+  branch: master
+  specs:
+    capistrano-apache-systemd (1.0.0)
+      capistrano (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -261,6 +269,7 @@ DEPENDENCIES
   ancestry
   byebug
   capistrano (~> 3.6)
+  capistrano-apache-systemd!
   capistrano-passenger
   capistrano-rails (~> 1.1)
   capistrano-rvm
