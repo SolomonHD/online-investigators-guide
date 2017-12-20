@@ -11,7 +11,9 @@ Rails.application.routes.draw do
         get :move
     end
     resources :pages
-    resources :survey_templates
+    resources :survey_templates do
+      get :toggle_default
+    end
     resources :labels
     resources :users do
       get :toggle_admin
