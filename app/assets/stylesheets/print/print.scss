@@ -1,0 +1,72 @@
+@media print {
+  // .navbar {
+  //   display: none;
+  // }
+  .button, .secondary-navbar, .menu, .navbar-end, .navbar-brand, .eu-brand {
+    display: none;
+  }
+  .navbar-menu {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  a {
+    color: black;
+  }
+  .page-body {
+    ol {
+      display: none;
+    }
+  }
+  h2.subtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  article {
+    > * {
+      padding-left: 2em;
+    }
+    ul {
+      margin-left: 1em;
+    }
+  }
+  .print-logo {
+    img {
+      width: 300px;
+    }
+  }
+  .site-information {
+    div {
+        display: inline-block;
+    }
+    .site-name {
+        border-right: solid 1px;
+        padding-right: .5em;
+        margin-right: .25em;
+    }
+  }
+  .breadcrumb {
+    ul {
+      margin-left: 0;
+      padding-left: 0;
+      li {
+        display: inline-block;
+        a {
+          color: black;
+          text-decoration: none;
+          &:after {
+            padding-left: 5px;
+            padding-right: 5px;
+            content: ">"
+          }
+        }
+        &:last-child {
+          a {
+            &:after {
+              content: ""
+            }
+          }
+        }
+      }
+    }
+  }
+}

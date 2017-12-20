@@ -135,12 +135,20 @@ input[type='text'],
   &.has-fixed-size
     resize: none
 
+.field .radio .checkbox
+  input[type='checkbox']
+    -webkit-appearance: radio
+    -moz-appearance: radio
+    -ms-appearance: radio
+
 .checkbox,
 .radio
   cursor: pointer
   display: inline-block
   line-height: 1.25
   position: relative
+  label
+    padding-left: .25em
   input
     cursor: pointer
   &:hover

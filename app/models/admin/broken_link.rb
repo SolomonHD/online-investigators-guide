@@ -11,15 +11,7 @@ class Admin::BrokenLink < ApplicationRecord
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Chrome'
 
-    if Rails.env.local?
-      page = agent.get('https://oig-dev.emory.edu/sitemap')
-    elsif Rails.env.dev?
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
-    elsif Rails.env.qa?
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
-    else
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
-    end
+    page = agent.get('https://oig-dev.emory.edu/sitemap')
 
     # GET PAGES FROM SITEMAP
     page.links_with(href: %r{.*/pages/\w+}).each do |link|

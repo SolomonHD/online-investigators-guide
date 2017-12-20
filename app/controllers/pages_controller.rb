@@ -29,22 +29,22 @@ class PagesController < ApplicationController
     @pages = Page.where("body != ''").all
     require 'mechanize'
 
-    a = Mechanize.new { |agent|
-      agent.user_agent_alias = 'Mac Safari'
-    }
-
-    page = a.get('https://oig-dev.emory.edu/pages/')
-
-    page.links.each do |link|
-      begin
-        puts link.click
-        # puts link.text
-      rescue Mechanize::ResponseCodeError => ex
-        puts ex.response_code
-        puts link.text
-      end
-
-    end
+    # a = Mechanize.new { |agent|
+    #   agent.user_agent_alias = 'Mac Safari'
+    # }
+    #
+    # page = a.get('https://oig-dev.emory.edu/pages/')
+    #
+    # page.links.each do |link|
+    #   begin
+    #     puts link.click
+    #     # puts link.text
+    #   rescue Mechanize::ResponseCodeError => ex
+    #     puts ex.response_code
+    #     puts link.text
+    #   end
+    #
+    # end
 
   end
 
