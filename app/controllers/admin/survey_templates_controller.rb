@@ -2,7 +2,10 @@ class Admin::SurveyTemplatesController < Admin::BaseController
   before_action :set_survey_template, only: [:show, :edit, :update, :destroy]
   # before_action :is_admin?, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
-  def toggle_default_template
+  def toggle_default
+    SurveyTemplate.where(id: params[:survey_template_id]).update(:is_default => true)
+    SurveyTemplate.where.not(id: params[:survey_template_id]).update_all(:is_default => false)
+    redirect_to admin_survey_templates_path
     # @adminCount = User.where(is_admin: true).count
     # @user = User.find(params[:user_id])
     # if @adminCount == 1 && @user.is_admin
