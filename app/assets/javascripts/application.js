@@ -14,5 +14,4 @@
 //= require rails-ujs
 //= require trix
 //= require turbolinks
-//= require ckeditor/init
 //= require_tree .
