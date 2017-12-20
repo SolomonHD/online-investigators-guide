@@ -1,45 +1,15 @@
 <%= render partial: "sideMenu" %>
 
 <div class="column table-of-contents">
-  <% if params[:user] and params[:view] and current_user %>
-    <h1 class="title">
-      <% Survey.where(:id => params[:view]).each do |survey| %>
-        <%= survey.name %>
-      <% end %>
-    </h1>
-
-    <ol class="parent">
-    <!-- Get all Pages -->
-    <% Page.roots.each do |p| %>
-      <!-- Check if page id is included in all ancestors or all content pages array -->
-      <% if @allContentPages.include? p.id or @allAncestors.include? p.id %>
-        <li>
-          <%= link_to p.title, page_path(p, :user => params[:user], :view => params[:view]) %>
-          <%= render :partial => 'sideMenuViewSpecific', locals: {p: p, allContentPages: @allContentPages, allAncestors: @allAncestors, listType: "ol", thisClass: "child"}  %>
-        </li>
-      <% end %>
+  <% if params[:user] and params[:view] %>
+    <% if not current_user.id.to_s == params[:user] %>
+      <div class="notification is-danger">You do not have authorization for this customized view. To create your own customized view, <%= link_to 'click here', user_surveys_path(current_user.id) %></div>
+      <%= render :partial => 'unfilteredView' %>
+    <% else %>
+      <%= render :partial => 'filteredView' %>
     <% end %>
-    </ol>
   <% else %>
-    <h1 class="title">Investigator Handbook - Table of Contents</h1>
-    <ol class="parent">
-    <% Page.where("ancestry_depth < 1").find_each do |page, index| %>
-      <li>
-        <%= link_to page.title, page %>
-        <% if page.has_children? %>
-           <ol class="child">
-            <% page.children.each do |child, index| %>
-              <li>
-                <%= link_to child.title, child %>
-              </li>
-            <% end %>
-          </ol>
-        <% end %>
-      </li>
-    <% end %>
-    </ol>
+    <%= render :partial => 'unfilteredView' %>  
   <% end %>
-
-
 
 </div>
