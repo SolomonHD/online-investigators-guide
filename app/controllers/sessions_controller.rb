@@ -9,7 +9,13 @@ class SessionsController < ApplicationController
       if @user.is_admin
         redirect_to '/admin', notice: "Logged in!"
       else
-        redirect_to user_surveys_path(@user), notice: "Logged in!"
+        @view = Survey.where(user_id: @user.id, is_default: true).first
+        flash[:notice] = "You’re logged in"
+        if @view 
+          redirect_to root_path(:user => @user.id, :view => @view.id)
+        else
+          redirect_to user_surveys_path(@user), notice: "You’re logged in"
+        end
       end
     end
   end
