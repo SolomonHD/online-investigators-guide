@@ -3,7 +3,13 @@
     <% if params[:user] and params[:view] and current_user %>
       <% if ! LabelsPage.where(:page_id => sub.id).empty? %>
         <li <% if current_page?(sub) %> class="is-active" <% end %>>
-          <%= link_to sub.title, page_path(sub, :user => params[:user], :view => params[:view]) %>
+          <% if params[:user] and params[:view] %>
+            <% if current_user.id.to_s == params[:user] %>
+              <%= link_to sub.title, page_path(sub, :user => params[:user], :view => params[:view]) %>
+            <% else %>
+              <%= link_to sub.title, page_path(sub) %>
+            <% end %>
+          <% end %>
         </li>
       <% end %>
     <% else %>

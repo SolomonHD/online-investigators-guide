@@ -1,0 +1,18 @@
+<h1 class="title">
+  <% Survey.where(:id => params[:view]).each do |survey| %>
+    <%= survey.name %>
+  <% end %>
+</h1>
+
+<ol class="parent">
+<!-- Get all Pages -->
+<% Page.roots.each do |p| %>
+  <!-- Check if page id is included in all ancestors or all content pages array -->
+  <% if @allContentPages.include? p.id or @allAncestors.include? p.id %>
+    <li>
+      <%= link_to p.title, page_path(p, :user => params[:user], :view => params[:view]) %>
+      <%= render :partial => 'sideMenuViewSpecific', locals: {p: p, allContentPages: @allContentPages, allAncestors: @allAncestors, listType: "ol", thisClass: "child"}  %>
+    </li>
+  <% end %>
+<% end %>
+</ol>

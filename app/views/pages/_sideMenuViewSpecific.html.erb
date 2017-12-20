@@ -6,8 +6,13 @@
   <% p.children.each do |c| %>
     <% if allContentPages.include? c.id or allAncestors.include? c.id %>
       <li class="<% if c.has_children? %>sub-parent <% end %><% if current_page?(c) %>is-active is-active-parent<% end %>">
-        <%= link_to c.title, page_path(c, :user => params[:user], :view => params[:view]) %>
-          <%# render :partial => 'sideMenuViewSpecific', locals: {p: c, allContentPages: allContentPages, allAncestors: allAncestors}  %>
+        <% if params[:user] and params[:view] %>
+          <% if current_user.id.to_s == params[:user] %>
+            <%= link_to c.title, page_path(c, :user => params[:user], :view => params[:view]) %>
+          <% else %>
+            <%= link_to c.title, page_path(c) %>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
   <% end %>
