@@ -17,7 +17,20 @@ trix-editor {
 }
 .page-body {
   padding: 0 1em;
-
+  pre {
+    display: flex;
+    align-items: center;
+    background-color: #ffdd57;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: $family-sans-serif;
+    font-size: 1rem;
+    &:before {
+      content: "\f0eb";
+      font: normal normal normal 50px/1 FontAwesome;
+      padding-right: 10px;
+    }
+  }
   ol {
     line-height: 2em;
   }
