@@ -9,6 +9,7 @@
         <tr>
           <th>Name</th>
           <th>Description</th>
+          <th>Default</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -18,7 +19,7 @@
           <tr>
             <td><%= survey.name %></td>
             <td><%= survey.description %></td>
-
+            <td><% if survey.is_default %><span class="fa fa-check"></span><% end %></td>
             <td><%= link_to 'View', root_path(:user => current_user.id, :view => survey.id), :class => 'button show is-primary is-show large-button', target: '_self' %>
               <%= link_to 'Edit', edit_user_survey_path( @user, survey ) , :class => 'button edit is-gray is-edit large-button', target: '_self' %>
               <%= link_to 'Delete', [ @user, survey], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete large-button', target: '_self' %></td>
