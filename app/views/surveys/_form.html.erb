@@ -20,6 +20,13 @@
   </div>
 
   <div class="field">
+    <div class="checkbox">
+      <%= form.label :is_default, "Default View" %>
+      <%= form.check_box :is_default, id: :survey_is_default %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.label 'Description of View' %>
     <%= form.text_area :description, id: :survey_description, :class => 'textarea' %>
   </div>
