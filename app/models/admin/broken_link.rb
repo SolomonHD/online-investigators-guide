@@ -47,23 +47,24 @@ class Admin::BrokenLink < ApplicationRecord
             Net::HTTP::Persistent::Error,
             SocketError,
             Net::HTTPRetriableError => e
+              case e.response_code
+                when "404"
+                  # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
+                  if !l.href.include?("auth/") and !l.text.include?("Log In")
+                   Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code, link_error: e)
+                  end
+                  next # If the page can not be found next
+                when "502"
+                  retry # another time when you can not access it well!
+                else
+                  retry
+                end
           rescue SocketError => e
             Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
           rescue OpenSSL::SSL::SSLError => e
             Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 509, link_error: e)
           rescue Mechanize::ResponseCodeError => e
-            case e.response_code
-              when "404"
-                # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
-                if !l.href.include?("auth/") and !l.text.include?("Log In")
-                 Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code, link_error: e)
-                end
-                next # If the page can not be found next
-              when "502"
-                retry # another time when you can not access it well!
-              else
-                retry
-              end
+
           end
         end
     end
