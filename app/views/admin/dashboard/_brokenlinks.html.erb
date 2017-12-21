@@ -16,7 +16,7 @@
         <span class="fa fa-spinner fa-pulse fa-5x fa-fw"></span>
         <span class="sr-only">Loading...</span>
       </div>
-          <% if Admin::BrokenLink.where(:page_id == 'null').count == 1 %>
+          <% if Admin::BrokenLink.where("page_title != ''").count == 0 %>
             <div class="notification is-success">No Broken Links detected</div>
           <% else %>
             <table class="table striping" id="linkReport">
@@ -30,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-            <% Admin::BrokenLink.where(! :page_id == 'null').each do |link| %>
+            <% Admin::BrokenLink.where("page_title != ''").each do |link| %>
               <tr>
                 <td>
                   <%= link_to '', edit_admin_page_path(link.page_id), :class => 'button is-edit is-gray', :target => "_blank" %>

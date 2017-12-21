@@ -28,7 +28,9 @@ class Admin::BrokenLink < ApplicationRecord
           begin
            l.click.code.to_s
            # PREVENT ERRORS AND WRITE TO DATABASE
-          rescue Net::HTTPServerException, OpenSSL::SSL::SSLError => e
+         rescue  SocketError => e
+           Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
+         rescue Net::HTTPServerException, OpenSSL::SSL::SSLError => e
             # DO NOTHING
           rescue Errno::EINVAL,
             Errno::ECONNRESET,
@@ -42,7 +44,6 @@ class Admin::BrokenLink < ApplicationRecord
             Errno::EHOSTUNREACH,
             Mechanize::Error,
             Net::HTTP::Persistent::Error,
-            SocketError,
             Net::HTTPRetriableError => e
               case e.response_code
                 when "404"
@@ -61,7 +62,7 @@ class Admin::BrokenLink < ApplicationRecord
     end
     # IF NO DEADLINKS, RUN NULLSET FOR UPDATED TIME
     if Admin::BrokenLink.count == 0
-      Admin::BrokenLink.create(page_id: "null")
+      Admin::BrokenLink.create()
     end
   end
 end
