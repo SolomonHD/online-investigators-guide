@@ -25,6 +25,7 @@ class Admin::BrokenLink < ApplicationRecord
       internalPage = agent.get(link.href)
         # GET ALL LINKS ON URL
         internalPage.links.each do |l|
+          puts l.href
           begin
            l.click.code.to_s
            # PREVENT ERRORS AND WRITE TO DATABASE
