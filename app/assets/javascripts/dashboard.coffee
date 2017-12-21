@@ -5,6 +5,7 @@ $(document).on 'turbolinks:load', ->
   $('#runBrokenLinkReport').click ->
     alert ("Please do not refresh this page while the report is running. This could take a few minutes.")
     $("#linkReport").hide();
+    $(".notification").hide();
     $("#loading").show();
     return
   return
