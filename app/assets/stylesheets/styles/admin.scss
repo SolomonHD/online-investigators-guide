@@ -33,6 +33,11 @@ trix-toolbar .trix-button--icon-code::before {
       margin-top: .5em;
     }
   }
+  &.card {
+    table {
+      width: 100%;
+    }
+  }
   table {
     width: 96%;
     margin: auto;

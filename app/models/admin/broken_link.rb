@@ -7,11 +7,19 @@ class Admin::BrokenLink < ApplicationRecord
 
     require 'mechanize'
 
+    puts Rails.env
+
+
     # Mechanize
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Chrome'
+    agent.follow_meta_refresh = true
 
-    page = agent.get('https://oig-dev.emory.edu/sitemap')
+    if Rails.env == 'local' || Rails.env == 'development'
+      page = agent.get('https://oig-dev.emory.edu/sitemap')
+    else
+      page = agent.get('https://oig-qa.emory.edu/sitemap')
+    end
 
     # GET PAGES FROM SITEMAP
     page.links_with(href: %r{.*/pages/\w+}).each do |link|
@@ -22,12 +30,16 @@ class Admin::BrokenLink < ApplicationRecord
           begin
            l.click.code.to_s
           # PREVENT ERRORS AND WRITE TO DATABASE
+          rescue SocketError => e
+            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
+          rescue OpenSSL::SSL::SSLError => e
+            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 509, link_error: e)
           rescue Mechanize::ResponseCodeError => e
             case e.response_code
               when "404"
                 # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
                 if !l.href.include?("auth/") and !l.text.include?("Log In")
-                 Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code)
+                 Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code, link_error: e)
                 end
                 next # If the page can not be found next
               when "502"

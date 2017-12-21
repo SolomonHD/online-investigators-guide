@@ -19,22 +19,30 @@
       <table class="table striping" id="linkReport">
         <thead>
           <tr>
-            <th>Page Title</th>
+            <th></th>
+            <th >Page Title</th>
             <th>Link Text</th>
             <th>Bad URL</th>
+            <th>Error Text</th>
           </tr>
         </thead>
         <tbody>
           <% Admin::BrokenLink.all.each do |link| %>
             <tr>
               <td>
-                <%= link_to '', edit_admin_page_path(link.page_id), :class => 'button is-edit is-gray' %> <%= link.page_title %>
+                <%= link_to '', edit_admin_page_path(link.page_id), :class => 'button is-edit is-gray', :target => "_blank" %>
+              </td>
+              <td>
+                 <%= link.page_title %>
               </td>
               <td>
                 <%= link.link_text %>
               </td>
               <td>
                 <%= link.broken_url %>
+              </td>
+              <td>
+                <%= HTML_Truncator.truncate(link.link_error, 50, :length_in_chars => true).html_safe %>
               </td>
             </tr>
           <% end %>

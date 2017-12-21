@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214160639) do
+ActiveRecord::Schema.define(version: 20171221173314) do
 
   create_table "admin_broken_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "link_text"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171214160639) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "link_status"
+    t.string "link_error"
   end
 
   create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
