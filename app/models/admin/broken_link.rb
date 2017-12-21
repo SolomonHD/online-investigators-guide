@@ -14,6 +14,7 @@ class Admin::BrokenLink < ApplicationRecord
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Chrome'
     agent.follow_meta_refresh = true
+    agent.request_headers
 
     if Rails.env == 'local' || Rails.env == 'development'
       page = agent.get('https://oig-dev.emory.edu/sitemap')
