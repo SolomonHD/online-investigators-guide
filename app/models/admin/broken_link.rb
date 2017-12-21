@@ -31,10 +31,9 @@ class Admin::BrokenLink < ApplicationRecord
             case e.response_code
               when "404"
                 Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
-              else
-                retry
               end
           rescue Net::HTTPServerException => e
+            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
            # PREVENT ERRORS AND WRITE TO DATABASE
           # rescue  SocketError => e
           #  Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
