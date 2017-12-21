@@ -41,7 +41,7 @@ $label-weight: $weight-bold !default
 $help-size: $size-small !default
 
 fieldset
-  background-color: $grey-lighter
+  background-color: $grey-lightest
   padding: 1em
   margin-bottom: 1em
   border-radius: 2px
@@ -405,6 +405,8 @@ input[type='text'],
   display: block
   font-size: $size-normal
   font-weight: $label-weight
+  &.adjusted-top
+    padding-top: .25em
   &:not(:last-child)
     margin-bottom: 0.5em
   // Sizes

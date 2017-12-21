@@ -1,11 +1,10 @@
 <fieldset>
+  <%= link_to " ", '#', class: "remove_fields fa fa-times-circle" %>
   <%= form.label :content, "Answer" %>
   <%= form.text_field :content %>
   <%= form.hidden_field :_destroy %>
-  <%= link_to "remove", '#', class: "remove_fields" %>
 
-  <%= form.label "Labels:", :class => 'label' %>
-
+  <%= form.label "Labels to Show:", :class => 'label adjusted-top' %>
 
   <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
     <div class="collection-check-box">

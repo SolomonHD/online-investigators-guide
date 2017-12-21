@@ -1,9 +1,10 @@
 <fieldset>
   <div class="field">
+    <%= link_to " ", '#', class: "remove_fields fa fa-times-circle" %>
     <%= form.label :content, "Question", :class => 'label' %>
-    <%= form.text_area :content, :class => 'textarea' %>
+    <%= form.text_field :content %>
     <%= form.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "remove_fields" %>
+
   </div>
   <%= form.label :question_type_id, "How many answers can this question have?", :class => 'label' %>
   <div class="select">
