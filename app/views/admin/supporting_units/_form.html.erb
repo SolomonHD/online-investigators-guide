@@ -26,7 +26,9 @@
     <%= form.text_field :url, id: :admin_supporting_unit_url %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">
+    <div class="control">
+      <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
+    </div>
   </div>
 <% end %>
