@@ -7,9 +7,6 @@ class Admin::BrokenLink < ApplicationRecord
 
     require 'mechanize'
 
-    puts Rails.env
-
-
     # Mechanize
     agent = Mechanize.new
     agent.user_agent_alias = 'Windows Chrome'
@@ -30,8 +27,9 @@ class Admin::BrokenLink < ApplicationRecord
         internalPage.links.each do |l|
           begin
            l.click.code.to_s
-          # PREVENT ERRORS AND WRITE TO DATABASE
+           # PREVENT ERRORS AND WRITE TO DATABASE
           rescue Net::HTTPServerException, OpenSSL::SSL::SSLError => e
+            # DO NOTHING
           rescue Errno::EINVAL,
             Errno::ECONNRESET,
             EOFError,
@@ -58,18 +56,12 @@ class Admin::BrokenLink < ApplicationRecord
                 else
                   retry
                 end
-          rescue SocketError => e
-            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
-          rescue OpenSSL::SSL::SSLError => e
-            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 509, link_error: e)
-          rescue Mechanize::ResponseCodeError => e
-
           end
         end
     end
     # IF NO DEADLINKS, RUN NULLSET FOR UPDATED TIME
     if Admin::BrokenLink.count == 0
-      Admin::BrokenLink.create(page_id:null)
+      Admin::BrokenLink.create(page_id: "null")
     end
   end
 end
