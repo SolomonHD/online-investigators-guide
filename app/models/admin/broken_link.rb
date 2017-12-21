@@ -29,12 +29,11 @@ class Admin::BrokenLink < ApplicationRecord
           begin
            l.click.code.to_s
            # PREVENT ERRORS AND WRITE TO DATABASE
-         
         end
     end
     # IF NO DEADLINKS, RUN NULLSET FOR UPDATED TIME
     if Admin::BrokenLink.count == 0
       Admin::BrokenLink.create()
     end
-  end
+
 end
