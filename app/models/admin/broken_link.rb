@@ -22,13 +22,13 @@ class Admin::BrokenLink < ApplicationRecord
     # GET PAGES FROM SITEMAP
     page.links_with(href: %r{.*/pages/\w+}).each do |link|
       puts link
-      logger.info "LINK:" link
+      logger.info link
       # FETCH URL USING MECHANIZE AGENT
       internalPage = agent.get(link.href)
         # GET ALL LINKS ON URL
         internalPage.links.each do |l|
           puts l.href
-          logger.info "HREF" l.href
+          logger.info l.href
           begin
            l.click.code.to_s
            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: l.click.code.to_s, link_error: l.click.code.to_s)
