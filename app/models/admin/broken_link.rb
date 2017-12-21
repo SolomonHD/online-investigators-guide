@@ -14,7 +14,7 @@ class Admin::BrokenLink < ApplicationRecord
     agent.request_headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
 
     if Rails.env == 'local' || Rails.env == 'development'
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
+      page = agent.get('https://oig-dev.emory.edu/sitemap')
     else
       page = agent.get('https://oig-qa.emory.edu/sitemap')
     end
@@ -27,6 +27,7 @@ class Admin::BrokenLink < ApplicationRecord
         internalPage.links.each do |l|
           begin
            l.click.code.to_s
+           Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: l.click.code.to_s, link_error: l.click.code.to_s)
           rescue Mechanize::ResponseCodeError => e
             case e.response_code
               when "404"
