@@ -4,6 +4,12 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
+  def toggle_default
+    Survey.where("user_id = ?", params[:user_id]).update_all(:is_default => false)
+    Survey.where("id = ? AND user_id = ?", params[:survey_id], params[:user_id]).update(:is_default => true)
+    redirect_to user_surveys_path(:user_id => current_user.id)
+  end
+
   # GET /surveys
   # GET /surveys.json
   def index
