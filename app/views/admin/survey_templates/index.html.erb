@@ -20,14 +20,15 @@
           <td><%= survey_template.name %></td>
           <td><% if survey_template.is_default %><span class="fa fa-check"></span><% end %></td>
           <td>
-            <%= link_to '', admin_survey_template_path(survey_template), :class => 'button show is-primary is-show' %>
-            <%= link_to '', edit_admin_survey_template_path(survey_template), :class => 'button edit is-gray is-edit' %>
-            <%= link_to '', admin_survey_template_path(survey_template), method: :delete, data: { confirm: 'Are you sure you want to delete this survey template?' }, :class => 'button is-red is-delete' %>
             <% if survey_template.is_default %>
-              <%= link_to 'Make Default', admin_survey_template_toggle_default_path(survey_template.id), :class => 'button', :disabled => true %>
+              <%= link_to 'Set As Default', admin_survey_template_toggle_default_path(survey_template.id), :class => 'button is-default large-button', :disabled => true %>
             <% else %>
-              <%= link_to 'Make Default', admin_survey_template_toggle_default_path(survey_template.id), :class => 'button' %>
+              <%= link_to 'Set As Default', admin_survey_template_toggle_default_path(survey_template.id), :class => 'button is-default large-button' %>
             <% end %>
+            <%= link_to 'View', admin_survey_template_path(survey_template), :class => 'button show is-primary is-show large-button' %>
+            <%= link_to 'Edit', edit_admin_survey_template_path(survey_template), :class => 'button edit is-gray is-edit large-button' %>
+            <%= link_to 'Delete', admin_survey_template_path(survey_template), method: :delete, data: { confirm: 'Are you sure you want to delete this survey template?' }, :class => 'button is-red is-delete large-button' %>
+
           </td>
         </tr>
       <% end %>

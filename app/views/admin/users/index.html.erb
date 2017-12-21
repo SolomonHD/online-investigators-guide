@@ -31,9 +31,9 @@
         </td>
         <td>
           <% if user.is_admin %>
-            <%= link_to 'Revoke Access', admin_user_toggle_admin_path(user.id), :class => 'button is-stretch is-revoke is-red large-button' %>
+            <%= link_to 'Revoke Admin Access', admin_user_toggle_admin_path(user.id), :class => 'button is-stretch is-revoke is-red large-button' %>
           <% else %>
-            <%= link_to ' Grant Access ', admin_user_toggle_admin_path(user.id), :class => 'button is-stretch is-grant is-green large-button' %>
+            <%= link_to ' Grant Admin Access ', admin_user_toggle_admin_path(user.id), :class => 'button is-stretch is-grant is-green large-button' %>
           <% end %>
 
         </td>

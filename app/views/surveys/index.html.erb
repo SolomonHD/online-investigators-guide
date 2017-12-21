@@ -20,14 +20,16 @@
             <td><%= survey.name %></td>
             <td><%= survey.description %></td>
             <td><% if survey.is_default %><span class="fa fa-check"></span><% end %></td>
-            <td><%= link_to 'View', root_path(:user => current_user.id, :view => survey.id), :class => 'button show is-primary is-show large-button', target: '_self' %>
+            <td>
+              <% if survey.is_default %>
+                <%= link_to 'Set As Default', user_survey_toggle_default_path(:user_id => current_user.id, :survey_id => survey.id), :class => 'button is-default large-button', :disabled => true %>
+              <% else %>
+                <%= link_to 'Set As Default', user_survey_toggle_default_path(:user_id => current_user.id, :survey_id => survey.id), :class => 'button is-default large-button' %>
+              <% end %>
+              <%= link_to 'View', root_path(:user => current_user.id, :view => survey.id), :class => 'button show is-primary is-show large-button', target: '_self' %>
               <%= link_to 'Edit', edit_user_survey_path( @user, survey ) , :class => 'button edit is-gray is-edit large-button', target: '_self' %>
               <%= link_to 'Delete', [ @user, survey], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete large-button', target: '_self' %>
-              <% if survey.is_default %>
-                <%= link_to 'Make Default', user_survey_toggle_default_path(:user_id => current_user.id, :survey_id => survey.id), :class => 'button', :disabled => true %>
-              <% else %>
-                <%= link_to 'Make Default', user_survey_toggle_default_path(:user_id => current_user.id, :survey_id => survey.id), :class => 'button' %>
-              <% end %>
+
             </td>
           </tr>
         <% end %>
