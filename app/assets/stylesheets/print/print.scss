@@ -16,6 +16,20 @@
     ol {
       display: none;
     }
+    pre {
+      display: flex;
+      align-items: center;
+      border: solid 1px #ffdd57;
+      background-color: #faf0c7;
+      padding: 10px;
+      font-size: 1rem;
+      white-space: inherit;
+      &:before {
+        content: "\f0eb";
+        font: normal normal normal 50px/1 FontAwesome;
+        padding-right: 10px;
+      }
+    }
   }
   h2.subtitle {
     margin-top: 0;
