@@ -13,7 +13,7 @@ class Admin::BrokenLink < ApplicationRecord
     agent.follow_meta_refresh = true
     agent.request_headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
 
-    if Rails.env == 'local' || Rails.env == 'development'
+    if Rails.env == 'local'
       page = agent.get('https://oig-dev.emory.edu/sitemap')
     else
       page = agent.get('https://oig-qa.emory.edu/sitemap')
