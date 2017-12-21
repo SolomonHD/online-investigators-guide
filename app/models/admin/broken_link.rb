@@ -28,6 +28,7 @@ class Admin::BrokenLink < ApplicationRecord
 
           begin
            l.click.code.to_s
+           Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: l.click.code.to_s, link_error: l.click.code.to_s)
           rescue Mechanize::ResponseCodeError => e
             case e.response_code
               when "404"
