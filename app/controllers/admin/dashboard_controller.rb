@@ -7,6 +7,7 @@ class Admin::DashboardController < Admin::BaseController
   def index
     @pages = Page.all
     @viewCount = Survey.all.count
+    @userCount = User.all.count
   end
 
   # GET /pages/1
