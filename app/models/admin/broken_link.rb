@@ -31,6 +31,22 @@ class Admin::BrokenLink < ApplicationRecord
           begin
            l.click.code.to_s
           # PREVENT ERRORS AND WRITE TO DATABASE
+        rescue Errno::EINVAL,
+          Errno::ECONNRESET,
+          EOFError,
+          Net::HTTPBadResponse,
+          Net::HTTPHeaderSyntaxError,
+          Net::ProtocolError,
+          Net::OpenTimeout,
+          Net::HTTPServerException,
+          Net::HTTPFatalError,
+          Mechanize::ResponseCodeError,
+          OpenSSL::SSL::SSLError,
+          Errno::EHOSTUNREACH,
+          Mechanize::Error,
+          Net::HTTP::Persistent::Error,
+          Net::HTTPRetriableError => e
+            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
           rescue SocketError => e
             Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
           rescue OpenSSL::SSL::SSLError => e
