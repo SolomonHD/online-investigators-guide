@@ -20,8 +20,8 @@ trix-editor {
   pre {
     display: flex;
     align-items: center;
-    background-color: #ffdd57;
-    border-radius: 10px;
+    border: solid 1px $yellow;
+    background-color: $yellow-light;
     padding: 10px;
     font-family: $family-sans-serif;
     font-size: 1rem;
