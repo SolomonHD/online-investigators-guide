@@ -31,6 +31,7 @@ class Admin::BrokenLink < ApplicationRecord
           begin
            l.click.code.to_s
           # PREVENT ERRORS AND WRITE TO DATABASE
+          rescue Net::HTTPServerException, OpenSSL::SSL::SSLError => e
           rescue Errno::EINVAL,
             Errno::ECONNRESET,
             EOFError,
@@ -38,10 +39,8 @@ class Admin::BrokenLink < ApplicationRecord
             Net::HTTPHeaderSyntaxError,
             Net::ProtocolError,
             Net::OpenTimeout,
-            Net::HTTPServerException,
             Net::HTTPFatalError,
             Mechanize::ResponseCodeError,
-            OpenSSL::SSL::SSLError,
             Errno::EHOSTUNREACH,
             Mechanize::Error,
             Net::HTTP::Persistent::Error,
