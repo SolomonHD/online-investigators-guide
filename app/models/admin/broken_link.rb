@@ -14,18 +14,21 @@ class Admin::BrokenLink < ApplicationRecord
     agent.request_headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
 
     if Rails.env == 'local' || Rails.env == 'development'
-      page = agent.get('https://oig-qa.emory.edu/pages/12')
+      page = agent.get('https://oig-qa.emory.edu/sitemap')
     else
-      page = agent.get('https://oig-qa.emory.edu/pages/12')
+      page = agent.get('https://oig-qa.emory.edu/sitemap')
     end
 
     # GET PAGES FROM SITEMAP
     page.links_with(href: %r{.*/pages/\w+}).each do |link|
+      puts link
+      logger.info(link)
       # FETCH URL USING MECHANIZE AGENT
       internalPage = agent.get(link.href)
         # GET ALL LINKS ON URL
         internalPage.links.each do |l|
-
+          puts l.href
+          logger.info(l.href)
           begin
            l.click.code.to_s
            Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: l.click.code.to_s, link_error: l.click.code.to_s)
