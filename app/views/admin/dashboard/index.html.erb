@@ -1,3 +1,17 @@
-<%= render 'brokenlinks' %>
-<%= render 'customview' %>
-<%= render 'googleanalytics' %>
+<h1 class="title">Dashboard</h1>
+
+<div class="columns is-gapless add-left no-bottom">
+  <div class="column is-3">
+    <%= render 'customview' %>
+  </div>
+  <div class="column is-3">
+    <%= render 'googleanalytics' %>
+  </div>
+</div>
+<div class="columns is-gapless add-left">
+  <div class="column is-12">
+    <%= render 'brokenlinks' %>
+  </div>
+
+
+</div>

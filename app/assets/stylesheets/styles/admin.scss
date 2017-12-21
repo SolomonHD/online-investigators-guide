@@ -26,6 +26,69 @@ trix-toolbar .trix-button--icon-code::before {
     padding-right: 10px;
   }
 }
+.add-left {
+  .column {
+    &:first-child {
+      margin-left: 1em;
+    }
+  }
+}
+.no-bottom {
+  margin-bottom: 0 !important;
+  .column {
+
+  }
+}
+.admin.card {
+  max-width: 95%;
+  &.is-stat {
+    padding: 0;
+    display: flex;
+    .card-content {
+        overflow: hidden;
+        padding: 0;
+        display: flex;
+        width: 100%;
+        background-color: whitesmoke;
+        .content {
+            display: flex;
+            width: 100%;
+        }
+    }
+    .fa {
+      display: block;
+      width: 100%;
+      padding: .5em;
+      text-align: center;
+      font-size: 5em;
+      color: rgba(255,255,255,0.5);
+    }
+  }
+  &.is-turquoise {
+    .fa {
+      background-color: $turquoise;
+    }
+  }
+  &.is-purple {
+    .fa {
+        background-color: $purple;
+    }
+  }
+  .statistic {
+    width: 50%;
+    text-align: center;
+    .label {
+      padding-top: .5em;
+    }
+    .number {
+      font-size: 4em;
+      padding: 0;
+      height: auto;
+      margin: 0;
+    }
+  }
+}
+
 
 .admin {
   .column {
