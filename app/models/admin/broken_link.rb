@@ -28,14 +28,14 @@ class Admin::BrokenLink < ApplicationRecord
 
           begin
            l.click.code.to_s
-          # rescue Mechanize::ResponseCodeError => e
-          #   case e.response_code
-          #     when "404"
-          #       if !l.href.include?("auth/") and !l.text.include?("Log In")
-          #         Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code, link_error: e)
-          #       end
-          #       # Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
-          #     end
+          rescue Mechanize::ResponseCodeError => e
+            case e.response_code
+              when "404"
+                if !l.href.include?("auth/") and !l.text.include?("Log In")
+                  Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: e.response_code, link_error: e)
+                end
+                # Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
+              end
            # PREVENT ERRORS AND WRITE TO DATABASE
           rescue  SocketError => e
             Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
