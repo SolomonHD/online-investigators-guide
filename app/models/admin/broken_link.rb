@@ -47,6 +47,14 @@ class Admin::BrokenLink < ApplicationRecord
           Net::HTTP::Persistent::Error,
           SocketError,
           Net::HTTPRetriableError => e
+            if ! e.response_code == '403'
+              Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
+            end
+          # rescue SocketError => e
+          #   Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 443, link_error: e)
+          # rescue OpenSSL::SSL::SSLError => e
+          #   Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 509, link_error: e)
+          rescue Mechanize::ResponseCodeError => e
             case e.response_code
               when "404"
                 # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
