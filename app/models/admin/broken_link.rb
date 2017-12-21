@@ -14,9 +14,9 @@ class Admin::BrokenLink < ApplicationRecord
     agent.request_headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'}
 
     if Rails.env == 'local' || Rails.env == 'development'
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
+      page = agent.get('https://oig-qa.emory.edu/pages/12')
     else
-      page = agent.get('https://oig-qa.emory.edu/sitemap')
+      page = agent.get('https://oig-qa.emory.edu/pages/12')
     end
 
     # GET PAGES FROM SITEMAP
