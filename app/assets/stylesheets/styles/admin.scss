@@ -19,6 +19,7 @@ trix-toolbar .trix-button--icon-code::before {
   padding: 10px;
   font-family: $family-sans-serif;
   font-size: 1rem;
+  white-space: inherit;
   &:before {
     content: "\f0eb";
     font: normal normal normal 50px/1 FontAwesome;
