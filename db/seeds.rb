@@ -13,3 +13,7 @@ QuestionType.create([{ name: 'checkbox', label: 'multiple'},
                      { name: 'radio', label: 'one'}])
 
 SurveyTemplate.create({name: "Default Survey Template", is_default: true})
+
+Admin::SiteInformation.create([{name: "contact_info", text: "admin_site_informations_path", header: "Contact us"},
+                              {name: "branding", text: "edit brand"},
+                              {name: "about_site", text: "about"}])

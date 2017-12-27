@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    resources :site_informations
+  end
+  namespace :admin do
     resources :supporting_units
   end
   get 'login', to: 'sessions#new', as: 'login'
