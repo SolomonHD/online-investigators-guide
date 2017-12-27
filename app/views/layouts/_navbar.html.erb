@@ -10,14 +10,14 @@
       <span></span>
     </div>
   </div>
+
   <div class="navbars" id="navMenu">
     <div class="primary-navbar">
       <div class="navbar-menu">
         <div class="navbar-start site-branding is-hidden-mobile">
           <div class="eu-brand">Emory University</div>
           <div class="site-information">
-            <div class="site-name">Online Investigator's Guide</div>
-            <div class="department"><a href="http://www.ocr.emory.edu/" target="_blank">Office for Clinical Research</a></div>
+            <%= Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
           </div>
         </div>
 
