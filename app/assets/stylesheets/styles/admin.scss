@@ -4,6 +4,23 @@
 .adminSite .title {
     padding-left: 1em;
 }
+.search-container {
+  width: 96%;
+  margin: auto;
+  padding-bottom: 1em;
+  position: relative;
+  input {
+    padding-left: 2em;
+  }
+  &:after {
+    content: "\f002";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    color: $grey-lighter;
+  }
+}
 trix-editor {
   min-height: 13em;
 }
