@@ -86,7 +86,7 @@
             <div class="navbar-item">
               <% if not current_user %>
                 <p class="control">
-                  <%= link_to auth_scheme, :class => 'bd-tw-button button', :target => '_self' do %>
+                  <%= link_to " ", root_url + "auth/saml", :class => 'bd-tw-button button', :target => '_self' do %>
                     <span class="icon">
                       <i class="fa fa-lock"></i>
                     </span>
