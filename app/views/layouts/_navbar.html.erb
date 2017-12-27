@@ -86,14 +86,7 @@
             <div class="navbar-item">
               <% if not current_user %>
                 <p class="control">
-                  <%= link_to " ", root_url + "auth/saml", :class => 'bd-tw-button button', :target => '_self' do %>
-                    <span class="icon">
-                      <i class="fa fa-lock"></i>
-                    </span>
-                    <span>
-                      Log Ins
-                    </span>
-                  <% end %>
+                  <%= link_to "Login", root_url + "auth/saml", :class => 'bd-tw-button button login', :target => '_self' %>
                 </p>
               <% end %>
             </div>
