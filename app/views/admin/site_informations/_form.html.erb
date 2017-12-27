@@ -1,0 +1,34 @@
+<%= form_with(model: admin_site_information, local: true) do |form| %>
+  <% if admin_site_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_site_information.errors.count, "error") %> prohibited this admin_site_information from being saved:</h2>
+
+      <ul>
+      <% admin_site_information.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if admin_site_information.name != 'branding' %>
+  <div class="field">
+    <%= label_tag(:header, "Header:", :class => 'label') %>
+    <div class="control">
+      <%= form.text_field :header %>
+    </div>
+  </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= label_tag(:text, "Text:", :class => 'label') %>
+    <div class="control site-information-editor">
+      <%= form.trix_editor :text %>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit 'Submit', :class => 'button is-warning is-add' %>
+  </div>
+<% end %>

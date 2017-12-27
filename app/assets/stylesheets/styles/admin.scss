@@ -1,8 +1,30 @@
 // Place all the styles related to the Admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.adminSite .title {
-    padding-left: 1em;
+.adminSite {
+  .title {
+      padding-left: 1em;
+  }
+  section {
+    width: 96%;
+    margin: auto;
+    padding: 1em;
+    line-height: 2.5em;
+    background-color: #f1f1f1;
+    margin-bottom: 2em;
+    border: solid 1px #CCC;
+    h2 {
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+    h3 {
+      font-weight: bold;
+    }
+  }
+
+}
+.control.site-information-editor trix-toolbar .trix-button-group--block-tools {
+    display: none;
 }
 .search-container {
   width: 96%;
@@ -166,6 +188,11 @@ trix-toolbar .trix-button--icon-code::before {
         &.surveys {
           &:before {
               @include font-awesome('\f044')
+          }
+        }
+        &.information {
+          &:before {
+              @include font-awesome('\f05a')
           }
         }
         &.dashboard {

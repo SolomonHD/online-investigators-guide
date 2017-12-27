@@ -1,0 +1,18 @@
+<% if notice %><p id="notice" class="notification is-warning"><%= notice %></p><% end %>
+
+<h1 class="title">Site Information</h1>
+
+
+<section>
+    <h2>Contact Information <%= link_to 'Edit', edit_admin_site_information_path(@contact_information), :class => 'button is-gray is-edit large-button is-pulled-right'   %>
+  </h2>
+  <h3><%= @contact_information.header %></h3>
+<%= @contact_information.text.html_safe() %>
+</section>
+
+
+<section>
+  <h2>Branding Information <%= link_to 'Edit', edit_admin_site_information_path(@branding_information), :class => 'button is-gray is-edit large-button is-pulled-right'   %></h2>
+
+  <%= @branding_information.text.html_safe() %>
+</section>
