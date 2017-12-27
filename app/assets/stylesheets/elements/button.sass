@@ -69,6 +69,9 @@ $button-static-border-color: $grey-lighter !default
   padding-right: 0.75em
   text-align: center
   white-space: nowrap
+  &.print
+    +mobile
+      display: none !important
   &.feedback
     margin-top: 1em
     width: 100%

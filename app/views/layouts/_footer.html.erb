@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="container">
     <div class="columns">
-      <div class="column is-5 about">
+      <div class="column is-half-mobile is-one-third-tablet is-one-quarter-desktop about">
         <% @about_site = Admin::SiteInformation.where("name = 'about_site'").first %>
         <h3><%= @about_site.header %></h3>
         <%= @about_site.text.html_safe() %>
