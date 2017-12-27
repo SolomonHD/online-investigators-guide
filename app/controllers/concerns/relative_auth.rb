@@ -3,7 +3,7 @@ extend ActiveSupport::Concern
 
 included do
   helper_method :auth_scheme
-end 
+end
 
 def auth_scheme
     if Rails.env.local?

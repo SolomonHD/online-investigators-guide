@@ -92,6 +92,9 @@ $button-static-border-color: $grey-lighter !default
     border: 0
   &.is-stretch
     width: 100%
+  &.login
+    &::before
+      @include font-awesome("\f023")
   &.is-revoke
     &::before
       @include font-awesome("\f00d")
