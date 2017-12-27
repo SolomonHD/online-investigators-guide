@@ -2,6 +2,12 @@
 
 <h1 class="title">Site Information</h1>
 
+<section>
+  <h2>About<%= link_to 'Edit', edit_admin_site_information_path(@about_site), :class => 'button is-gray is-edit large-button is-pulled-right'   %></h2>
+  <h3><%= @about_site.header %></h3>
+  <%= @about_site.text.html_safe() %>
+</section>
+
 
 <section>
     <h2>Contact Information <%= link_to 'Edit', edit_admin_site_information_path(@contact_information), :class => 'button is-gray is-edit large-button is-pulled-right'   %>

@@ -7,6 +7,7 @@ class Admin::SiteInformationsController < Admin::BaseController
     @admin_site_informations = Admin::SiteInformation.all
     @contact_information = Admin::SiteInformation.where("name = 'contact_info'").first
     @branding_information = Admin::SiteInformation.where("name = 'branding'").first
+    @about_site = Admin::SiteInformation.where("name = 'about_site'").first
   end
 
   # GET /admin/site_informations/1
@@ -30,11 +31,11 @@ class Admin::SiteInformationsController < Admin::BaseController
 
     respond_to do |format|
       if @admin_site_information.save
-        format.html { redirect_to @admin_site_information, notice: 'Site information was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_site_information }
+        format.html { redirect_to admin_site_informations_path, notice: 'Site information was successfully created.' }
+        format.json { render :show, status: :created, location: admin_site_informations_path }
       else
         format.html { render :new }
-        format.json { render json: @admin_site_information.errors, status: :unprocessable_entity }
+        format.json { render json: admin_site_informations_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -44,11 +45,11 @@ class Admin::SiteInformationsController < Admin::BaseController
   def update
     respond_to do |format|
       if @admin_site_information.update(admin_site_information_params)
-        format.html { redirect_to @admin_site_information, notice: 'Site information was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_site_information }
+        format.html { redirect_to admin_site_informations_path, notice: 'Site information was successfully updated.' }
+        format.json { render :show, status: :ok, location: admin_site_informations_path }
       else
         format.html { render :edit }
-        format.json { render json: @admin_site_information.errors, status: :unprocessable_entity }
+        format.json { render json: admin_site_informations_path.errors, status: :unprocessable_entity }
       end
     end
   end
