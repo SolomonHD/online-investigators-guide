@@ -10,6 +10,7 @@
   </head>
 
   <body class="adminSite">
+    <% if current_user.is_admin? %>
       <%= render 'layouts/navbar'%>
       <div class="columns is-gapless admin">
         <div class="column is-2 no-bottom-padding">
@@ -19,5 +20,10 @@
         <%= yield %>
         </div>
       </div>
+    <% else %>
+      <script type="text/javascript">
+        window.location.href="/"
+      </script>
+    <% end %>
   </body>
 </html>
