@@ -37,6 +37,12 @@ class SurveysController < ApplicationController
 
     respond_to do |format|
       if @survey.save
+        # If the Survey that we are saving is the defualt,
+        # then we need to change the others Survey not to be the default.
+        if @survey.is_default
+          Survey.where("id != ? AND user_id = ?", @survey.id, @survey.user_id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to user_surveys_url(@user), notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
       else
@@ -50,7 +56,20 @@ class SurveysController < ApplicationController
   # PATCH/PUT /surveys/1.json
   def update
     respond_to do |format|
+      # If THIS survey is the default and the user is trying to change it,
+      # we can not allow this operation.
+      if @survey.is_default && survey_params[:is_default] == "0"
+        redirect_to edit_user_survey_path(@user, @survey),
+          :notice=> 'There must be one default view at all times.' and return
+      end
+
       if @survey.update(survey_params)
+        # If we are going to update THIS view as the default,
+        # then we need to set the others Surveys is_default column to false.
+        if @survey.is_default
+          Survey.where("id != ? AND user_id = ?", @survey.id, @survey.user_id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to user_surveys_url(@user), notice: 'Survey was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey }
       else
