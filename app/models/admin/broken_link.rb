@@ -38,23 +38,11 @@ class Admin::BrokenLink < ApplicationRecord
            # PREVENT ERRORS AND WRITE TO DATABASE
           rescue  SocketError => e
             Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
-          rescue OpenSSL::SSL::SSLError, Net::HTTPServerException
+          rescue OpenSSL::SSL::SSLError, Net::HTTPServerException, Mechanize::UnsupportedSchemeError, Errno::EINVAL, Errno::ECONNRESET, EOFError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError, Net::OpenTimeout,Net::HTTPFatalError, Errno::EHOSTUNREACH, Mechanize::Error, Net::HTTP::Persistent::Error, Net::HTTPRetriableError
           #  Admin::BrokenLink.create(page_id: link.uri.to_s.split('/')[-1], link_text: l.text, page_title: link.text, broken_url: l.uri, link_status: 0, link_error: e)
           # rescue Net::HTTPServerException, OpenSSL::SSL::SSLError => e
           #   # DO NOTHING
-          # rescue Errno::EINVAL,
-          #   Errno::ECONNRESET,
-          #   EOFError,
-          #   Net::HTTPBadResponse,
-          #   Net::HTTPHeaderSyntaxError,
-          #   Net::ProtocolError,
-          #   Net::OpenTimeout,
-          #   Net::HTTPFatalError,
-          #   Mechanize::ResponseCodeError,
-          #   Errno::EHOSTUNREACH,
-          #   Mechanize::Error,
-          #   Net::HTTP::Persistent::Error,
-          #   Net::HTTPRetriableError => e
+          # rescue Errno::EINVAL, Errno::ECONNRESET, EOFError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError, Net::OpenTimeout,Net::HTTPFatalError, Errno::EHOSTUNREACH, Mechanize::Error, Net::HTTP::Persistent::Error, Net::HTTPRetriableError => e
           #     case e.response_code
           #       when "404"
           #         # REMOVE LOGIN INFORMATION FROM BROKEN LINK REPORT
