@@ -2,6 +2,9 @@
   // .navbar {
   //   display: none;
   // }
+  .is-hidden-print {
+    display: none;
+  }
   .button, .secondary-navbar, .menu, .navbar-end, .navbar-brand, .eu-brand {
     display: none;
   }
@@ -21,13 +24,16 @@
       align-items: center;
       border: solid 1px #ffdd57;
       background-color: #faf0c7;
-      padding: 10px;
+      padding: 20px 55px;
       font-size: 1rem;
       white-space: inherit;
+      background-image: url(/assets/lightbulb-o);
+      background-repeat: no-repeat;
+      /* padding-top: 1em; */
+      background-position: left;
+      -webkit-print-color-adjust: exact;
       &:before {
-        content: "\f0eb";
-        font: normal normal normal 50px/1 FontAwesome;
-        padding-right: 10px;
+        display: none;
       }
     }
   }
