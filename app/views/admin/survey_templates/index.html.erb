@@ -17,9 +17,9 @@
     <tbody>
       <% @survey_templates.each do |survey_template| %>
         <tr>
-          <td><%= survey_template.name %></td>
-          <td><% if survey_template.is_default %><span class="fa fa-check"></span><% end %></td>
-          <td>
+          <td data-label="Name"><%= survey_template.name %></td>
+          <td data-label="Default"><% if survey_template.is_default %><span class="fa fa-check"></span><%else%><span class="fa fa-times"><span><% end %> </td>
+          <td class="stacked-button">
             <% if survey_template.is_default %>
               <%= link_to 'Set As Default', admin_survey_template_toggle_default_path(survey_template.id), :class => 'button is-default large-button', :disabled => true %>
             <% else %>

@@ -4,7 +4,7 @@
   </div>
   <div class="navbar-brand logo">
     <%= image_tag("emory-shield-white.png") %>
-    <div class="navbar-start site-branding is-hidden-tablet">
+    <div class="navbar-start site-branding is-hidden-desktop">
       <div class="eu-brand">Emory University</div>
       <div class="site-information">
         <%= Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item supporting-units is-hidden-mobile">
+          <div class="navbar-item supporting-units is-hidden-touch">
             <span class="unit-label">Supporting Units</span>
           <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
               <a class="navbar-item" href="<%= unit.url %>" target="_blank">
@@ -41,28 +41,7 @@
           <a class="navbar-item" href="/">
             Table of Contents
           </a>
-          <div class="navbar-menu is-hidden-mobile">
-            <div class="is-hidden-tablet">
-              <div class="dropdown">
-                <div class="dropdown-trigger">
-                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span>Supporting Units</span>
-                    <span class="icon is-small">
-                      <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div class="dropdown-content">
-                    <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
-                        <a class="dropdown-item" href="<%= unit.url %>" target="_blank">
-                          <%= unit.title %>
-                        </a>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="navbar-menu is-hidden-touch">
             <div class="navbar-end">
               <div class="navbar-item">
                 <%= render "layouts/search" %>
@@ -76,12 +55,10 @@
           <span></span>
           <span></span>
         </div>
-
     </div>
-    <div class="navbar-menu is-hidden-tablet">
-      <div class="is-hidden-tablet">
-        <%= render "layouts/search" %>
-      </div>
+    <div class="navbar-menu is-hidden-desktop">
+            <%= render "layouts/search" %>
+            <%= render 'layouts/login' %>
     </div>
   </div>
 </nav>

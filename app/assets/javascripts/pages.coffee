@@ -50,3 +50,18 @@ GetURLParameter = (sParam) ->
       return sParameterName[1]
     i++
   return
+
+$(document).on 'turbolinks:load', ->
+  acc = document.getElementsByClassName('accordion')
+  i = undefined
+  i = 0
+  while i < acc.length
+    acc[i].addEventListener 'click', ->
+      @classList.toggle 'active'
+      panel = @nextElementSibling
+      if panel.style.display == 'block'
+        panel.style.display = 'none'
+      else
+        panel.style.display = 'block'
+      return
+    i++

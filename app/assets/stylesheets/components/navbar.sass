@@ -57,6 +57,8 @@ $navbar-divider-background-color: $border !default
   margin-bottom: 2rem
   +mobile
     z-index: 1
+  +tablet-only
+    z-index: 1
   .print-logo
     display: none
   .navbars
@@ -74,6 +76,8 @@ $navbar-divider-background-color: $border !default
       height: 4.5rem
       +mobile
         height: 0
+      +tablet-only
+        height: 0
       .navbar-menu
         height: 100%
         &.is-hidden-tablet
@@ -84,12 +88,18 @@ $navbar-divider-background-color: $border !default
         display: flex
         align-items: center
         justify-content: center
+      +tablet-only
+        display: flex
+        align-items: center
+        justify-content: center
       background-color: $grey-lighter
       height: 3.5rem
       .navbar-item
         padding: 0 1rem
         height: 3.5rem
         +mobile
+          height: auto
+        +tablet-only
           height: auto
       .supporting-units
         background: white
@@ -176,6 +186,13 @@ $navbar-divider-background-color: $border !default
     margin-right: .5rem
 .site-branding
   flex-direction: column
+  color: inherit
+  a
+    color: inherit
+  +tablet-only
+    color: white
+    a
+      color: white
   +mobile
     font-size: .85em
     color: white
@@ -280,7 +297,7 @@ a.navbar-item,
   .navbar-menu
     background-color: $white
     box-shadow: 0 8px 16px rgba($black, 0.1)
-    padding: 0.5rem 0
+    padding: 0.5rem 1rem
     &.is-active
       display: block
 
