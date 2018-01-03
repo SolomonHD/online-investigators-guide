@@ -13,7 +13,7 @@
   <tbody>
     <% @labels.each do |label| %>
       <tr>
-        <td><%= label.name %></td>
+        <td data-label="Label Name"><%= label.name %></td>
         <td><%= link_to 'Edit', edit_admin_label_path(label), :class => 'button is-gray is-edit large-button' %>
           <%= link_to 'Delete', admin_label_path(label), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'button is-red is-delete large-button'  %></td>
       </tr>

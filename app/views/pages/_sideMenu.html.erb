@@ -1,5 +1,6 @@
-<aside class="column is-3 is-narrow-mobile is-hidden-mobile">
-  <div class="menu sub-menu ">
+
+<aside class="column is-3 is-narrow-mobile">
+  <div class="menu sub-menu  is-hidden-mobile">
     <% if params[:user] and params[:view] %>
       <% if not current_user.id.to_s == params[:user] %>
         <%= render :partial => 'unfilteredSideMenu' %>
@@ -9,6 +10,22 @@
     <% else %>
       <%= render :partial => 'unfilteredSideMenu' %>
     <% end %>
+  </div>
+  <div class="is-hidden-tablet">
+    <button class="accordion"><div id="outline">Show Outline</div></button>
+    <div class="panel">
+      <div class="menu sub-menu ">
+        <% if params[:user] and params[:view] %>
+          <% if not current_user.id.to_s == params[:user] %>
+            <%= render :partial => 'unfilteredSideMenu' %>
+          <% else %>
+            <%= render :partial => 'filteredSideMenu' %>
+          <% end %>
+        <% else %>
+          <%= render :partial => 'unfilteredSideMenu' %>
+        <% end %>
+      </div>
+    </div>
   </div>
   <%= render :partial => 'feedbackSurvey' %>
 </aside>

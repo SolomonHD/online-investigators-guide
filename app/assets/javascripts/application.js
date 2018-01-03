@@ -34,3 +34,20 @@ function searchUsers() {
     }
   }
 }
+
+$( document ).ready(function() {
+  $(document).on ("click", ".dropdown-trigger", function () {
+    $(".dropdown").toggleClass('is-active');
+  });
+  $(document).on ("click", "#nav-toggle", function () {
+    $(".navbar-menu").toggleClass('is-active');
+    $(".dropdown").removeClass("is-active");
+  });
+  $(document).on ("click", "#admin-toggle", function () {
+    $(".admin-menu").toggleClass('is-active');
+    console.log("admin")
+  });
+
+
+
+});
