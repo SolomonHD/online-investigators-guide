@@ -11,12 +11,12 @@ trix-editor {
 
 }
 .accordion {
-    background-color: #eee;
+    border: solid 1px $darkBlue;
+    border-top: solid 4px  $darkBlue;
     color: #444;
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
@@ -28,7 +28,6 @@ trix-editor {
 }
 
 .panel {
-    padding: 0 18px;
     display: none;
     background-color: white;
 }
