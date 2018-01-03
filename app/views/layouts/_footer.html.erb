@@ -1,7 +1,7 @@
 <footer class="footer">
   <div class="container">
     <div class="columns is-desktop">
-      <div class="column is-hidden-desktop supporting-units">
+      <div class="column is-hidden-desktop supporting-units is-hidden-print">
         <h3>Supporting Units</h3>
         <% Admin::SupportingUnit.where("url != ''").all.each do |unit| %>
             <a href="<%= unit.url %>" target="_blank">

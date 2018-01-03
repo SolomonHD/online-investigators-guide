@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>OnlineInvestigatorsGuide</title>
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Font Awesome, the iconic font and CSS framework">
+  <meta name="author" content="Dave Gandy">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,900|Spectral:300" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'screen', 'data-turbolinks-track': 'reload' %>
@@ -15,6 +20,7 @@
     <div class="container main">
       <div class="columns not-full-height">
         <%= yield %>
+
       </div>
     </div>
     <%= render 'layouts/footer' %>
