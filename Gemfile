@@ -60,6 +60,8 @@ gem 'mechanize'
 
 gem "html_truncator", "~>0.2"
 
+gem "sdoc"
+
 # Install brew install graphviz on local environment
 # bundle exec erd
 # https://github.com/voormedia/rails-erd

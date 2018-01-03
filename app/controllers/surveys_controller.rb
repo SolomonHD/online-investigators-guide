@@ -1,9 +1,13 @@
+##
+# This class controls CRUD operations on the Survey resource.
 class SurveysController < ApplicationController
   before_action :get_user
   before_action :get_survey_template
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
+  ##
+  # Sets the current survey to default and sets all the others ones to not to be the default  
   def toggle_default
     Survey.where("user_id = ?", params[:user_id]).update_all(:is_default => false)
     Survey.where("id = ? AND user_id = ?", params[:survey_id], params[:user_id]).update(:is_default => true)
