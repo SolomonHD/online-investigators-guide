@@ -1,6 +1,6 @@
-<%= form_with(model: [@user, survey], local: true) do |form| %>
+<%= form_with(model: [@user, survey], local: true, :html => {:target=>'_self'}) do |form| %>
   <% if survey.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="notification is-danger">
       <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
 
       <ul>
@@ -12,7 +12,7 @@
   <% end %>
 
   <p id="notice"><%= notice %></p>
-  
+
   <%= form.hidden_field :user_id, value: @user.id %>
   <%= form.hidden_field :survey_template_id, value: @survey_template.id %>
 

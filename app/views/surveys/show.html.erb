@@ -1,5 +1,7 @@
 <div class="column">
-<p id="notice"><%= notice %></p>
+  <% if notice %>
+  <p id="notice"  class="notification"><%= notice %></p>
+  <% end %>
 
 <p>
   <strong>Current View:</strong>
