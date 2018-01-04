@@ -122,3 +122,15 @@ trix-editor {
     }
   }
 }
+.maintenance_mode {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    background-color: #f1f1f1;
+    padding: 2em;
+    border: solid 1px #CCC;
+    margin-top: 2em;
+    h2 {
+      font-size: 2em;
+    }
+}

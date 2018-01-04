@@ -16,13 +16,20 @@
   </head>
 
   <body>
+
+
     <%= render 'layouts/navbar' %>
+
     <div class="container main">
       <div class="columns not-full-height">
-        <%= yield %>
-
+        <% if !@maintenance_mode.isOn %>
+          <%= yield %>
+        <% else %>
+          <%= render 'layouts/maintenance_mode' %>
+        <% end %>
       </div>
     </div>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>

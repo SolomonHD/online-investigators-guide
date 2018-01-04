@@ -3,6 +3,7 @@ class SurveysController < ApplicationController
   before_action :get_survey_template
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :maintenance_mode
 
   def toggle_default
     Survey.where("user_id = ?", params[:user_id]).update_all(:is_default => false)

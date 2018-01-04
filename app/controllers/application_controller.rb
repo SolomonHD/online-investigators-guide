@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 #  protect_from_forgery with: :exception
  include RelativeAuth
 
+
+
   private
 
   def current_user
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::Base
 
   def authorize
     redirect_to root_url, :notice => "Not Authorized" if current_user.nil?
+  end
+
+  def maintenance_mode
+    @maintenance_mode = Admin::SiteInformation.where("name = 'maintenance_mode'").first
   end
 
   def is_admin?
