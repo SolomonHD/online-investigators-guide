@@ -25,13 +25,19 @@ A step by step series of examples that tell you have to get a development env ru
 Say what the step will be
 
 ```
-Give the example
+git clone https://github.com/emory-lits-uit/online-investigators-guide.git
 ```
-
-And repeat
-
 ```
-until finished
+cd online-investigators-guide
+```
+```
+rails db:migrate
+```
+```
+rails db:seed
+```
+```
+rails s -e local
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
