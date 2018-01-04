@@ -57,6 +57,10 @@ rails s -e local
 open browser and go to http://localhost:3000/
 ```
 
+## Design
+
+[ER Diagram](erd.pdf)
+
 ## Running the tests
 
 Explain how to run the automated tests for this system
@@ -150,8 +154,3 @@ cd Apps/online-investigators-guide/
 ```
 tail -f  current/log/qa.log
 ```
-
-
-[embed]erd.pdf[/embed]
-
-[Contribution guidelines for this project](erd.pdf)
