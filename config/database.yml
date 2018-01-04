@@ -32,7 +32,7 @@ qa:
 
 local:
   <<: *default
-  database: online_investigators_guide_development
+  url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and

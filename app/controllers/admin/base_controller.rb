@@ -5,7 +5,6 @@ class Admin::BaseController < ActionController::Base
   before_action :maintenance_mode
 
   def index
-
   end
 
   private
@@ -26,12 +25,4 @@ class Admin::BaseController < ActionController::Base
   def is_admin?
     redirect_to root_url, :notice => "Not authorized" if current_user.nil? or !current_user.is_admin?
   end
-
-
-
-
-  # private
-  #   def not_authenticated
-  #     redirect_to login_path, alert: "Please login first"
-  #   end
 end
