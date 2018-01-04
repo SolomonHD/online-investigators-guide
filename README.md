@@ -1,8 +1,8 @@
 # Online Investigators Guide
 
-Online Investigators Guide provides researchers information on how to navigate their research by two ways.  The first way is to give the researchers
-an unfiltered view of the PI Handbook. In this view the researchers will have full access to the entire PI Handbook and it is up to the researchers to
-to figure out what sections applies to their research.  The second way is to give the researchers an filtered view of the PI Handbook, which is tailored
+Online Investigators Guide provides researchers information on how to navigate thru the steps of their research by two ways.  The first way is to give the researchers
+an unfiltered view of the Online Investigators Guide. In this view the researchers will have full access to the entire Online Investigators Guide and it is up to the researchers to
+to figure out what sections applies to their research.  The second way is to give the researchers an filtered view of the Online Investigators Guide, which is tailored
 to their research.  In order to generate this view, researchers must login with their net-id/password and answer a survey. Once the survey has been
 completed, an filtered view will be created and saved. This view will have all of the necessary steps required for the researchers to follow to complete
 their research.
@@ -27,6 +27,9 @@ git clone https://github.com/emory-lits-uit/online-investigators-guide.git
 ```
 ```
 cd online-investigators-guide
+```
+```
+bundle install
 ```
 ```
 Configure database setting in the rails application
@@ -74,75 +77,81 @@ Explain what these tests test and why
 Give an example - TBD
 ```
 
-<big><pre>
-**void** Click ([**Keycode**](#keycode) key) **const**
-</pre></big>
-
 ## Deployment
+```
+cd online-investigators-guide
+```
 
-Add additional notes about how to deploy this on a live system
+### Development Environment
+```
+cap d deploy
+```
 
-## Built With
+### QA Environment
+```
+cap qa deploy
+```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## Troubleshooting Application
 
-## Contributing
+### Local Environment
+```
+cd online-investigators-guide
+```
+```
+rails c
+```
+#### View logs
+```
+cd online-investigators-guide
+```
+```
+tail -f  log/local.log
+```
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+### Development Environment
+```
+ssh deploy@whpihdev1
+```
+```
+cd Apps/online-investigators-guide/current/
+```
+```
+scl enable rh-ruby24 rh-git29 rh-nodejs6 mysql55 bash
+```
+```
+rails c
+```
+#### View logs
+```
+cd Apps/online-investigators-guide/
+```
+```
+tail -f  current/log/development.log
+```
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
-
-
+### QA Environment
+```
+ssh deploy@whrailsqa1
+```
+```
+cd Apps/online-investigators-guide/current/
+```
+```
+scl enable rh-ruby24 rh-git29 rh-nodejs6 mysql55 bash
+```
+```
+rails c
+```
+#### View logs
+```
+cd Apps/online-investigators-guide/
+```
+```
+tail -f  current/log/qa.log
+```
 
 
+[embed]erd.pdf[/embed]
 
-
-
-
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Contribution guidelines for this project](erd.pdf)
