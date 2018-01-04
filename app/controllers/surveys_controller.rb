@@ -1,118 +1,49 @@
-##
-# This class controls CRUD operations on the Survey resource.
-# * [Note:]
-#   View is an alias for survey in all urls which contains survey.
 class SurveysController < ApplicationController
   before_action :get_user
   before_action :get_survey_template
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_action :maintenance_mode
 
-  ##
-  #   Sets the user view to be the default view when the user first logs in.
-  # * [URL]
-  #   <i>/users/:user_id/views/:survey_id/toggle_default</i>
-  # * [Method]
-  #   GET
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  #   2. survey_id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
   def toggle_default
     Survey.where("user_id = ?", params[:user_id]).update_all(:is_default => false)
     Survey.where("id = ? AND user_id = ?", params[:survey_id], params[:user_id]).update(:is_default => true)
     redirect_to user_surveys_path(:user_id => current_user.id)
   end
 
-  ##
-  #   Returns the list of user views by user_id
-  # * [URL]
-  #   <i>/users/:user_id/views</i>
-  # * [Method]
-  #   GET
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # GET /surveys
+  # GET /surveys.json
   def index
     @surveys = @user.surveys
   end
 
-  ##
-  #   Returns user view by id and user_id
-  # * [URL]
-  #   <i>/users/:user_id/views/:id</i>
-  # * [Method]
-  #   GET
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  #   2. id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # GET /surveys/1
+  # GET /surveys/1.json
   def show
   end
 
-  ##
-  #   Returns user survey form by user_id to create a new one.
-  # * [URL]
-  #   <i>/users/:user_id/views/new</i>
-  # * [Method]
-  #   GET
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   This survey is pulled from the Survey Template resource by <i>is_default</i>
+  # GET /surveys/new
   def new
     @survey  = @user.surveys.build
   end
 
-  ##
-  #   Returns user survey form by user_id to edit.
-  # * [URL]
-  #   <i>/users/:user_id/views/edit</i>
-  # * [Method]
-  #   GET
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # GET /surveys/1/edit
   def edit
   end
 
-  ##
-  #   Creates a new user view
-  # * [URL]
-  #   <i>/users/:user_id/views</i>
-  # * [Method]
-  #   POST
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # POST /surveys
+  # POST /surveys.json
   def create
     @survey = @user.surveys.build(survey_params)
 
     respond_to do |format|
       if @survey.save
+        # If the Survey that we are saving is the defualt,
+        # then we need to change the others Survey not to be the default.
+        if @survey.is_default
+          Survey.where("id != ? AND user_id = ?", @survey.id, @survey.user_id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to user_surveys_url(@user), notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
       else
@@ -122,23 +53,24 @@ class SurveysController < ApplicationController
     end
   end
 
-  ##
-  #   Updates a user view by id and user_id
-  # * [URL]
-  #   <i>/users/:user_id/views/:id</i>
-  # * [Method]
-  #   PATCH
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  #   2. id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # PATCH/PUT /surveys/1
+  # PATCH/PUT /surveys/1.json
   def update
     respond_to do |format|
+      # If THIS survey is the default and the user is trying to change it,
+      # we can not allow this operation.
+      if @survey.is_default && survey_params[:is_default] == "0"
+        redirect_to edit_user_survey_path(@user, @survey),
+          :notice=> 'There must be one default view at all times.' and return
+      end
+
       if @survey.update(survey_params)
+        # If we are going to update THIS view as the default,
+        # then we need to set the others Surveys is_default column to false.
+        if @survey.is_default
+          Survey.where("id != ? AND user_id = ?", @survey.id, @survey.user_id).update_all(:is_default => false)
+        end
+
         format.html { redirect_to user_surveys_url(@user), notice: 'Survey was successfully updated.' }
         format.json { render :show, status: :ok, location: @survey }
       else
@@ -148,20 +80,8 @@ class SurveysController < ApplicationController
     end
   end
 
-  ##
-  #   Deletes a user view by id and user_id
-  # * [URL]
-  #   <i>/users/:user_id/views/:id</i>
-  # * [Method]
-  #   DELETE
-  # * [URL Params]
-  #   [Required:]
-  #   1. user_id=Integer
-  #   2. id=Integer
-  # * [Data Params]
-  #   None
-  # * [Notes]
-  #   None
+  # DELETE /surveys/1
+  # DELETE /surveys/1.json
   def destroy
     @survey.destroy
     respond_to do |format|

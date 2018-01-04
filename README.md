@@ -95,21 +95,28 @@ cap d deploy
 ```
 cap qa deploy
 ```
+## Generate Application Documentation
+```
+cd online-investigators-guide
+```
+```
+rails rdoc
+```
+```
+open doc/app/index.html
+```
 
 ## Troubleshooting Application
 
 ### Local Environment
-#### Start rails console
 ```
 cd online-investigators-guide
 ```
+#### Start rails console
 ```
 rails c
 ```
 #### View logs
-```
-cd online-investigators-guide
-```
 ```
 tail -f  log/local.log
 ```
