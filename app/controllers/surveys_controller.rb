@@ -1,5 +1,7 @@
 ##
 # This class controls CRUD operations on the Survey resource.
+# * [Note:]
+#   View is an alias for survey in all urls which contains survey.
 class SurveysController < ApplicationController
   before_action :get_user
   before_action :get_survey_template
@@ -7,35 +9,105 @@ class SurveysController < ApplicationController
   before_action :authorize, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
   ##
-  # Sets the current survey to default and sets all the others ones to not to be the default  
+  #   Sets the user view to be the default view when the user first logs in.
+  # * [URL]
+  #   <i>/users/:user_id/views/:survey_id/toggle_default</i>
+  # * [Method]
+  #   GET
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  #   2. survey_id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def toggle_default
     Survey.where("user_id = ?", params[:user_id]).update_all(:is_default => false)
     Survey.where("id = ? AND user_id = ?", params[:survey_id], params[:user_id]).update(:is_default => true)
     redirect_to user_surveys_path(:user_id => current_user.id)
   end
 
-  # GET /surveys
-  # GET /surveys.json
+  ##
+  #   Returns the list of user views by user_id
+  # * [URL]
+  #   <i>/users/:user_id/views</i>
+  # * [Method]
+  #   GET
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def index
     @surveys = @user.surveys
   end
 
-  # GET /surveys/1
-  # GET /surveys/1.json
+  ##
+  #   Returns user view by id and user_id
+  # * [URL]
+  #   <i>/users/:user_id/views/:id</i>
+  # * [Method]
+  #   GET
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  #   2. id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def show
   end
 
-  # GET /surveys/new
+  ##
+  #   Returns user survey form by user_id to create a new one.
+  # * [URL]
+  #   <i>/users/:user_id/views/new</i>
+  # * [Method]
+  #   GET
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   This survey is pulled from the Survey Template resource by <i>is_default</i>
   def new
     @survey  = @user.surveys.build
   end
 
-  # GET /surveys/1/edit
+  ##
+  #   Returns user survey form by user_id to edit.
+  # * [URL]
+  #   <i>/users/:user_id/views/edit</i>
+  # * [Method]
+  #   GET
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def edit
   end
 
-  # POST /surveys
-  # POST /surveys.json
+  ##
+  #   Creates a new user view
+  # * [URL]
+  #   <i>/users/:user_id/views</i>
+  # * [Method]
+  #   POST
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def create
     @survey = @user.surveys.build(survey_params)
 
@@ -50,8 +122,20 @@ class SurveysController < ApplicationController
     end
   end
 
-  # PATCH/PUT /surveys/1
-  # PATCH/PUT /surveys/1.json
+  ##
+  #   Updates a user view by id and user_id
+  # * [URL]
+  #   <i>/users/:user_id/views/:id</i>
+  # * [Method]
+  #   PATCH
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  #   2. id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def update
     respond_to do |format|
       if @survey.update(survey_params)
@@ -64,8 +148,20 @@ class SurveysController < ApplicationController
     end
   end
 
-  # DELETE /surveys/1
-  # DELETE /surveys/1.json
+  ##
+  #   Deletes a user view by id and user_id
+  # * [URL]
+  #   <i>/users/:user_id/views/:id</i>
+  # * [Method]
+  #   DELETE
+  # * [URL Params]
+  #   [Required:]
+  #   1. user_id=Integer
+  #   2. id=Integer
+  # * [Data Params]
+  #   None
+  # * [Notes]
+  #   None
   def destroy
     @survey.destroy
     respond_to do |format|
