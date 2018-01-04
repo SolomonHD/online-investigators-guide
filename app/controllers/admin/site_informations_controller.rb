@@ -1,6 +1,17 @@
 class Admin::SiteInformationsController < Admin::BaseController
   before_action :set_admin_site_information, only: [:show, :edit, :update, :destroy]
 
+  def toggle_maintenance_mode
+    maintenance_mode = Admin::SiteInformation.where(id: params[:site_information_id]).first
+    puts maintenance_mode.isOn
+    if maintenance_mode.isOn == true
+      maintenance_mode.update(:isOn => false)
+    else
+      maintenance_mode.update(:isOn => true)
+    end
+    redirect_to admin_site_informations_path
+  end
+
   # GET /admin/site_informations
   # GET /admin/site_informations.json
   def index
@@ -8,6 +19,8 @@ class Admin::SiteInformationsController < Admin::BaseController
     @contact_information = Admin::SiteInformation.where("name = 'contact_info'").first
     @branding_information = Admin::SiteInformation.where("name = 'branding'").first
     @about_site = Admin::SiteInformation.where("name = 'about_site'").first
+    @maintenance_mode = Admin::SiteInformation.where("name = 'maintenance_mode'").first
+    @feedback_survey = Admin::SiteInformation.where("name = 'feedback_survey'").first
   end
 
   # GET /admin/site_informations/1
@@ -23,6 +36,7 @@ class Admin::SiteInformationsController < Admin::BaseController
   # GET /admin/site_informations/1/edit
   def edit
   end
+
 
   # POST /admin/site_informations
   # POST /admin/site_informations.json

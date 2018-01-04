@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:new, :edit, :update, :destroy]
+  before_action :maintenance_mode
 
   # GET /pages
   # GET /pages.json

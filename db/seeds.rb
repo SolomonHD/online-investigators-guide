@@ -7,6 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Admin::SiteInformation.create([{name: "contact_info", text: "admin_site_informations_path", header: "Contact us"},
-                              {name: "branding", text: "edit brand"},
-                              {name: "about_site", text: "about"}])
+Admin::SiteInformation.create([{name: "maintenance_mode", isOn: 0},
+                              {name: "feedback_survey", text: "https://www.surveymonkey.com/r/7FG6PP5", isOn: 1}])
