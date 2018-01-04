@@ -15,7 +15,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-<a href="http://www.mysqltutorial.org/install-mysql/">Install mysql server</a>
+```
+* [Install mysql server](http://www.mysqltutorial.org/install-mysql/)
+```
 
 ### Installing
 
