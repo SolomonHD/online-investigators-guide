@@ -39,6 +39,7 @@ Configure database setting in the rails application
     <<: *default
     url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_LOCAL_DATABASE_URL'] %>
     socket: /tmp/mysql.sock
+* save
 ```
 ```
 rails db:migrate RAILS_ENV=local
@@ -49,8 +50,9 @@ rails db:seed RAILS_ENV=local
 ```
 rails s -e local
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
+```
+open browser and go to http://localhost:3000/
+```
 
 ## Running the tests
 
@@ -61,7 +63,7 @@ Explain how to run the automated tests for this system
 Explain what these tests test and why
 
 ```
-Give an example
+Give an example - TBD
 ```
 
 ### And coding style tests
@@ -69,7 +71,7 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
+Give an example - TBD
 ```
 
 ## Deployment
