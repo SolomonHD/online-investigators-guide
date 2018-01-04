@@ -99,6 +99,7 @@ cap qa deploy
 ## Troubleshooting Application
 
 ### Local Environment
+#### Start rails console
 ```
 cd online-investigators-guide
 ```
@@ -114,6 +115,7 @@ tail -f  log/local.log
 ```
 
 ### Development Environment
+#### Start rails console
 ```
 ssh deploy@whpihdev1
 ```
@@ -135,6 +137,7 @@ tail -f  current/log/development.log
 ```
 
 ### QA Environment
+#### Start rails console
 ```
 ssh deploy@whrailsqa1
 ```
