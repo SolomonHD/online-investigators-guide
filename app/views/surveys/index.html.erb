@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-
 <div class="column">
+  <% if notice %>
+  <p id="notice"  class="notification"><%= notice %></p>
+  <% end %>
   <h1 class="title">Views for <%= @user.name %></h1>
   <% if !@surveys.empty? %>
     <table class="table">
@@ -9,18 +9,18 @@
         <tr>
           <th>Name</th>
           <th>Description</th>
-          <th>Default</th>
-          <th>Actions</th>
+          <th width="10%">Default</th>
+          <th width="40%">Actions</th>
         </tr>
       </thead>
 
       <tbody>
         <% @surveys.each do |survey| %>
           <tr>
-            <td><%= survey.name %></td>
-            <td><%= survey.description %></td>
-            <td><% if survey.is_default %><span class="fa fa-check"></span><% end %></td>
-            <td>
+            <td data-label="Name"><%= survey.name %></td>
+            <td data-label="Description"><%= survey.description %></td>
+            <td data-label="Default"><% if survey.is_default %><span class="fa fa-check"></span><% else %> <span class="fa fa-times"></span><% end %></td>
+            <td class="stacked-button">
               <% if survey.is_default %>
                 <%= link_to 'Set As Default', user_survey_toggle_default_path(:user_id => current_user.id, :survey_id => survey.id), :class => 'button is-default large-button', :disabled => true %>
               <% else %>

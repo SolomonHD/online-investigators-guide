@@ -1,11 +1,11 @@
 <tr>
-  <td class='nested<%= page.ancestry_depth %>' >
+  <td class='nested<%= page.ancestry_depth %>' data-label="Page Title">
     <%= page.title %>
   </td>
-  <td>
+  <td data-label="Modified Date">
     <%= page.updated_at.strftime('%m/%d/%y')   %>
   </td>
-  <td>
+  <td data-label="Position">
     <div class="position"><%= page.position %></div>
     <div class="controls">
       <% if page.position != 1 %>

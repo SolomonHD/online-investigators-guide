@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     resource :broken_link do
       get :runReport
     end
+    resources :site_informations do
+      get :toggle_maintenance_mode
+    end
   end
 
   resources :sessions

@@ -22,11 +22,11 @@
             <table class="table striping" id="linkReport">
             <thead>
               <tr>
-                <th></th>
-                <th >Page Title</th>
-                <th>Link Text</th>
-                <th>Bad URL</th>
-                <th>Error Text</th>
+                <th width="5%"></th>
+                <th width="10%">Page Title</th>
+                <th width="20%">Link Text</th>
+                <th width="30%">Bad URL</th>
+                <th width="30%">Error Code</th>
               </tr>
             </thead>
             <tbody>
@@ -35,16 +35,16 @@
                 <td>
                   <%= link_to '', edit_admin_page_path(link.page_id), :class => 'button is-edit is-gray', :target => "_blank" %>
                 </td>
-                <td>
+                <td data-label="Page Title">
                    <%= link.page_title %>
                 </td>
-                <td>
+                <td data-label="Link Text">
                   <%= link.link_text %>
                 </td>
-                <td>
+                <td data-label="Bad URL">
                   <%= link.broken_url %>
                 </td>
-                <td>
+                <td data-label="Error Code">
                   <%= HTML_Truncator.truncate(link.link_error, 50, :length_in_chars => true).html_safe %>
                 </td>
               </tr>

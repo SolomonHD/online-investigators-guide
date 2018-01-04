@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_action :maintenance_mode
+  
   def new
   end
 
@@ -11,7 +14,7 @@ class SessionsController < ApplicationController
       else
         @view = Survey.where(user_id: @user.id, is_default: true).first
         flash[:notice] = "You’re logged in"
-        if @view 
+        if @view
           redirect_to root_path(:user => @user.id, :view => @view.id)
         else
           redirect_to user_surveys_path(@user), notice: "You’re logged in"

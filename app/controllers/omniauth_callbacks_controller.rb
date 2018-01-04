@@ -1,5 +1,7 @@
 class OmniauthCallbacksController < ApplicationController
 
+  before_action :maintenance_mode
+
   def saml
     Rails.logger.debug "OmniauthCallbacksController#saml: request.env['omniauth.auth']: #{request.env['omniauth.auth']}"
     @user = get_user(request.env["omniauth.auth"])

@@ -50,3 +50,21 @@ GetURLParameter = (sParam) ->
       return sParameterName[1]
     i++
   return
+
+$(document).on 'turbolinks:load', ->
+  acc = document.getElementsByClassName('accordion')
+  i = 0
+  while i < acc.length
+    acc[i].addEventListener 'click', ->
+      @classList.toggle 'active'
+      if @classList.contains('active')
+        document.getElementById('outline').innerHTML = "Hide Outline"
+      else
+        document.getElementById('outline').innerHTML = "Show Outline"
+      panel = @nextElementSibling
+      if panel.style.display == 'block'
+        panel.style.display = 'none'
+      else
+        panel.style.display = 'block'
+      return
+    i++

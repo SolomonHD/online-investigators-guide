@@ -5,6 +5,17 @@ $footer-background-color: $darkBlue !default
   padding: 3rem 1.5rem 3rem
   color: white
   border-top: solid 8px $yellow
+  .supporting-units
+    a
+      padding-right: 1em
+      border-right: solid 1px white
+      padding-left: 1em
+      &:first-of-type
+        padding-left: 0
+      &:last-child
+        border-right: 0
+  +mobile
+    font-size: .75em
   a
     color: white
     text-decoration: underline

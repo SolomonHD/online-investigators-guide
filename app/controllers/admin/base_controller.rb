@@ -2,6 +2,7 @@ class Admin::BaseController < ActionController::Base
   include RelativeAuth
   layout 'admin'
   before_action :is_admin?
+  before_action :maintenance_mode
 
   def index
   end
@@ -15,6 +16,10 @@ class Admin::BaseController < ActionController::Base
 
   def authorize
     redirect_to root_url, :notice => "Not Authorized" if current_user.nil?
+  end
+
+  def maintenance_mode
+    @maintenance_mode = Admin::SiteInformation.where("name = 'maintenance_mode'").first
   end
 
   def is_admin?

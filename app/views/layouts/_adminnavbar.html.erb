@@ -1,29 +1,37 @@
-<aside class="admin menu is-fullheight">
+<aside class="admin menu is-fullheight is-desktop">
+
   <div class="brand">
   Administration Menu
+  <div class="navbar-burger burger" data-target="adminMenu" id="admin-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
-  <p class="menu-label">
-    General Administration
-  </p>
+  </div>
+  <div id="adminMenu" class="admin-menu">
+    <p class="menu-label">
+      General Administration
+    </p>
 
-  <ul class="menu-list">
-    <li><%= link_to 'Dashboard', admin_path, class: "#{cp(admin_path)} dashboard" %></li>
-  </ul>
-  <p class="menu-label">
-    Content Administration
-  </p>
-  <ul class="menu-list">
-    <li><%= link_to 'Survey Templates', admin_survey_templates_path, class: "#{cp(admin_survey_templates_path)} surveys"  %></li>
-    <li><%= link_to 'Labels', admin_labels_path, class: "#{cp(admin_labels_path)} labels" %></li>
-    <li><%= link_to 'Pages', admin_pages_path, class: "#{cp(admin_pages_path)} pages" %></li>
+    <ul class="menu-list">
+      <li><%= link_to 'Dashboard', admin_path, class: "#{cp(admin_path)} dashboard" %></li>
+    </ul>
+    <p class="menu-label">
+      Content Administration
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to 'Survey Templates', admin_survey_templates_path, class: "#{cp(admin_survey_templates_path)} surveys"  %></li>
+      <li><%= link_to 'Labels', admin_labels_path, class: "#{cp(admin_labels_path)} labels" %></li>
+      <li><%= link_to 'Pages', admin_pages_path, class: "#{cp(admin_pages_path)} pages" %></li>
 
-  </ul>
-  <p class="menu-label">
-    Site Administration
-  </p>
-  <ul class="menu-list">
-    <li><%= link_to 'Supporting Units', admin_supporting_units_path, class: "#{cp(admin_supporting_units_path)} supporting-units" %></li>
-    <li><%= link_to 'User Management', admin_users_path, class: "#{cp(admin_users_path)} users" %></li>
-    <li><%= link_to 'Site Information', admin_site_informations_path, class: "#{cp(admin_site_informations_path)} information" %></li>
-  </ul>
+    </ul>
+    <p class="menu-label">
+      Site Administration
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to 'Supporting Units', admin_supporting_units_path, class: "#{cp(admin_supporting_units_path)} supporting-units" %></li>
+      <li><%= link_to 'User Management', admin_users_path, class: "#{cp(admin_users_path)} users" %></li>
+      <li><%= link_to 'Site Information', admin_site_informations_path, class: "#{cp(admin_site_informations_path)} information" %></li>
+    </ul>
+  </div>
 </aside>
