@@ -41,10 +41,10 @@ Configure database setting in the rails application
     socket: /tmp/mysql.sock
 ```
 ```
-rails db:migrate
+rails db:migrate RAILS_ENV=local
 ```
 ```
-rails db:seed
+rails db:seed RAILS_ENV=local
 ```
 ```
 rails s -e local
