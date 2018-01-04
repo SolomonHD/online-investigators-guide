@@ -20,9 +20,7 @@ What things you need to install the software and how to install them
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+A step by step series of examples that tell you have to get a local env running
 
 ```
 git clone https://github.com/emory-lits-uit/online-investigators-guide.git
