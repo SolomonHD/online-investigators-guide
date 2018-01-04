@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+  before_action :maintenance_mode
+  
   def new
   end
 
