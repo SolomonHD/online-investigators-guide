@@ -29,6 +29,16 @@ git clone https://github.com/emory-lits-uit/online-investigators-guide.git
 cd online-investigators-guide
 ```
 ```
+Configure database setting in the rails application
+* create an environment variable to store the connection string to your database.
+  example: ONLINE_INVESTIGATORS_GUIDE_LOCAL_DATABASE_URL=mysql2://<host>:<password>@localhost/online_investigators_guide_development
+* open online-investigators-guide/config/database.yml
+  local:
+    <<: *default
+    url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+    socket: /tmp/mysql.sock
+```
+```
 rails db:migrate
 ```
 ```
