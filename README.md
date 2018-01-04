@@ -1,6 +1,11 @@
 # Online Investigators Guide
 
-One Paragraph of project description goes here
+Online Investigators Guide provides researchers information on how to navigate their research by two ways.  The first way is to give the researchers
+an unfiltered view of the PI Handbook. In this view the researchers will have full access to the entire PI Handbook and it is up to the researchers to
+to figure out what sections applies to their research.  The second way is to give the researchers an filtered view of the PI Handbook, which is tailored
+to their research.  In order to generate this view, researchers must login with their net-id/password and answer a survey. Once the survey has been
+completed, an filtered view will be created and saved. This view will have all of the necessary steps required for the researchers to follow to complete
+their research.
 
 ## Getting Started
 
