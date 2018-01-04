@@ -30,12 +30,14 @@ cd online-investigators-guide
 ```
 ```
 Configure database setting in the rails application
+* create a new database on your mysql server - https://www.wikihow.com/Create-a-Database-in-MySQL
+  example: create database online_investigators_guide_development
 * create an environment variable to store the connection string to your database.
   example: ONLINE_INVESTIGATORS_GUIDE_LOCAL_DATABASE_URL=mysql2://<host>:<password>@localhost/online_investigators_guide_development
-* open online-investigators-guide/config/database.yml
+* open online-investigators-guide/config/database.yml and configure the local database
   local:
     <<: *default
-    url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DEV_DATABASE_URL'] %>
+    url: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_LOCAL_DATABASE_URL'] %>
     socket: /tmp/mysql.sock
 ```
 ```
