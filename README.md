@@ -15,6 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
+* [Install rails](http://railsapps.github.io/installing-rails.html)   - Follow instructions here to install rails 5.+.
 * [Install mysql server](http://www.mysqltutorial.org/install-mysql/) - Follow instructions here to install mysql server.
 
 ### Installing
