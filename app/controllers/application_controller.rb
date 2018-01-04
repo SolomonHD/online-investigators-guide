@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 
+  before_action :sitename
   require 'set'
 #  protect_from_forgery with: :exception
  include RelativeAuth
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def maintenance_mode
     @maintenance_mode = Admin::SiteInformation.where("name = 'maintenance_mode'").first
+  end
+
+  def sitename
+    @branding = Admin::SiteInformation.where("name = 'branding'").first
   end
 
   def is_admin?

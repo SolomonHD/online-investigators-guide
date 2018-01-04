@@ -7,6 +7,8 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :is_admin?, only: [:new, :edit, :update, :destroy]
   before_action :maintenance_mode
+  before_action :sitename
+
 
   # GET /pages
   # GET /pages.json
@@ -59,6 +61,10 @@ class PagesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.find(params[:id])
+    end
+
+    def sitename
+      @branding = Admin::SiteInformation.where("name = 'branding'").first
     end
 
     def customView

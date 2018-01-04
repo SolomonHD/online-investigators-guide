@@ -3,6 +3,7 @@ class Admin::BaseController < ActionController::Base
   layout 'admin'
   before_action :is_admin?
   before_action :maintenance_mode
+  before_action :sitename
 
   def index
   end
@@ -20,6 +21,10 @@ class Admin::BaseController < ActionController::Base
 
   def maintenance_mode
     @maintenance_mode = Admin::SiteInformation.where("name = 'maintenance_mode'").first
+  end
+
+  def sitename
+    @branding = Admin::SiteInformation.where("name = 'branding'").first
   end
 
   def is_admin?

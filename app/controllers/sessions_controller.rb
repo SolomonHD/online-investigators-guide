@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   before_action :maintenance_mode
-  
+  before_action :sitename
+
   def new
   end
 
