@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  title: My First Page
+  header: My First Header
+  body: <div>This is the body.</div>
+  ancestry:
+  ancestry_depth: 0
+  is_numbered: 0
+  position: 1
+
+two:
+  title: My First Page
+  header: My First Header
+  body: <div>This is the body.</div>
+  ancestry:
+  ancestry_depth: 0
+  is_numbered: 0
+  position: 1

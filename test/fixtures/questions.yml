@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  survey_template_id: 1
-  question_type_id: 1
-  content: MyText
+  content: How many humans do you have in your research?
+  survey_template: one
+  question_type: one
 
 two:
-  survey_template_id: 1
-  question_type_id: 1
-  content: MyText
+  content: How many animals do you have in your research?
+  survey_template: two
+  question_type: two
