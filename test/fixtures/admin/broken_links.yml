@@ -4,8 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  link_text: This is my link text
+  page_title: This is my page title
+  page_id: 20
+  broken_url: www.google.com
+  link_status: error
+  link_error: Page Not Found
+
+two:
+  link_text: This is my second link text
+  page_title: This is my second page title
+  page_id: 30
+  broken_url: www.yahoo.com
+  link_status: failure
+  link_error: Page Found

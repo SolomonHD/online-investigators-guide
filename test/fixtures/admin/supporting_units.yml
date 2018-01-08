@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  unit: MyString
-  title: MyString
-  url: MyString
+  unit: IMS
+  title: IMS
+  url: www.ims.com
 
 two:
-  unit: MyString
-  title: MyString
-  url: MyString
+  unit: EF
+  title: Emory First
+  url: www.ef.com

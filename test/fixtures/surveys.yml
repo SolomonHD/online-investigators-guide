@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
+  name: Human Study
+  description: This research is for humans
   user: one
   survey_template: one
+  is_default: false
 
 two:
-  name: MyString
-  description: MyString
+  name: Animanl Study
+  description: This research is for animals
   user: two
   survey_template: two
+  is_default: true

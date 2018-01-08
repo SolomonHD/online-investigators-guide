@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  net_id: MyString
-  first_name: MyString
-  last_name: MyString
-  is_admin: false
+  net_id: sbarre5
+  first_name: Suandra
+  last_name: Barrett
+  is_admin: true
+  provider: saml
 
 two:
-  net_id: MyString
-  first_name: MyString
-  last_name: MyString
+  net_id: tparri2
+  first_name: Terry
+  last_name: Parrish
   is_admin: false
+  provider: saml
