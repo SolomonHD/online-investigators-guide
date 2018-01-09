@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
   <% if @survey_template.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="notification is-danger">
       <h2><%= pluralize(@survey_template.errors.count, "error") %> prohibited this survey_template from being saved:</h2>
-
-      <ul>
-      <% @survey_template.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @survey_template.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
     </div>
   <% end %>
 
