@@ -1,8 +1,9 @@
 class SurveyTemplate < ApplicationRecord
   # the name is mandatory
   validates_presence_of :name
+  validates_presence_of :questions
 
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :surveys
 
   has_many :answers_label

@@ -62,6 +62,8 @@ gem "html_truncator", "~>0.2"
 
 gem "sdoc"
 
+gem "awesome_print"
+
 # Install brew install graphviz on local environment
 # bundle exec erd
 # https://github.com/voormedia/rails-erd
