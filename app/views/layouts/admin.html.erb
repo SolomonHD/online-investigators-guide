@@ -10,6 +10,7 @@
   </head>
 
   <body class="adminSite">
+
     <% if @maintenance_mode.isOn %>
       <div class="admin_maintenance_notification">
         Site is in Maintenance Mode.  <%= link_to 'Turn off maintenance mode.', admin_site_information_toggle_maintenance_mode_path(@maintenance_mode.id) %>
