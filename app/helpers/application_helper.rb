@@ -7,4 +7,13 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields button is-warning is-add large-button", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def page_title
+    if Admin::SiteInformation.where("name = 'branding'").first.header
+      Admin::SiteInformation.where("name = 'branding'").first.header
+    else
+      "Online Investigator's Guide  |  Office for Clinical Research"
+    end
+  end
+
 end
