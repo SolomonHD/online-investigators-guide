@@ -54,7 +54,7 @@
       <!-- BUILD ANCHOR MENU -->
       <% if params[:user] and params[:view] and current_user and @page.has_children? %>
         <ol>
-          <% @page.descendants.each do |child| %>
+          <% @page.descendants.at_depth(2).each do |child| %>
             <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
               <li>
                 <%= link_to child.title, "#"+child.title.parameterize %>
@@ -64,7 +64,7 @@
         </ol>
       <% elsif @page.has_children? %>
         <ol>
-          <% @page.descendants.each do |child| %>
+          <% @page.descendants.at_depth(2).each do |child| %>
             <li>
               <%= link_to child.title, "#"+child.title.parameterize %>
             </li>
@@ -74,23 +74,36 @@
 
       <!-- TRAVERSE DESCENDANTS AND CREATE PAGE -->
       <% if params[:user] and params[:view] and current_user and @page.has_children? %>
-          <% @page.descendants.each_with_index do |child, index| %>
+          <% @page.descendants.at_depth(2).each_with_index do |child, index| %>
             <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
               <article>
                 <a id="<%= child.title.parameterize %>">
                   <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
                 </a>
                 <%= raw child.body %>
+                <% if child.has_children? %>
+                  <% child.descendants.each_with_index do | subChild, subIndex | %>
+                    <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>. <%= subChild.header %></h2>
+                  <% end %>
+                <% end %>
               </article>
             <% end %>
           <% end %>
       <% elsif @page.has_children? %>
-        <% @page.descendants.each_with_index do |child, index| %>
+        <% @page.descendants.at_depth(2).each_with_index do |child, index| %>
           <article>
             <a id="<%= child.title.parameterize %>">
               <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
             </a>
             <%= raw child.body %>
+            <% if child.has_children? %>
+              <% child.descendants.each_with_index do | subChild, subIndex | %>
+                <article>
+                  <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>. <%= subChild.header %></h2>
+                  <%= raw subChild.body %>
+                </article>
+              <% end %>
+            <% end %>
           </article>
         <% end %>
       <% end %>
