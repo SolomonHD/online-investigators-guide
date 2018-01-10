@@ -80,6 +80,11 @@ class Admin::SurveyTemplatesController < Admin::BaseController
   # DELETE /survey_templates/1
   # DELETE /survey_templates/1.json
   def destroy
+    if @survey_template.is_default
+      redirect_to admin_survey_templates_path,
+        :notice=> 'There must be one default template at all times.' and return
+    end
+    
     @survey_template.destroy
     respond_to do |format|
       format.html { redirect_to action: "index", notice: 'Survey template was successfully destroyed.' }
