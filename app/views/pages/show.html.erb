@@ -97,11 +97,20 @@
             </a>
             <%= raw child.body %>
             <% if child.has_children? %>
-              <% child.descendants.each_with_index do | subChild, subIndex | %>
+              <% child.descendants.at_depth(child.ancestry_depth + 1).each_with_index do | subChild, subIndex | %>
                 <article>
                   <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>. <%= subChild.header %></h2>
                   <%= raw subChild.body %>
+                  <% if subChild.has_children? %>
+                    <% subChild.descendants.at_depth(subChild.ancestry_depth + 1).each_with_index do | subChild2, subIndex2 | %>
+                      <article>
+                        <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>.<%= subIndex2 + 1 %>. <%= subChild2.header %></h2>
+                        <%= raw subChild2.body %>
+                      </article>
+                    <% end %>
+                  <% end %>
                 </article>
+
               <% end %>
             <% end %>
           </article>
