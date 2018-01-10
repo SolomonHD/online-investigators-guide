@@ -67,6 +67,13 @@ trix-editor {
     div {
       padding-left: 1em;
     }
+    > article {
+      margin-left: 1em;
+      margin-top: 1em !important;
+      .subtitle {
+        margin-bottom: .25em !important;
+      }
+    }
   }
 }
 
