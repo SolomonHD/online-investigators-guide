@@ -276,7 +276,22 @@ trix-toolbar .trix-button--icon-code::before {
   }
 
 }
-.pages, form {
+.answers {
+  .collection-check-box {
+    label {
+      &:after {
+        background-color: $grey-lightest !important;
+      }
+      &:hover {
+        &:after {
+          background-color: $green !important;
+        }
+        background-color: $green !important;
+      }
+    }
+  }
+}
+.pages, form, .answers {
 
   .nested1 {
     padding-left: 2em;
