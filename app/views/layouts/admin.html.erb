@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @branding.header %> | Admin Portal </title>
+    <title><%= page_title %> Admin Portal </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +10,6 @@
   </head>
 
   <body class="adminSite">
-  <%= @branding %>
     <% if @maintenance_mode.isOn %>
       <div class="admin_maintenance_notification">
         Site is in Maintenance Mode.  <%= link_to 'Turn off maintenance mode.', admin_site_information_toggle_maintenance_mode_path(@maintenance_mode.id) %>
