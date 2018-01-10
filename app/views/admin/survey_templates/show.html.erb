@@ -12,8 +12,20 @@
         <%= question.content %>
         <ul class="answers">
           <% question.answers.each do |answer| %>
-            <li><%= answer.content %></li>
+            <% label_ids = [] %>
+            <% AnswersLabel.where(:answer_id => answer.id).each do |label| %>
+              <% label_ids.push label.label_id %>
             <% end %>
+            <div>
+            <li><%= answer.content %></li>
+            <%= collection_check_boxes :label, :label_ids, Label.where(id: label_ids), :id, :name, { disabled: -> (name) {true} }, {class: 'collection-check-box'} do |b| %>
+              <div class="collection-check-box selected">
+                <%= b.label %>
+                <%= b.check_box %>
+              </div>
+            <% end %>
+           </div>
+          <% end %>
         </ul>
       </li>
     <% end %>
