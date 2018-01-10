@@ -29,7 +29,7 @@
   <%= label_tag(:parent_id, "Parent Page:", :class => 'label') %>
   <div class="select">
     <%= form.select :parent_id,
-    options_from_collection_for_select(Page.all, :id, :title, @page.parent_id),
+    options_from_collection_for_select(Page.where("ancestry_depth < 4").all, :id, :title, @page.parent_id),
       { include_blank: 'No Parent' },
       { class: 'select' }
       %>

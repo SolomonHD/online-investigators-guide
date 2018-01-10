@@ -7,11 +7,12 @@
     <th>Page Title</th>
     <th width="15%">Modified Date</th>
     <th width="15%">Position</th>
+    <th>New Child Page</th>
     <th>Actions</th>
   </thead>
   <%= nested_pages @pages.arrange(:order => :position) %>
   <tr>
-    <td colspan=4>
+    <td colspan=5>
       <%= link_to 'New Page', new_admin_page_path, :class => 'button is-add is-warning large-button' %>
     </td>
   </tr>
