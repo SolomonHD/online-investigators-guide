@@ -92,7 +92,7 @@
 						</div>					</div>					<div class="clarify-clear"></div>					<div id="error-codes" class="clarify-sub-step-container">						<h3 class="clarify-step-title">Error Codes</h3>						<div class="clarify-step-instructions"><ol><li><strong>404 =&gt; Net::HTTPNotFound for </strong><em><strong>&lt;bad URL&gt;</strong></em><strong> -- unhandled response</strong><ul><li>The HTTP 404 Not Found Error means that the webpage you were trying to reach could not be found on the server. It is a Client-side Error which means that either the page has been removed or moved and the URL was not changed accordingly, or that you typed in the URL incorrectly.</li>
 </ul>
 </li>
-<li><strong>connection refused: </strong><em><strong>&lt;bad URL&gt;</strong></em><strong>:443</strong><ul><li>This error code results in attempting to access a secured website on port 442. You specifically need to use &quot;https://&quot; when accessing these site.</li>
+<li><strong>connection refused: </strong><em><strong>&lt;bad URL&gt;</strong></em><strong>:443</strong><ul><li>This error code results in attempting to access a secured website on port 443. You specifically need to use &quot;https://&quot; when accessing these sites.</li>
 </ul>
 </li>
 <li><strong>Failed to open TCP connection to </strong><em><strong>&lt;bad URL&gt;</strong></em><ul><li>This URL doesn't exist and can not be reached.</li>
@@ -101,16 +101,15 @@
 </ol></div>					</div>					<div class="clarify-clear"></div>					</div>
 					</div>					<div class="clarify-clear"></div>		<div class="rule">
 			<img src="images/ui/rule.png" alt="" /> 
-		</div>					<div id="clarify-step-4" class="clarify-step-container">						<h2 class="clarify-step-title">Survey Templates</h2>						<div class="clarify-step-instructions"><p>A Survey Template is the questionairre that the user will fill out to create their custom view. The system allows multiple survey templates to be created, however the survey template marked as <strong>default</strong> will be the only survey that is displayed to the user. </p>
+		</div>					<div id="clarify-step-4" class="clarify-step-container">						<h2 class="clarify-step-title">Survey Templates</h2>						<div class="clarify-step-instructions"><p>A Survey Template is the questionnaire that the user will fill out to create their custom view. The system allows multiple survey templates to be created, however the survey template marked as <strong>default</strong> will be the only survey that is displayed to the user. </p>
 <p>The action enabled on a survey template are:</p>
 <ol><li>Set a default survey template</li>
 <li>View a survey template</li>
 <li>Edit survey template</li>
-<li>Delete survey template<ul><li><span style="color: rgb(255,38,0)">A default template is necessary and you can not delete a survey template if it is set as default. You will not be able to delete a survey template if there is only </span></li>
+<li>Delete survey template<ul><li><span style="color: rgb(255,38,0)">A default template is necessary and you can not delete a survey template if it is set as default. You will not be able to delete a survey template if there is only one.</span></li>
 </ul>
 </li>
-</ol>
-<p><span style="color: rgb(255,38,0)">To add a New Survey Template, </span></p></div>
+</ol></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/survey-templates.png" width="1317" height="448" class="clarify-step-image" alt="" />
@@ -123,7 +122,7 @@
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/adding-new-survey-template.png" width="1317" height="110" class="clarify-step-image" alt="" />
 								
 							</div>
-						</div>					</div>					<div class="clarify-clear"></div>					<div id="clarify-step-19" class="clarify-sub-step-container">						<h3 class="clarify-step-title">Setting a Default Template</h3>						<div class="clarify-step-instructions"><p>To change the default tempate, select Set As Default button.</p></div>
+						</div>					</div>					<div class="clarify-clear"></div>					<div id="clarify-step-19" class="clarify-sub-step-container">						<h3 class="clarify-step-title">Setting a Default Template</h3>						<div class="clarify-step-instructions"><p>To change the default template, select Set As Default button.</p></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/setting-a-default-template.png" width="1304" height="76" class="clarify-step-image" alt="" />
@@ -132,14 +131,14 @@
 						</div>					</div>					<div class="clarify-clear"></div>					<div id="clarify-step-21" class="clarify-sub-step-container">						<h3 class="clarify-step-title">View Survey Template</h3>						<div class="clarify-step-instructions"><p>Viewing a Survey Template will show you:</p>
 <ol><li>Questions</li>
 <li>Answers</li>
-<li>Labels mapped to answers</li>
+<li><a href="#labels" target="" title="">Labels mapped to answers</a></li>
 </ol></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/view-survey-template.png" width="1357" height="689" class="clarify-step-image" alt="" />
 								
 							</div>
-						</div>					</div>					<div class="clarify-clear"></div>					<div id="adding-or-editting-survey-template" class="clarify-sub-step-container">						<h3 class="clarify-step-title">Adding or Editting a Survey Template</h3>						<div class="clarify-step-instructions"><p>When adding or editting an existing survey template, you can configure the following options:</p>
+						</div>					</div>					<div class="clarify-clear"></div>					<div id="adding-or-editting-survey-template" class="clarify-sub-step-container">						<h3 class="clarify-step-title">Adding or Editing a Survey Template</h3>						<div class="clarify-step-instructions"><p>When adding or editing an existing survey template, you can configure the following options:</p>
 <ol><li>Survey Name<ul><li>The User will see this name when they are filling out their survey.</li>
 </ul>
 </li>
@@ -167,15 +166,15 @@
 </ol></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
-								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/adding-or-editting-a-survey-template.png" width="1351" height="985" class="clarify-step-image" alt="" />
+								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/adding-or-editing-a-survey-template.png" width="1351" height="985" class="clarify-step-image" alt="" />
 								
 							</div>
 						</div>					</div>					<div class="clarify-clear"></div>					</div>
 					</div>					<div class="clarify-clear"></div>		<div class="rule">
 			<img src="images/ui/rule.png" alt="" /> 
-		</div>					<div id="clarify-step-3" class="clarify-step-container">						<h2 class="clarify-step-title">Labels</h2>						<div class="clarify-step-instructions"><p>Labels are used to group content that can be mapped to a survey template answer. If the survey template answer is mapped to a label, only the content with that label will show up if the user has selected that specific answer. </p>
+		</div>					<div id="labels" class="clarify-step-container">						<h2 class="clarify-step-title">Labels</h2>						<div class="clarify-step-instructions"><p>Labels are used to group content that can be mapped to a survey template answer. If the survey template answer is mapped to a label, only the content with that label will show up if the user has selected that specific answer. </p>
 <p>The following actions can be done on labels:</p>
-<ol><li>Edit Existing Label<ul><li><span style="color: rgb(255,38,0)">Edittng an existing label will not change any content or answers you have linked</span></li>
+<ol><li>Edit Existing Label<ul><li><span style="color: rgb(255,38,0)">Editing an existing label will not change any content or answers you have linked</span></li>
 </ul>
 </li>
 <li>Delete Label</li>
@@ -188,7 +187,7 @@
 							</div>
 						</div>					</div>					<div class="clarify-clear"></div>		<div class="rule">
 			<img src="images/ui/rule.png" alt="" /> 
-		</div>					<div id="clarify-step-5" class="clarify-step-container">						<h2 class="clarify-step-title">Pages</h2>						<div class="clarify-step-instructions"><p>Pages are the primary content of the website. Pages can be nested within other pages, allowing granularity when mapping to labels and specific survey answer questions.</p></div>
+		</div>					<div id="clarify-step-5" class="clarify-step-container">						<h2 class="clarify-step-title">Pages</h2>						<div class="clarify-step-instructions"><p>Pages are the primary content of the website. Pages can be nested within other pages <span style="color: rgb(255,38,0)">(up to 4 levels deep)</span>, allowing granularity when mapping to labels and specific survey answer questions.</p></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/pages.png" width="1342" height="649" class="clarify-step-image" alt="" />
@@ -291,7 +290,7 @@
 							</div>
 						</div>					</div>					<div class="clarify-clear"></div>		<div class="rule">
 			<img src="images/ui/rule.png" alt="" /> 
-		</div>					<div id="clarify-step-13" class="clarify-step-container">						<h2 class="clarify-step-title">User Management</h2>						<div class="clarify-step-instructions"><p>User Management has a comprehensive list of all users that have logged into the website and if they have administrative priveleges. This list that can be filtered by NETID or NAME. &nbsp;From this table, you can revoke or grant admin priveleges accordingly by selecting the appropriate button next to the user's name. </p></div>
+		</div>					<div id="clarify-step-13" class="clarify-step-container">						<h2 class="clarify-step-title">User Management</h2>						<div class="clarify-step-instructions"><p>User Management has a comprehensive list of all users that have logged into the website and if they have administrative privileges. This list that can be filtered by NETID or NAME. &nbsp;From this table, you can revoke or grant admin privileges accordingly by selecting the appropriate button next to the user's name. </p></div>
 												<div class="clarify-step-image-wrapper">
 							<div class="clarify-step-image-container">
 								<img src="./images/docs/online-investigator-s-guide---admin-user-documentation/user-management.png" width="1196" height="711" class="clarify-step-image" alt="" />

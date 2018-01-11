@@ -78,7 +78,7 @@
             <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
               <article>
                 <a id="<%= child.title.parameterize %>">
-                  <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
+                g  <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
                 </a>
                 <%= raw child.body %>
                 <% if child.has_children? %>
