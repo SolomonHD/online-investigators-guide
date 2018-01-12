@@ -73,22 +73,45 @@
       <% end %>
 
       <!-- TRAVERSE DESCENDANTS AND CREATE PAGE -->
+
       <% if params[:user] and params[:view] and current_user and @page.has_children? %>
+        <!-- Jump Menu -->
+        <ol class="jump-menu">
+          <% @allContentPages.each_with_index do |child, index| %>
+            <% thisPage = Page.find(child[:id]) %>
+            <li>
+              <a href="#<%= thisPage.title.parameterize %>">
+                <%= thisPage.title %>
+              </a>
+            </li>
+          <% end %>
+        </ol>
+        <!-- Page Content w/ Descendants -->
+        <ol class="custom-counter">
           <% @page.descendants.at_depth(2).each_with_index do |child, index| %>
-            <% if @allContentPages.include? child.id or @allAncestors.include? child.id %>
-              <article>
-                <a id="<%= child.title.parameterize %>">
-                g  <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
-                </a>
-                <%= raw child.body %>
-                <% if child.has_children? %>
-                  <% child.descendants.each_with_index do | subChild, subIndex | %>
-                    <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>. <%= subChild.header %></h2>
+            <% if @allContentPages.any? {|h| h[:id] == child[:id]} or @allAncestors.include? child[:id] %>
+              <li>
+                <article>
+                  <a id="<%= child.title.parameterize %>">
+                    <h2 class="subtitle">. <%= child.header %></h2>
+                  </a>
+                  <%= raw child.body %>
+                  <% if child.has_children? %>
+                    <ol type=A style="font-weight: bold; font-size: 1.25rem;">
+                    <% child.descendants.at_depth(child.ancestry_depth + 1).each_with_index do | subChild, subIndex | %>
+                      <li>
+                        <h2 class="subtitle"><%= subChild.header %></h2>
+                        <%= raw subChild.body %>
+                      </li>
+
+                    <% end %>
+                    </ol>
                   <% end %>
-                <% end %>
               </article>
+            </li>
             <% end %>
           <% end %>
+        </ol>
       <% elsif @page.has_children? %>
         <% @page.descendants.at_depth(2).each_with_index do |child, index| %>
           <article>

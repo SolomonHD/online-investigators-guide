@@ -57,9 +57,10 @@ trix-editor {
     line-height: 2em;
   }
   article {
-    margin-top: 2em;
+    margin-bottom: 1em;
     .subtitle {
       padding-bottom: .5em;
+      margin-top: 0;
     }
     ul {
       margin-left: 2.5em;
@@ -67,13 +68,17 @@ trix-editor {
     div {
       padding-left: 1em;
     }
+    > ol {
+      margin-left: 2em !important;
+      margin-top: 1em;
+    }
     > article {
       margin-left: 1em;
       margin-top: 1em !important;
       .subtitle {
         margin-bottom: .25em !important;
       }
-    
+
     }
   }
 }
@@ -141,4 +146,30 @@ trix-editor {
     h2 {
       font-size: 2em;
     }
+}
+
+.custom-counter {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  margin-left: 0 !important;
+  > li {
+   counter-increment: step-counter;
+   margin-bottom: 10px;
+   display: flex;
+   &::before {
+     content: counter(step-counter);
+     color: inherit;
+     font-weight: bold;
+     color: #4a4a4a;
+       font-size: 1.25rem;
+       font-weight: 700;
+       line-height: 1.25;
+   }
+ }
+}
+
+.jump-menu {
+  margin-left: 1em !important;
+  margin-bottom: 1em;
 }

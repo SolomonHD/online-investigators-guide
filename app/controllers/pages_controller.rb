@@ -68,20 +68,25 @@ class PagesController < ApplicationController
     end
 
     def customView
-      @allContentPages = Set.new []
+      @allContentPages ||= Array.new
       @allAncestors = []
       AnswersSurvey.where(:survey_id => params[:view]).each do |answer|
         AnswersLabel.where(:answer_id => answer.answer_id).each do |label|
           @thisLabel = Label.find(label.label_id)
           LabelsPage.where(:label_id => label.label_id).each do |page|
-            @allContentPages.add(page.page_id)
+            hash = {}
+            hash[:id] = page.page_id
             thisPage = Page.find(page.page_id)
+            hash[:position] = thisPage.position
+            @allContentPages << hash
             thisPage.ancestor_ids.each do |ancestor|
               @allAncestors.push(ancestor)
             end
           end
         end
       end
+
+      @allContentPages = @allContentPages.sort_by { |hsh| hsh[:position] }
 
       return @allAncestors
       return @allContentPages

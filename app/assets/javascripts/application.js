@@ -15,6 +15,13 @@
 //= require trix
 //= require turbolinks
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+  $(".parentNumber").each(function(index, el) {
+    console.log(el.closest("li"))
+    console.log($(".custom-counter").index(el.closest("article")))
+  });
+
+});
 
 
 function searchUsers() {
