@@ -3,7 +3,7 @@
 <% else %>
   <ul>
 <% end %>
-  <% p.children.each do |c| %>
+  <% p.children.order(position: :asc).each do |c| %>
     <% if allContentPages.include? c.id or allAncestors.include? c.id %>
       <li class="<% if c.has_children? %>sub-parent <% end %><% if current_page?(c) %>is-active is-active-parent<% end %>">
         <% if params[:user] and params[:view] %>

@@ -1,6 +1,6 @@
 <%= link_to 'Table of Contents', root_path, class: "#{cp(root_path)} table-of-contents" %>
   <ul class="menu-list">
-    <% Page.roots.each do |p| %>
+    <% Page.roots.order(position: :asc).each do |p| %>
         <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
           <%= link_to h(p.title), p %>
           <% if p.children.present? %>

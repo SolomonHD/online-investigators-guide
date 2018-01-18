@@ -1,11 +1,11 @@
 <h1 class="title">Investigator Handbook - Table of Contents</h1>
 <ol class="parent">
-<% Page.where("ancestry_depth < 1").find_each do |page, index| %>
+<% Page.where("ancestry_depth < 1").order(position: :asc).each do |page| %>
   <li>
     <%= link_to page.title, page %>
     <% if page.has_children? %>
        <ol class="child">
-        <% page.children.each do |child, index| %>
+        <% page.children.order(position: :asc).each do |child| %>
           <li>
             <%= link_to child.title, child %>
           </li>

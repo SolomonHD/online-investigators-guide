@@ -1,7 +1,7 @@
 <ul>
   <% if params[:user] and params[:view] %>
     <% if current_user.id.to_s == params[:user] %>
-      <% p.children.each do |sub| %>
+      <% p.children.order(position: :asc).each do |sub| %>
           <% if ! LabelsPage.where(:page_id => sub.id).empty? %>
             <li <% if current_page?(sub) %> class="is-active" <% end %>>
               <%= link_to sub.title, page_path(sub, :user => params[:user], :view => params[:view]) %>
@@ -9,17 +9,17 @@
           <% end %>
       <% end %>
     <% else %>
-      <% p.children.each do |sub| %>
+      <% p.children.order(position: :asc).each do |sub| %>
           <li <% if current_page?(sub) %> class="is-active" <% end %>>
             <%= link_to sub.title, page_path(sub) %>
           </li>
       <% end %>
     <% end %>
   <% else %>
-    <% p.children.each do |sub| %>
+    <% p.children.order(position: :asc).each do |sub| %>
         <li <% if current_page?(sub) %> class="is-active" <% end %>>
           <%= link_to sub.title, page_path(sub) %>
-        </li>    
+        </li>
     <% end %>
   <% end %>
 </ul>
