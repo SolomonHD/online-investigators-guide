@@ -54,6 +54,5 @@ $( document ).ready(function() {
   });
   $(document).on ("click", "#admin-toggle", function () {
     $(".admin-menu").toggleClass('is-active');
-    console.log("admin")
   });
 });
