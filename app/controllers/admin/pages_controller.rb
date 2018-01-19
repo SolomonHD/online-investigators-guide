@@ -69,7 +69,17 @@ class Admin::PagesController < Admin::BaseController
 
   def move
     if ["move_lower", "move_higher", "move_to_top", "move_to_bottom"].include?(params[:method]) and params[:page_id] =~ /^\d+$/
-      Page.find(params[:page_id]).send(params[:method])
+      method = ""
+      if (params[:method] == "move_lower")
+          method = "move_lower"
+      elsif (params[:method] == "move_higher")
+          method = "move_higher"
+      elsif (params[:method] == "move_to_top")
+          method = "move_to_top"
+      elsif (params[:method] == "move_to_bottom")
+          method = "move_to_bottom"
+      end
+      Page.find(params[:page_id]).send(method)
     end
     redirect_to :action => :index
   end

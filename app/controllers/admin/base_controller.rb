@@ -1,4 +1,6 @@
 class Admin::BaseController < ActionController::Base
+  protect_from_forgery with: :exception
+
   include RelativeAuth
   layout 'admin'
   before_action :is_admin?
