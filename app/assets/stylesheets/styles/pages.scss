@@ -1,6 +1,8 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 trix-editor {
   min-height: 30em;
   &.trix-content {
@@ -55,11 +57,19 @@ trix-editor {
   }
   ol {
     line-height: 2em;
+    font-weight: bold;
+    &.anchor-menu {
+      font-weight: normal;
+    }
   }
   article {
     margin-top: 2em;
-    .subtitle {
-      padding-bottom: .5em;
+    font-weight: normal;
+    .children {
+      padding-left: .5em;
+      article {
+        margin-top: .5em;
+      }
     }
     ul {
       margin-left: 2.5em;
@@ -73,7 +83,7 @@ trix-editor {
       .subtitle {
         margin-bottom: .25em !important;
       }
-    
+
     }
   }
 }
@@ -141,4 +151,7 @@ trix-editor {
     h2 {
       font-size: 2em;
     }
+}
+.label-container {
+  margin-bottom: 2em;
 }
