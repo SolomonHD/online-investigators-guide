@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :sitename
   require 'set'
  # protect_from_forgery with: :exception
+ protect_from_forgery :except => [:saml]
  include RelativeAuth
 
 
