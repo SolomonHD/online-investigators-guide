@@ -68,3 +68,22 @@ $(document).on 'turbolinks:load', ->
         panel.style.display = 'block'
       return
     i++
+
+$(document).on 'turbolinks:load', ->
+  startingValue = $('#page_alwaysShow option:selected').val()
+  console.log(startingValue)
+  if startingValue == 'false'
+    $('#label-container').show()
+  else
+    $('#label-container').hide()
+  return
+
+$(document).on 'turbolinks:load', ->
+  $('#page_alwaysShow').change ->
+    console.log("chan")
+    selectedValue = $('#page_alwaysShow option:selected').val()
+    if selectedValue == 'false'
+      $('#label-container').show()
+    else
+      $('#label-container').hide()
+    return

@@ -56,6 +56,4 @@ $( document ).ready(function() {
     $(".admin-menu").toggleClass('is-active');
     console.log("admin")
   });
-
-
 });

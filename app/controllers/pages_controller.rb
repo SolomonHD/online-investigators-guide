@@ -82,6 +82,10 @@ class PagesController < ApplicationController
           end
         end
       end
+      # Get all pages where alwaysShow = true
+      Page.where(:alwaysShow => true).each do |page|
+        @allContentPages.add(page.id)
+      end
 
       return @allAncestors
       return @allContentPages

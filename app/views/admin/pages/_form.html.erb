@@ -46,18 +46,25 @@
   <%= form.trix_editor :body %>
 </div>
 
-<%= button_tag("New Label", :type=> 'button', :class => 'add-label-modal button is-warning is-add large-button') %>
-
 <div class="field">
-  <%= label_tag(:label, "Labels:", :class => 'label adjusted-top') %>
-  <div id="label-list">
-    <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
-      <div class="collection-check-box">
-        <%= b.label %>
-        <%= b.check_box %>
-      </div>
-    <% end %>
+  <%= label_tag(:alwaysShow, "When Should this Page Be Displayed?", :class => 'label') %>
+  <div class="select">
+    <%= form.select :alwaysShow, [['Always', true], ['Only for Selected Labels', false]] %>
   </div>
+</div>
+<div id="label-container" class="label-container">
+  <div class="field">
+    <%= label_tag(:label, "Labels:", :class => 'label adjusted-top') %>
+    <div id="label-list">
+      <%= form.collection_check_boxes :label_ids, Label.all, :id, :name do |b| %>
+        <div class="collection-check-box">
+          <%= b.label %>
+          <%= b.check_box %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= button_tag("New Label", :type=> 'button', :class => 'add-label-modal button is-warning is-add large-button') %>
 </div>
 
 <div class="field">
