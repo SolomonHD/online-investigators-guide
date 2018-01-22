@@ -12,13 +12,13 @@
       <span class="toggle_label <% if !@maintenance_mode.isOn %>active<% end %> is-pulled-right">Off</span>
     </h2>
     <h3><%= @maintenance_mode.header %><%= link_to 'Edit', edit_admin_site_information_path(@maintenance_mode), :class => 'button is-gray is-edit large-button is-pulled-right'   %></h3>
-    <%= @maintenance_mode.text.html_safe() %>
+    <%= sanitize @maintenance_mode.text.html_safe() %>
 </section>
 
 <section>
   <h2>About</h2>
   <h3><%= @about_site.header %><%= link_to 'Edit', edit_admin_site_information_path(@about_site), :class => 'button is-gray is-edit large-button is-pulled-right'   %></h3>
-  <%= @about_site.text.html_safe() %>
+  <%= sanitize @about_site.text.html_safe() %>
 </section>
 
 
@@ -26,12 +26,12 @@
     <h2>Contact Information
   </h2>
   <h3><%= @contact_information.header %><%= link_to 'Edit', edit_admin_site_information_path(@contact_information), :class => 'button is-gray is-edit large-button is-pulled-right'   %></h3>
-<%= @contact_information.text.html_safe() %>
+<%= sanitize @contact_information.text.html_safe() %>
 </section>
 
 
 <section>
   <h2>Branding Information </h2>
 <%= link_to 'Edit', edit_admin_site_information_path(@branding_information), :class => 'button is-gray is-edit large-button is-pulled-right'   %>
-  <%= @branding_information.text.html_safe() %>
+  <%= sanitize @branding_information.text.html_safe() %>
 </section>

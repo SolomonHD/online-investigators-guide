@@ -7,7 +7,7 @@
     <div class="navbar-start site-branding is-hidden-desktop">
       <div class="eu-brand">Emory University</div>
       <div class="site-information">
-        <%= Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
+        <%= sanitize Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
         <div class="navbar-start site-branding is-hidden-mobile">
           <div class="eu-brand">Emory University</div>
           <div class="site-information">
-            <%= Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
+            <%= sanitize Admin::SiteInformation.where("name = 'branding'").first.text.html_safe() %>
           </div>
         </div>
 
