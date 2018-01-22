@@ -92,6 +92,6 @@ class Admin::PagesController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :header, :body, :parent_id, :is_numbered, label_ids: [] )
+      params.require(:page).permit(:title, :header, :body, :parent_id, :is_numbered, :alwaysShow, label_ids: [] )
     end
 end

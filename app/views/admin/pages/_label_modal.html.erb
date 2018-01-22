@@ -5,10 +5,10 @@
         <p class="modal-card-title">New Label</p>
         <button class="delete" aria-label="close"></button>
       </header>
-      <section class="modal-card-body">
+      <div class="modal-card-body">
         <%= form_for [:admin, @label], remote: true do |builder| %>
           <%= render '/admin/labels/form', form: builder %>
         <% end %>
-      </section>
+      </div>
     </div>
 </div>
