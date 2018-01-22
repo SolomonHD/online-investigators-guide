@@ -3,9 +3,10 @@
     <% Page.roots.order(position: :asc).each do |p| %>
         <li class="parent <% if current_page?(p) %> is-active is-active-parent<% end %>">
           <%= link_to h(p.title), p %>
-          <% if p.children.present? %>
+          <!-- REMOVED TO HIDE SUBMENU CHILDREN -->
+          <!-- <% if p.children.present? %>
             <%= render 'sideMenuSub', p: p %>
-          <% end %>
+          <% end %> -->
         </li>
     <% end %>
   </ul>

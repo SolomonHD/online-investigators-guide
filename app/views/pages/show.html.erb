@@ -63,6 +63,7 @@
           <% end %>
         </ol>
       <% elsif @page.has_children? %>
+      <%= @page.has_children? %>
         <ol class="anchor-menu">
           <% @page.descendants.at_depth(2).each do |child| %>
             <li>
