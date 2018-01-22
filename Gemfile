@@ -64,6 +64,8 @@ gem "sdoc"
 
 gem "awesome_print"
 
+gem "brakeman", :require => false
+
 # Install brew install graphviz on local environment
 # bundle exec erd
 # https://github.com/voormedia/rails-erd

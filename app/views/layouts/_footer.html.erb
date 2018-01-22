@@ -12,12 +12,12 @@
       <div class="column is-6 about">
         <% @about_site = Admin::SiteInformation.where("name = 'about_site'").first %>
         <h3><%= @about_site.header %></h3>
-        <%= @about_site.text.html_safe() %>
+        <%= sanitize @about_site.text.html_safe() %>
       </div>
       <div class="column is-6 contact">
         <% @contact_info = Admin::SiteInformation.where("name = 'contact_info'").first %>
         <h3><%= @contact_info.header %></h3>
-        <%= @contact_info.text.html_safe() %>
+        <%= sanitize @contact_info.text.html_safe() %>
       </div>
     </div>
   </div>
