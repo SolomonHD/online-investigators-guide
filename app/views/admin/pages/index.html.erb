@@ -1,14 +1,14 @@
 <% if notice %>
 <p id="notice" class="notification is-success"><%= notice %></p>
 <% end %>
-<h1 class="title">Pages</h1>
+<h1 class="title">Pages <%= link_to 'New Page', new_admin_page_path, :class => 'button is-add is-warning large-button is-pulled-right' %></h1>
 <table class="pages table is-striped">
   <thead>
     <th>Page Title</th>
     <th width="15%">Modified Date</th>
     <th width="15%">Position</th>
-    <th>New Child Page</th>
-    <th>Actions</th>
+    <th width="15%">New Child Page</th>
+    <th width="30%">Actions</th>
   </thead>
   <%= nested_pages @pages.arrange(:order => :position) %>
   <tr>
