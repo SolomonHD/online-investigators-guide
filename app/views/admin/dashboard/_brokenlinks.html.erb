@@ -45,7 +45,7 @@
                   <%= link.broken_url %>
                 </td>
                 <td data-label="Error Code">
-                  <%= HTML_Truncator.truncate(link.link_error, 50, :length_in_chars => true).html_safe %>
+                  <%= sanitize HTML_Truncator.truncate(link.link_error, 50, :length_in_chars => true).html_safe %>
                 </td>
               </tr>
             <% end %>

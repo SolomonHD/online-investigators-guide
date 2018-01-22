@@ -28,7 +28,7 @@
       <%= @page.header %>
     </h1>
     <div class="page-body">
-      <%= raw @page.body %>
+      <%= sanitize raw @page.body %>
 
     <!--  IF PAGE IS ROOT, BUILD ONLY DIRECT DESCENDANTS -->
     <% if @page.is_root? %>
@@ -80,7 +80,7 @@
                 <a id="<%= child.title.parameterize %>">
                 g  <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
                 </a>
-                <%= raw child.body %>
+                <%= sanitize raw child.body %>
                 <% if child.has_children? %>
                   <% child.descendants.each_with_index do | subChild, subIndex | %>
                     <h2 class="subtitle"><%= index + 1%>.<%= subIndex + 1 %>. <%= subChild.header %></h2>
@@ -95,7 +95,7 @@
             <a id="<%= child.title.parameterize %>">
               <h2 class="subtitle"><%= index + 1%>. <%= child.header %></h2>
             </a>
-            <%= raw child.body %>
+            <%= sanitize raw child.body %>
             <% if child.has_children? %>
               <% child.descendants.at_depth(child.ancestry_depth + 1).each_with_index do | subChild, subIndex | %>
                 <article>
