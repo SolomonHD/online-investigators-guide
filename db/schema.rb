@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180118231750) do
 
-  create_table "admin_broken_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_broken_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "link_text"
     t.string "page_title"
     t.string "page_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.string "link_error"
   end
 
-  create_table "admin_site_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_site_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.text "text"
     t.datetime "created_at", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.boolean "isOn"
   end
 
-  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "admin_supporting_units", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "unit"
     t.string "title"
     t.string "url"
@@ -40,36 +40,36 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "question_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "answers_labels", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers_labels", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "label_id", null: false
     t.bigint "answer_id", null: false
   end
 
-  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers_surveys", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "answer_id", null: false
     t.bigint "survey_id", null: false
   end
 
-  create_table "labels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "labels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_labels_on_name", unique: true
   end
 
-  create_table "labels_pages", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "labels_pages", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "label_id", null: false
     t.bigint "page_id", null: false
   end
 
-  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
     t.string "header"
     t.text "body"
@@ -83,14 +83,14 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.index ["ancestry"], name: "index_pages_on_ancestry"
   end
 
-  create_table "question_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "question_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "survey_template_id"
     t.bigint "question_type_id"
     t.text "content"
@@ -100,14 +100,14 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.index ["survey_template_id"], name: "index_questions_on_survey_template_id"
   end
 
-  create_table "survey_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "survey_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_default"
   end
 
-  create_table "surveys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "surveys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "description"
     t.bigint "user_id"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20180118231750) do
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "net_id"
     t.string "first_name"
     t.string "last_name"

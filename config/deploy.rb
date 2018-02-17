@@ -2,12 +2,13 @@
 lock "~> 3.10.0"
 #set :pty, true
 set :application, "online_investigators_guide"
-set :repo_url, "git@github.service.emory.edu:LITS/online-investigators-guide.git"
+set :repo_url, "git@github.com:whdemo1/online-investigators-guide.git"
 set :user, "deploy"
 set :stages, %w(development)
 set :passenger_restart_with_touch, true
 set :default_env, {
-        'PATH' => "/paths/git-current:/paths/ruby-current:/paths/nodejs-current:$PATH"
+   'PATH' => "#{ENV['RUBY_PATH']}:#{ENV['GIT_PATH']}",
+   'LD_LIBRARY_PATH' => "#{ENV['RUBY_LIB_PATH']}"
 }
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

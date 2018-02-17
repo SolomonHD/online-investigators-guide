@@ -16,7 +16,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+#gem 'therubyracer', platforms: :ruby
 gem 'listen', '>= 3.0.5', '< 3.2'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -93,7 +93,7 @@ group :development, :local do
   gem 'capistrano-passenger'
   #gem 'capistrano-apache-systemd', github:"NorseGaud/capistrano-apache-systemd", branch: "master", require: false
   #gem 'capistrano-apache'
-  gem 'capistrano-apache-systemd'
+  gem 'capistrano-apache'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
