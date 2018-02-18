@@ -64,5 +64,5 @@ test:
 production:
   <<: *default
   database: online_investigators_guide_production
-  username: online_investigators_guide
-  password: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DATABASE_PASSWORD'] %>
+#  username: online_investigators_guide
+#  password: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DATABASE_PASSWORD'] %>
