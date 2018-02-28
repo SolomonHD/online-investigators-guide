@@ -72,7 +72,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 #production:
-  <<: *default
+#  <<: *default
 #  database: online_investigators_guide_production
 #  username: online_investigators_guide
 #  password: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DATABASE_PASSWORD'] %>
