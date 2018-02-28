@@ -16,6 +16,16 @@ default: &default
   username: root
   password:
 
+production: 
+   <<: *default 
+#   adapter: postgresql 
+#   encoding: unicode 
+   database: <%= ENV['RDS_DB_NAME'] %> 
+   username: <%= ENV['RDS_USERNAME'] %> 
+   password: <%= ENV['RDS_PASSWORD'] %> 
+   host: <%= ENV['RDS_HOSTNAME'] %> 
+   port: <%= ENV['RDS_PORT'] %>
+
 development:
   <<: *default
   database: online_investigators_guide
@@ -61,8 +71,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
+#production:
   <<: *default
-  database: online_investigators_guide_production
+#  database: online_investigators_guide_production
 #  username: online_investigators_guide
 #  password: <%= ENV['ONLINE_INVESTIGATORS_GUIDE_DATABASE_PASSWORD'] %>

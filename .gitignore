@@ -20,3 +20,8 @@
 
 # Ignore all documentation files.
 /doc/app
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
